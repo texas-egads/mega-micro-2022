@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Base Files (Dont Touch)/Scenes/TitleScreen.unity
+    guid: 771da822a5d0e74419e56a15f7d6a649
+  - enabled: 1
+    path: Assets/Base Files (Dont Touch)/Scenes/Main.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Base Files (Dont Touch)/Scenes/End.unity
+    guid: 9afc0269d88532c4e882e8aef915747d
+  - enabled: 0
+    path: Assets/Noah! (Test)/Avoid.unity
+    guid: 2279e7f672aed754fa6705be4642ed82
+  - enabled: 0
+    path: Assets/Matt/Crush.unity
+    guid: 96f6920d3a9b1ae4f8454c21ddbb57ed
+  - enabled: 1
+    path: Assets/MyTeam - RENAME/Scene.unity
+    guid: d9ff06deefccc284d841371feb3b8c3c
+  m_configObjects: {}

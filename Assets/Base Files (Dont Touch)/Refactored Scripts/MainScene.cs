@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class MainScene : MonoBehaviour
 {
+
+    private void Start() {
+        Managers.instance.minigamesManager.StartMinigames();
+    }
+
+
+
+    /*
     private Animator _animator;
 
     private void Awake()
@@ -29,4 +37,5 @@ public class MainScene : MonoBehaviour
         MainGameManager.Instance.GrowMainScene -= GrowScene;
         MainGameManager.Instance.ShrinkMainScene -= ShrinkScene;
     }
+    */
 }

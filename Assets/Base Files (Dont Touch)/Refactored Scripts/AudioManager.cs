@@ -6,56 +6,28 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour, IMinigameAudioManager
 {
-    [SerializeField] private int POOL_START_SIZE = 5;
     [SerializeField] private int POOL_MAX_SIZE = 200;
     [SerializeField] private AudioMixerGroup minigameMixerGroup;
 
-    AudioSource defaultAudioSource;
-    public Queue<AudioSource> freeAudioSources;
     public HashSet<AudioSource> occupiedAudioSources;
 
     public void Initialize() {
         GameObject newObj = new GameObject();
         newObj.transform.parent = transform;
-        defaultAudioSource = newObj.AddComponent<AudioSource>();
-        defaultAudioSource.outputAudioMixerGroup = minigameMixerGroup;
-        
-        freeAudioSources = new Queue<AudioSource>();
         occupiedAudioSources = new HashSet<AudioSource>();
-    
-        // start with a pool size of 5
-        for (int i = 0; i < POOL_START_SIZE; i++)
-            AddNewAudioSourceToPool();
-    }
-
-    private void AddNewAudioSourceToPool() {
-        GameObject newObj = new GameObject();
-        AudioSource source = newObj.AddComponent<AudioSource>();
-        newObj.transform.parent = transform;
-        freeAudioSources.Enqueue(source);
     }
 
     public AudioSource GetAudioSource() {
-        if (freeAudioSources.Count == 0) {
-            if (occupiedAudioSources.Count >= POOL_MAX_SIZE) {
-                Debug.LogError("You're asking for too many audio sources! Please use ReturnAudioSource to recycle some older ones, or play less sounds.");
-                return null;
-            }
-
-            AddNewAudioSourceToPool();
+        if (occupiedAudioSources.Count >= POOL_MAX_SIZE) {
+            Debug.LogError("You're asking for too many audio sources! Please reuse some old ones, or play less sounds.");
+            return null;
         }
 
-        AudioSource source = freeAudioSources.Dequeue();
+        GameObject newObj = new GameObject();
+        newObj.transform.parent = transform;
+        AudioSource source = newObj.AddComponent<AudioSource>();
+        source.outputAudioMixerGroup = minigameMixerGroup;
         occupiedAudioSources.Add(source);
-
-        System.Reflection.FieldInfo[] fields = typeof(AudioSource).GetFields();
-        foreach (System.Reflection.FieldInfo field in fields) {
-            field.SetValue(source, field.GetValue(defaultAudioSource));
-        }
-        fields = typeof(GameObject).GetFields();
-        foreach (System.Reflection.FieldInfo field in fields) {
-            field.SetValue(source.gameObject, field.GetValue(defaultAudioSource.gameObject));
-        }
 
         return source;
     }
@@ -71,7 +43,7 @@ public class AudioManager : MonoBehaviour, IMinigameAudioManager
         }
 
         source.Stop();
-        freeAudioSources.Enqueue(source);
+        Destroy(source.gameObject);
     }
 
     public void StartMinigameAudio() {

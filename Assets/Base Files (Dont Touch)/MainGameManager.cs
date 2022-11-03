@@ -169,7 +169,7 @@ public class MainGameManager : MonoBehaviour
     public void OnMinigameStart(MinigameDefinition minigame)
     {
         TimerManager.Instance.StartTimer(minigame.gameTime);
-        var waitTime = minigame.gameTime == MinigameDefinition.GameTime.Short ? ShortTime : LongTime;
+        var waitTime = minigame.gameTime == MinigameLength.Short ? ShortTime : LongTime;
         StartCoroutine(WaitForMinigameEnd(minigame, waitTime));
     }
 

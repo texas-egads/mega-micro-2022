@@ -7,7 +7,7 @@ public interface IMinigameAudioManager
     /// <summary>
     /// Fetches a managed AudioSource component from the manager. This component is attached to a
     /// game object that exists in the DontDestroyOnLoad scene. The AudioSource and its GameObject
-    /// should (hopefully) have all of their parameters set to default. To play a sound, you should
+    /// have all of their parameters set to their defaults. To play a sound, you should
     /// call this to obtain an AudioSource, assign it a clip, change any audio parameters, and then
     /// play it. Do not create your own audio sources and play those. Do not change the mixer
     /// group that the audio source outputs into.
@@ -26,9 +26,9 @@ public interface IMinigameAudioManager
     /// <summary>
     /// Gives an AudioSource back to the manager for reuse. Call this whenever you're done with
     /// an AudioSource that you previously obtained by using GetAudioSource. The manager will
-    /// stop the audio and add it back to its pool to be used again by someone else. ReturnAudioSource
-    /// will automatically run for any AudioSource that has not been returned when the minigame is
-    /// over.
+    /// stop the audio and remove the audio soruce. ReturnAudioSource will automatically run for
+    /// any AudioSource that has not been returned when the minigame is over. You should not
+    /// attempt to access an audio source that has been returned.
     /// </summary>
     /// <param name="source">The managed audio source you want to return.</param>
     void ReturnAudioSource(AudioSource source);

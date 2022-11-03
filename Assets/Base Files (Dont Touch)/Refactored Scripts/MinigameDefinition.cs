@@ -6,22 +6,6 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "Minigame Definition")]
 public class MinigameDefinition : ScriptableObject
 {    
-    public enum GameTime
-    {
-        Short = 3429,
-        Medium = 5143,
-        Long = 6857,
-        Uncapped = 0
-    }
-
-    public enum MinigameType
-    {
-        Normal,
-        Miniboss,
-        Boss
-    }
-
-
     //******* ADD THESE IN THE INSPECTOR *******//
     [Tooltip("Put the scene associated with your minigame here.")]
     public Scene scene;
@@ -37,7 +21,7 @@ public class MinigameDefinition : ScriptableObject
              "    - Medium: 3 measures of 140 BPM music (~5.1s)\n" +
              "    - Long: 4 measures of 140 BPM music (~6.9s)\n" +
              "    Do not select Uncapped unless you've been approved prior to do so")]
-    public GameTime gameTime;
+    public MinigameLength gameTime;
 
     [Tooltip("What you want the impact text leading into your game to say. This should be a short word or phrase telling the player what their goal is.")]
     public string instruction;
@@ -50,4 +34,20 @@ public class MinigameDefinition : ScriptableObject
     public Sprite creditsScreenshot;
 
     //*****************************************//
+}
+
+
+public enum MinigameLength
+{
+    Short = 3429,
+    Medium = 5143,
+    Long = 6857,
+    Uncapped = 0
+}
+
+public enum MinigameType
+{
+    Normal,
+    Miniboss,
+    Boss
 }

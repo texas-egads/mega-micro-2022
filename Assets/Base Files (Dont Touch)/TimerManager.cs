@@ -17,10 +17,10 @@ public class TimerManager : MonoBehaviour
         timerObject.SetActive(false);
     }
 
-    public void StartTimer(MinigameDefinition.GameTime time)
+    public void StartTimer(MinigameLength time)
     {
         timerObject.SetActive(true);
-        StartCoroutine(timer.GameTimer(time == MinigameDefinition.GameTime.Short ? 7 : 15));
+        StartCoroutine(timer.GameTimer(time == MinigameLength.Short ? 7 : 15));
     } 
 
     

@@ -166,14 +166,14 @@ public class MainGameManager : MonoBehaviour
     }
     
 
-    public void OnMinigameStart(Minigame minigame)
+    public void OnMinigameStart(MinigameDefinition minigame)
     {
         TimerManager.Instance.StartTimer(minigame.gameTime);
-        var waitTime = minigame.gameTime == Minigame.GameTime.Short ? ShortTime : LongTime;
+        var waitTime = minigame.gameTime == MinigameDefinition.GameTime.Short ? ShortTime : LongTime;
         StartCoroutine(WaitForMinigameEnd(minigame, waitTime));
     }
 
-    private IEnumerator WaitForMinigameEnd(Minigame minigame, float time)
+    private IEnumerator WaitForMinigameEnd(MinigameDefinition minigame, float time)
     {
         yield return new WaitForSeconds(.1f);
         AsyncOperation scene = SceneManager.LoadSceneAsync("Main");
@@ -183,7 +183,7 @@ public class MainGameManager : MonoBehaviour
         LevelPreview.instance.HandleLevelPreview(false);
         yield return new WaitForSeconds(halfBeat);
         
-        if (!minigame.gameWin) remainingLives -= 1;
+        // if (!minigame.gameWin) remainingLives -= 1;
         roundNumber++;
         gameBorder.enabled = false;
         scene.allowSceneActivation = true;
@@ -196,7 +196,7 @@ public class MainGameManager : MonoBehaviour
         }
         else if (roundNumber <= roundsToWin)
         {
-            OnMainStart(minigame.gameWin);
+            // OnMainStart(minigame.gameWin);
             StartCoroutine(LoadNextGame());
         }
         else

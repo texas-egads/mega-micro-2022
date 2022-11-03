@@ -15,19 +15,21 @@ namespace TEAM_NAME_SPACE{
         private void Start()
         {
             UIText.text = startText;
-            MinigameManager.Instance.minigame.gameWin = false;
+            // MinigameManager.Instance.minigame.gameWin = false;
         }
 
         private void Update()
         {
             if (Input.GetButtonDown("Space"))
             {
+                /*
                 if (!MinigameManager.Instance.minigame.gameWin)
                 {
                     MinigameManager.Instance.minigame.gameWin = true;
                     UIText.text = winText;
                     MinigameManager.Instance.PlaySound("win");
                 }
+                */
             }
         }
     }

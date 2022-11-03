@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public Minigame.GameTime gameTime;
+    public MinigameDefinition.GameTime gameTime;
     public Text text;
     
     public IEnumerator GameTimer(int time)

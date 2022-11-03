@@ -22,10 +22,11 @@ public class MinigameManager : MonoBehaviour
     //****************************//
 
     [Tooltip("The Minigame object for your minigame! Slot it in here whenever you have deleted the example.")]
-    public Minigame minigame;
+    public MinigameDefinition minigame;
     
     public void PlaySound(string soundName)
     {
+        /*
         foreach (var s in minigame.sounds)
         {
             if (s.soundName == soundName)
@@ -33,7 +34,7 @@ public class MinigameManager : MonoBehaviour
                 s.source.pitch = Random.Range(s.minPitch, s.maxPitch);
                 s.source.Play();
             }
-        }
+        }*/
     }
     
     // ^^^^^^^^^ This is the only stuff you need to worry about ^^^^^^^^^^ //
@@ -54,7 +55,7 @@ public class MinigameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        minigame.gameWin = false;
+        // minigame.gameWin = false;
         if (!debugGameOnly && GameManager.Instance == null)
         {
             debugGameOnly = true;
@@ -63,13 +64,13 @@ public class MinigameManager : MonoBehaviour
         }
 
         _musicSource = gameObject.AddComponent<AudioSource>();
-        _musicSource.clip = minigame.music;
-        foreach (var s in minigame.sounds)
+        // _musicSource.clip = minigame.music;
+        /*foreach (var s in minigame.sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
-        }
+        }*/
         if(GameManager.Instance != null )StartCoroutine(GameDelayedStart());
         else _musicSource.Play();
     }

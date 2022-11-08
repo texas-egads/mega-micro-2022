@@ -6,10 +6,15 @@ public struct MinigameStatus
 {
     public int currentHealth;
     public int healthDelta;
-    public bool previousMinigameWon => healthDelta >= 0;
+    public WinLose previousMinigameResult;
     public MinigameDefinition previousMinigame;
     public MinigameDefinition nextMinigame;
     public int nextRoundNumber;
-    public bool hasWonGame;
-    public bool hasLostGame => currentHealth == 0;
+    public WinLose gameResult;
+}
+
+public enum WinLose {
+    NONE, // if the thing is not a win or a loss - could be in progress, or undefined
+    WIN,
+    LOSE
 }

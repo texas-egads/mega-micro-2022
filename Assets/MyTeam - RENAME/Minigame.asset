@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b6289b71b71e942a2499ed4eb71c02, type: 3}
   m_Name: Minigame
   m_EditorClassIdentifier: 
-  gameTime: 0
-  music: {fileID: 8300000, guid: efcdf0d075c96ff4d87dc64b85565f39, type: 3}
-  sounds:
-  - soundName: win
-    clip: {fileID: 8300000, guid: 43563de31a65b65409e47bb8f7497adc, type: 3}
-    volume: 1
-    minPitch: 1
-    maxPitch: 1
-    source: {fileID: 0}
-  gameWin: 0
+  sceneName: 0_Scene
+  title: Example Minigame
+  minigameType: 0
+  gameTime: 3429
+  instruction: Press
+  creditsText: 'Example Example - Design
+
+    Blah Blah - Programming'
+  creditsScreenshot: {fileID: 0}

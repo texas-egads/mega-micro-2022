@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class MinigameDefinition : ScriptableObject
 {    
     //******* ADD THESE IN THE INSPECTOR *******//
-    [Tooltip("Put the scene associated with your minigame here.")]
-    public Scene scene;
+    [Tooltip("Put the scene name associated with your minigame here. Make sure it is prefixed with your team number!")]
+    public string sceneName;
 
     [Tooltip("Put the title of your minigame here, as you want it to appear in the credits.")]
     public string title;

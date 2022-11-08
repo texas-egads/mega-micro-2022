@@ -21,7 +21,7 @@ public class Managers : MonoBehaviour
     public static IMinigameAudioManager AudioManager => instance.audioManager;
 
     [SerializeField] private ScenesManager _scenesManager;
-    public ScenesManager scenesManager => scenesManager;
+    public ScenesManager scenesManager => _scenesManager;
 
     private void Awake() {
         if (instance == null) {

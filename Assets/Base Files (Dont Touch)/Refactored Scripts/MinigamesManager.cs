@@ -13,7 +13,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     [SerializeField] private int numRoundsInEasyMode;
     [SerializeField] private int numRoundsInNormalMode;
 
-    public Action<MinigameStatus> OnBeginIntermission;
+    public Action<MinigameStatus, Action> OnBeginIntermission;
     public Action OnStartMinigame;
     public Action OnEndMinigame;
 
@@ -40,7 +40,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
         MinigameDefinition boss = null;
         MinigameDefinition miniboss = null;
         List<MinigameDefinition> normalMinigames = new List<MinigameDefinition>();
-        foreach (MinigameDefinition def in minigames) {
+        foreach (MinigameDefinition def in allMinigames) {
             if (def.minigameType == MinigameType.Boss)
                 boss = def;
             else if (def.minigameType == MinigameType.Miniboss)
@@ -49,8 +49,22 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
                 normalMinigames.Add(def);
         }
 
+        if (normalMinigames.Count == 0) {
+            Debug.LogError("There are no normal minigames! Please ensure that there is at least one minigame to play.");
+        }
+
         // bag randomize the normal minigames
         normalMinigames.Shuffle();
+
+        // check that we have enough normal minigames to cover the number of rounds
+        if (normalMinigames.Count < numberOfRounds) {
+            Debug.LogWarning($"There are only {normalMinigames.Count} normal minigames, which isn't enough to fill {numberOfRounds} rounds. This is fine for testing but it shouldn't happen in the actual game.");
+        
+            int numNormalMinigames = normalMinigames.Count;
+            for (int i = numNormalMinigames; i < numberOfRounds; i++) {
+                normalMinigames.Add(normalMinigames[i % numNormalMinigames]);
+            }
+        }
 
         for (int i = 0; i < numberOfRounds; i++) {
             if (i == (numberOfRounds - 1) / 2 && miniboss != null) {
@@ -77,6 +91,9 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
 
         status.currentHealth = STARTING_LIVES;
         status.nextRoundNumber = 0;
+
+        status.nextMinigame = GetCurrentMinigameDefinition();
+        LoadMinigame(status.nextMinigame);
 
         RunIntermission(status);
     }
@@ -109,6 +126,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
         OnEndMinigame?.Invoke();
 
         status.previousMinigame = GetCurrentMinigameDefinition();
+        status.previousMinigameResult = isCurrentMinigameWon ? WinLose.WIN : WinLose.LOSE;
 
         if (isCurrentMinigameWon) {
             status.nextRoundNumber = status.nextRoundNumber + 1;
@@ -121,9 +139,14 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
         }
 
         status.currentHealth += status.healthDelta;
-        status.hasWonGame = status.nextRoundNumber >= minigames.Count;
-
-        if (!status.hasLostGame && !status.hasWonGame) {
+        if (status.nextRoundNumber >= minigames.Count) {
+            status.gameResult = WinLose.WIN;   
+        }
+        else if (status.currentHealth <= 0) {
+            status.gameResult = WinLose.LOSE;
+        }
+        else {
+            // game still running, proceed with next round
             status.nextMinigame = GetCurrentMinigameDefinition();
             LoadMinigame(status.nextMinigame);
         }
@@ -137,8 +160,13 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
             Debug.LogWarning("No one is subscribed to OnBeginIntermission. This is probably a mistake because we expect a listener here to then later call LoadNextMinigame");
         }
 
-        // TODO connect something to this
-        OnBeginIntermission?.Invoke(status);
+        if (status.gameResult == WinLose.NONE) {
+            OnBeginIntermission?.Invoke(status, StartNextMinigame);
+        }
+        else {
+            OnBeginIntermission?.Invoke(status, null);
+        }
+        
     }
 
 
@@ -147,7 +175,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     }
 
     private IEnumerator DoLoadMinigame(MinigameDefinition minigameDef) {
-        nextMinigameLoadOperation = SceneManager.LoadSceneAsync(minigameDef.scene.name, LoadSceneMode.Additive);
+        nextMinigameLoadOperation = SceneManager.LoadSceneAsync(minigameDef.sceneName, LoadSceneMode.Additive);
         nextMinigameLoadOperation.allowSceneActivation = false;
         yield break;
     }
@@ -164,6 +192,10 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     }
 
     private IEnumerator DoStartNextMinigame() {
+        if (nextMinigameLoadOperation == null) {
+            Debug.LogError("Trying to start a minigame, but a minigame scene was never loaded!");
+        }
+
         // wait for the minigame scene to load
         while (nextMinigameLoadOperation.progress < 0.9f)
             yield return null;
@@ -184,6 +216,6 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
 
 
     public MinigameDefinition GetMinigameDefForScene(Scene scene) {
-        return minigames.Find(mDef => mDef.scene == scene);
+        return allMinigames.Find(mDef => mDef.sceneName == scene.name);
     }
 }

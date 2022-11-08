@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1948341517356211623
 RectTransform:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4088998689001114551
 RectTransform:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3419572, g: 0.7647059, b: 0.22745097, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -224,8 +224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea183ea85cae16848bb1c0ad2104b2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigamesManager: {fileID: 21403712310278605}
-  audioManager: {fileID: 1414119333161545066}
+  _minigamesManager: {fileID: 21403712310278605}
+  _audioManager: {fileID: 1414119333161545066}
+  _scenesManager: {fileID: 1914113568}
 --- !u!1 &3024076375283223524
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02682184d87a2b24591da605a0097f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allMinigames: []
+  allMinigames:
+  - {fileID: 11400000, guid: 08fb96c17603cd54abc4a6539195d719, type: 2}
   numRoundsInEasyMode: 8
   numRoundsInNormalMode: 16
 --- !u!1 &3256082928554374614
@@ -328,6 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8163484928679483813}
+  - component: {fileID: 1914113568}
   m_Layer: 0
   m_Name: ScenesManager
   m_TagString: Untagged
@@ -349,6 +352,19 @@ Transform:
   m_Father: {fileID: 566529860167362531}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1914113568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965834156161939361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f342ae96f92a8248b33da66f07beb2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSceneName: TestMain
 --- !u!1 &5216386669470276957
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

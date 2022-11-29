@@ -252,6 +252,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c981b5fdb5c2c6c4299650b85dc112d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  container: {fileID: 0}
+  statusText: {fileID: 0}
+  instructionText: {fileID: 0}
+  background: {fileID: 0}
+  loseBG: {r: 0, g: 0, b: 0, a: 0}
+  winBG: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &286624172
 Animator:
   serializedVersion: 3
@@ -541,6 +547,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 101251815701078123, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 338288251515896222, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
       propertyPath: m_IsActive
@@ -631,6 +642,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8113208
       objectReference: {fileID: 0}
+    - target: {fileID: 2670942331606585050, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4637096852649538272, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
       propertyPath: m_RootOrder
@@ -665,6 +681,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7063011510789369797, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7258696147295923499, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
@@ -935,7 +956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc42fa05aa5964419832889f2aa8a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundText: {fileID: 1658042643}
 --- !u!1 &1000068472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,8 +1081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e482993cbae7d434db2ac1a93a82a134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 0
-  text: {fileID: 1030623867}
+  timerUI: {fileID: 0}
 --- !u!114 &1030623867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,6 +1156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b93a7992b9a8b4b90c1ca774eea5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerObject: {fileID: 0}
+  timer: {fileID: 0}
 --- !u!114 &1237186472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1485,6 +1506,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c981b5fdb5c2c6c4299650b85dc112d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  container: {fileID: 0}
+  statusText: {fileID: 0}
+  instructionText: {fileID: 0}
+  background: {fileID: 0}
+  loseBG: {r: 0, g: 0, b: 0, a: 0}
+  winBG: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1620940450
 Transform:
   m_ObjectHideFlags: 0

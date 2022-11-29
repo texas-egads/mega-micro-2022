@@ -12,24 +12,31 @@ namespace TEAM_NAME_SPACE{
         public string startText;
         public string winText;
 
+        public AudioClip loopSound;
+        public AudioClip winSound;
+
         private void Start()
         {
             UIText.text = startText;
-            // MinigameManager.Instance.minigame.gameWin = false;
+            
+            AudioSource loop = Managers.AudioManager.CreateAudioSource();
+            loop.loop = true;
+            loop.clip = loopSound;
+            loop.Play();
         }
 
         private void Update()
         {
             if (Input.GetButtonDown("Space"))
             {
-                /*
-                if (!MinigameManager.Instance.minigame.gameWin)
-                {
-                    MinigameManager.Instance.minigame.gameWin = true;
-                    UIText.text = winText;
-                    MinigameManager.Instance.PlaySound("win");
-                }
-                */
+                UIText.text = winText;
+
+                AudioSource win = Managers.AudioManager.CreateAudioSource();
+                win.PlayOneShot(winSound);
+
+                Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                Managers.MinigamesManager.EndCurrentMinigame(1f);
+                this.enabled = false;
             }
         }
     }

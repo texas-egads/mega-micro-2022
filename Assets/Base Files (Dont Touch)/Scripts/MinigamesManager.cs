@@ -12,6 +12,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     [SerializeField] private List<MinigameDefinition> allMinigames;
     [SerializeField] private int numRoundsInEasyMode;
     [SerializeField] private int numRoundsInNormalMode;
+    public int numRoundsDebug { get { return numRoundsInNormalMode; }} 
 
     public Action<MinigameStatus, Action> OnBeginIntermission;
     public Action<MinigameDefinition> OnStartMinigame;
@@ -59,7 +60,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
 
         // check that we have enough normal minigames to cover the number of rounds
         if (normalMinigames.Count < numberOfRounds) {
-            Debug.LogWarning($"There are only {normalMinigames.Count} normal minigames, which isn't enough to fill {numberOfRounds} rounds. This is fine for testing but it shouldn't happen in the actual game.");
+            Debug.LogWarning($"There are only {normalMinigames.Count} normal minigames, which isn't enough to fill {numberOfRounds} rounds. This is fine for testing but it shouldn't happen when all of the minigames are assembled.");
         
             int numNormalMinigames = normalMinigames.Count;
             for (int i = numNormalMinigames; i < numberOfRounds; i++) {
@@ -95,7 +96,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
         status.totalRounds = minigames.Count;
 
         status.nextMinigame = GetCurrentMinigameDefinition();
-        LoadMinigame(status.nextMinigame);
+        Managers.__instance.scenesManager.LoadMinigameScene(status.nextMinigame);
 
         RunIntermission(status);
     }
@@ -192,7 +193,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
         else {
             // game still running, proceed with next round
             status.nextMinigame = GetCurrentMinigameDefinition();
-            LoadMinigame(status.nextMinigame);
+            Managers.__instance.scenesManager.LoadMinigameScene(status.nextMinigame);
         }
     }
 
@@ -212,16 +213,6 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     }
 
 
-    private void LoadMinigame(MinigameDefinition minigameDef) {
-        StartCoroutine(DoLoadMinigame(minigameDef));
-    }
-
-    private IEnumerator DoLoadMinigame(MinigameDefinition minigameDef) {
-        nextMinigameLoadOperation = SceneManager.LoadSceneAsync(minigameDef.sceneName, LoadSceneMode.Additive);
-        nextMinigameLoadOperation.allowSceneActivation = false;
-        yield break;
-    }
-
     // Called when all of the between-minigame cinematics are complete and the
     // next minigame is ready to be put on screen.
     public void StartNextMinigame() {
@@ -231,26 +222,12 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
         }
 
         Managers.__instance.audioManager.StartMinigameAudio();
-        StartCoroutine(DoStartNextMinigame());
-    }
+        Managers.__instance.scenesManager.ActivateMinigameScene(() => {
+            isCurrentMinigameWon = false;
+            isMinigamePlaying = true;
 
-    private IEnumerator DoStartNextMinigame() {
-        if (nextMinigameLoadOperation == null) {
-            Debug.LogError("Trying to start a minigame, but a minigame scene was never loaded!");
-        }
-
-        // wait for the minigame scene to load
-        while (nextMinigameLoadOperation.progress < 0.9f)
-            yield return null;
-        
-        nextMinigameLoadOperation.allowSceneActivation = true;
-        while (!nextMinigameLoadOperation.isDone)
-            yield return null;
-
-        isCurrentMinigameWon = false;
-        isMinigamePlaying = true;
-
-        OnStartMinigame?.Invoke(status.nextMinigame);
+            OnStartMinigame?.Invoke(status.nextMinigame);
+        });
     }
 
 

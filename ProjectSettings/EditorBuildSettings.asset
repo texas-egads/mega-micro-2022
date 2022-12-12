@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/MyTeam - RENAME/0_Scene.unity
+  - enabled: 0
+    path: Assets/MyTeam (Example - Dont Touch)/0_Scene.unity
     guid: d9ff06deefccc284d841371feb3b8c3c
   m_configObjects: {}

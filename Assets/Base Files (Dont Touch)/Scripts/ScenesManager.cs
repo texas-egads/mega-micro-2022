@@ -19,8 +19,7 @@ public class ScenesManager : MonoBehaviour
         Scene startingScene = SceneManager.GetActiveScene();
         
         if (startingScene.name == mainSceneName) {
-            // TODO maybe do something here   
-            
+            // TODO maybe do something here        
             return;
         }
 

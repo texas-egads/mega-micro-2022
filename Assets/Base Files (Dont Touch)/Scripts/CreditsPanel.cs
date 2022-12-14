@@ -11,7 +11,7 @@ public class CreditsPanel : MonoBehaviour
     [SerializeField] private Image screenshotImage;
 
     public void SetMinigame(MinigameDefinition minigame) {
-        SetContent(minigame.title, minigame.creditsText, minigame.creditsScreenshot);
+        SetContent(minigame.title, minigame.creditsText, minigame.minigameScreenshot);
     }
 
     public void SetContent(string header, string body, Sprite screenshot) {

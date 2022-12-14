@@ -9,10 +9,6 @@ public class MinigameDefinition : ScriptableObject
     //******* ADD THESE IN THE INSPECTOR *******//
     [Tooltip("Put the scene name associated with your minigame here. Make sure it is prefixed with your team number!")]
     public string sceneName;
-
-    [Tooltip("Put the title of your minigame here, as you want it to appear in the credits.")]
-    public string title;
-
     [Tooltip("Leave this at Normal unless you've been preapproved to create a different type of minigame.")]
     public MinigameType minigameType;
 
@@ -26,12 +22,17 @@ public class MinigameDefinition : ScriptableObject
     [Tooltip("What you want the impact text leading into your game to say. This should be a short word or phrase telling the player what their goal is.")]
     public string instruction;
 
+    [Header("Credits")]
+
+    [Tooltip("Put the title of your minigame here, as you want it to appear in the credits.")]
+    public string title;
+
     [Tooltip("This will be displayed in the credits. List your members and your contributions here. You can include rich text if you want - it will be processed through TextMeshPro.")]
     [TextArea(5,10)]
     public string creditsText;
 
     [Tooltip("This will be displayed in the credits. Take an attractive screenshot of your finished game and put it here.")]
-    public Sprite creditsScreenshot;
+    public Sprite minigameScreenshot;
 
     //*****************************************//
 }

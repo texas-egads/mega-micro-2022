@@ -16,6 +16,6 @@ MonoBehaviour:
   minigameType: 0
   gameTime: 5143
   instruction: Spam Space
-  title: Spam Space
+  title: noah test minigame
   creditsText: this is a test and should never show up in the actual game
-  minigameScreenshot: {fileID: 0}
+  minigameScreenshot: {fileID: 21300000, guid: 9cb79d4bf169c34408cd28b3b65d3813, type: 3}

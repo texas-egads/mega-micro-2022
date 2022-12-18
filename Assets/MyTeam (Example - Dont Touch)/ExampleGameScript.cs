@@ -23,6 +23,8 @@ namespace TEAM_NAME_SPACE{
             loop.loop = true;
             loop.clip = loopSound;
             loop.Play();
+
+            Managers.MinigamesManager.DeclareCurrentMinigameWon();
         }
 
         private void Update()
@@ -34,7 +36,7 @@ namespace TEAM_NAME_SPACE{
                 AudioSource win = Managers.AudioManager.CreateAudioSource();
                 win.PlayOneShot(winSound);
 
-                Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                Managers.MinigamesManager.DeclareCurrentMinigameLost();
                 Managers.MinigamesManager.EndCurrentMinigame(1f);
                 this.enabled = false;
             }

@@ -221,11 +221,13 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
             return;
         }
 
+        // we set these now even though the minigame scene might not be loaded because if we wait
+        // until after they are loaded, these may overwrite Awake() and Start() calls in minigame scripts
+        isMinigamePlaying = true;
+        isCurrentMinigameWon = false;
+
         Managers.__instance.audioManager.StartMinigameAudio();
         Managers.__instance.scenesManager.ActivateMinigameScene(() => {
-            isCurrentMinigameWon = false;
-            isMinigamePlaying = true;
-
             OnStartMinigame?.Invoke(status.nextMinigame);
         });
     }

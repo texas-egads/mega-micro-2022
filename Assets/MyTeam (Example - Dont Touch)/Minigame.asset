@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Minigame
   m_EditorClassIdentifier: 
   sceneName: 0_Scene
-  title: Example Minigame
   minigameType: 0
-  gameTime: 3429
+  gameTime: 5143
   instruction: Press
+  title: Example Minigame
   creditsText: 'Example Example - Design
 
     Blah Blah - Programming'
-  creditsScreenshot: {fileID: 0}
+  minigameScreenshot: {fileID: 0}

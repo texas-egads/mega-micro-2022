@@ -13,9 +13,9 @@ public class MinigameDefinition : ScriptableObject
     public MinigameType minigameType;
 
     [Tooltip("Length of your game.\n" +
-             "    - Short: 2 measures of 140 BPM music (~3.4s)\n" +
-             "    - Medium: 3 measures of 140 BPM music (~5.1s)\n" +
-             "    - Long: 4 measures of 140 BPM music (~6.9s)\n" +
+             "    - Short: 12 beats of music at 140 BPM (~5.1s)\n" +
+             "    - Medium: 16 beats of music at 140 BPM (~6.9s)\n" +
+             "    - Long: 24 beats of music at 140 BPM (10.29s)\n" +
              "    Do not select Uncapped unless you've been approved prior to do so")]
     public MinigameLength gameTime;
 
@@ -41,9 +41,9 @@ public class MinigameDefinition : ScriptableObject
 // The length of a minigame. If you convert this to an int it represents the time in milliseconds.
 public enum MinigameLength
 {
-    Short = 3429,
-    Medium = 5143,
-    Long = 6857,
+    Short = 5143,
+    Medium = 6857,
+    Long = 10286,
     Uncapped = 0
 }
 

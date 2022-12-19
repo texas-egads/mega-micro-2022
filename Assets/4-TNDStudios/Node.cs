@@ -5,7 +5,7 @@ namespace TNDStudios
 {
     public class TrolleyManager
     {
-        const int MAX_LAYERS = 5;
+        const int MAX_LAYERS = 3;
         const int MAX_CHILDREN = 3;
         const int MIN_HOSTAGES = 1;
         const int MAX_HOSTAGES = 10;
@@ -14,6 +14,7 @@ namespace TNDStudios
         {
             public int m_id;
             public int m_layer;
+            public int m_y;
             public List<KeyValuePair<int, Node>> m_children;
             private TrolleyManager trolleyManager;
 
@@ -21,6 +22,7 @@ namespace TNDStudios
             {
                 m_layer = layer;
                 m_id = id;
+                m_y = 0;
                 m_children = new List<KeyValuePair<int, Node>>();
                 trolleyManager = tm;
             }
@@ -96,15 +98,54 @@ namespace TNDStudios
             while (generationQueue.Count > 0)
             {
                 Node node = generationQueue.Dequeue();
-                Debug.Log("Node " + node.m_id);
+                Debug.Log("Node " + node.m_id + " at y-level = " + node.m_y);
                 Debug.Log("Children: ");
                 foreach(KeyValuePair<int, Node> child in node.m_children)
                 {
                     generationQueue.Enqueue(child.Value);
                     Debug.Log(child.Value.m_id + " with weight " + child.Key);
                 }
-
             }
         }
+        public void assignYs()
+        {
+            Queue<Node> generationQueue = new Queue<Node>();
+            generationQueue.Enqueue(headNode);
+            
+            while (generationQueue.Count > 0)
+            {
+                Node parent = generationQueue.Dequeue();
+                if(parent.m_children.Count == MAX_CHILDREN)
+                {
+                    parent.m_children.Count[0].m_y = parent.m_y + Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                    parent.m_children.Count[1].m_y = parent.m_y;
+                    parent.m_children.Count[2].m_y = parent.m_y - Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                }
+                if(parent.m_children.Count == MAX_CHILDREN - 1)
+                {
+                    int index = Random.Range(0, 3);
+                    if(index == 0)
+                    {
+                        parent.m_children.Count[0].m_y = parent.m_y + Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                        parent.m_children.Count[1].m_y = parent.m_y;
+                    }
+                    else if(index == 1)
+                    {
+                        parent.m_children.Count[0].m_y = parent.m_y + Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                        parent.m_children.Count[1].m_y = parent.m_y - Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                    }
+                    else if(index == 2)
+                    {
+                        parent.m_children.Count[0].m_y = parent.m_y;
+                        parent.m_children.Count[1].m_y = parent.m_y - Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                    }
+                }
+                foreach(KeyValuePair<int, Node> child in parent.m_children)
+                {
+                    generationQueue.Enqueue(child.Value);
+                }
+            }
+        }
+
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b6289b71b71e942a2499ed4eb71c02, type: 3}
   m_Name: Minigame
   m_EditorClassIdentifier: 
-  sceneName: 0_Scene
+  sceneName: 0-Scene
   minigameType: 0
   gameTime: 5143
   instruction: Press

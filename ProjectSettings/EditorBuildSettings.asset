@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/MyTeam (Example - Dont Touch)/0_Scene.unity
+    path: Assets/0-MyTeam (Example - Dont Touch)/0-Scene.unity
     guid: d9ff06deefccc284d841371feb3b8c3c
   m_configObjects: {}

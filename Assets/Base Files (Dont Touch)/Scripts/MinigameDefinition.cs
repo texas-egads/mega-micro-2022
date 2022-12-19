@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MinigameDefinition : ScriptableObject
 {    
     //******* ADD THESE IN THE INSPECTOR *******//
-    [Tooltip("Put the scene name associated with your minigame here. Make sure it is prefixed with your team number!")]
+    [Tooltip("Put the scene name associated with your minigame here. Make sure your scene name has the right format, including your team number!")]
     public string sceneName;
     [Tooltip("Leave this at Normal unless you've been preapproved to create a different type of minigame.")]
     public MinigameType minigameType;

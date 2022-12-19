@@ -10,6 +10,7 @@ namespace TNDStudios
         const int MIN_HOSTAGES = 1;
         const int MAX_HOSTAGES = 10;
         public int currentId = 0;
+        public List<Node> allNodes = new List<Node>();
         public class Node
         {
             public int m_id;
@@ -32,6 +33,7 @@ namespace TNDStudios
                 if(m_layer == MAX_LAYERS) return false;
                 if(m_children.Count >= MAX_CHILDREN) return false;
                 Node child = new Node(m_layer + 1, trolleyManager.currentId++, trolleyManager);
+                trolleyManager.allNodes.Add(child);
                 m_children.Add(new KeyValuePair<int, Node>(weight, child));
                 return true;
             }
@@ -68,6 +70,7 @@ namespace TNDStudios
         public TrolleyManager()
         {
             headNode = new Node(0, currentId++, this);
+            allNodes.Add(headNode);
         }
 
         public void GenerateGraph(int numLayers)
@@ -107,7 +110,7 @@ namespace TNDStudios
                 }
             }
         }
-        public void assignYs()
+        public void AssignYValues()
         {
             Queue<Node> generationQueue = new Queue<Node>();
             generationQueue.Enqueue(headNode);
@@ -117,27 +120,27 @@ namespace TNDStudios
                 Node parent = generationQueue.Dequeue();
                 if(parent.m_children.Count == MAX_CHILDREN)
                 {
-                    parent.m_children.Count[0].m_y = parent.m_y + Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
-                    parent.m_children.Count[1].m_y = parent.m_y;
-                    parent.m_children.Count[2].m_y = parent.m_y - Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                    parent.m_children[0].Value.m_y = (int)(parent.m_y + Mathf.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer));
+                    parent.m_children[1].Value.m_y = parent.m_y;
+                    parent.m_children[2].Value.m_y = (int)(parent.m_y - Mathf.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer));
                 }
                 if(parent.m_children.Count == MAX_CHILDREN - 1)
                 {
                     int index = Random.Range(0, 3);
                     if(index == 0)
                     {
-                        parent.m_children.Count[0].m_y = parent.m_y + Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
-                        parent.m_children.Count[1].m_y = parent.m_y;
+                        parent.m_children[0].Value.m_y = (int)(parent.m_y + Mathf.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer));
+                        parent.m_children[1].Value.m_y = parent.m_y;
                     }
                     else if(index == 1)
                     {
-                        parent.m_children.Count[0].m_y = parent.m_y + Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
-                        parent.m_children.Count[1].m_y = parent.m_y - Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                        parent.m_children[0].Value.m_y = (int)(parent.m_y + Mathf.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer));
+                        parent.m_children[1].Value.m_y = (int)(parent.m_y - Mathf.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer));
                     }
                     else if(index == 2)
                     {
-                        parent.m_children.Count[0].m_y = parent.m_y;
-                        parent.m_children.Count[1].m_y = parent.m_y - Math.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer);
+                        parent.m_children[0].Value.m_y = parent.m_y;
+                        parent.m_children[1].Value.m_y = (int)(parent.m_y - Mathf.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer));
                     }
                 }
                 foreach(KeyValuePair<int, Node> child in parent.m_children)

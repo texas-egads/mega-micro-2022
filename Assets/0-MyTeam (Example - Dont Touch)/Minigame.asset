@@ -19,5 +19,7 @@ MonoBehaviour:
   title: Example Minigame
   creditsText: 'Example Example - Design
 
-    Blah Blah - Programming'
+    Blah Blah - Programming
+
+    <link=https://discord.gg/rREcZd72Az><color=#8888ff><u>EGaDS!</u></color></link>'
   minigameScreenshot: {fileID: 0}

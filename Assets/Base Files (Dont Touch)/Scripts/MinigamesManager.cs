@@ -179,6 +179,11 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
         }
         else {
             status.healthDelta = -1;
+
+            // only increase the round number if the minigame was a normal one
+            if (status.previousMinigame.minigameType == MinigameType.Normal) {
+                status.nextRoundNumber = status.nextRoundNumber + 1;
+            }
         }
 
         status.currentHealth += status.healthDelta;

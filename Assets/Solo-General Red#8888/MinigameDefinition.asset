@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b6289b71b71e942a2499ed4eb71c02, type: 3}
   m_Name: MinigameDefinition
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Solo-General Red#8888
   minigameType: 0
-  gameTime: 0
-  instruction: 
-  title: 
-  creditsText: 
+  gameTime: 6857
+  instruction: HYDRATE
+  title: Capybara Springs
+  creditsText: Programming - Adhan Razzaque
   minigameScreenshot: {fileID: 0}

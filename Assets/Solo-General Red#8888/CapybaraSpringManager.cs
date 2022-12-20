@@ -59,7 +59,7 @@ namespace Solo_General_Red_8888
             }
 
             CapybaraBucket currentBucket = buckets[_currentBucketIndex];
-            currentBucket.fillBucket();
+            currentBucket.FillBucket();
         }
 
         public void HandleWandMovedHorizontal(Wand wand, bool isLeft)

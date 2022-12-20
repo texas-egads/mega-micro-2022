@@ -13,7 +13,7 @@ namespace Solo_General_Red_8888
         [SerializeField] private int maxFillLevel = 3;
         private int _fillLevel;
 
-        public void fillBucket()
+        public void FillBucket()
         {
             ++_fillLevel;
             if (_fillLevel == maxFillLevel)

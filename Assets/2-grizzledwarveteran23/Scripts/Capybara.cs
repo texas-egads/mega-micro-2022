@@ -11,6 +11,7 @@ namespace grizzledwarveteran23 {
         // Start is called before the first frame update
         void Start()
         {
+            Managers.MinigamesManager.DeclareCurrentMinigameWon();
             rb = GetComponent<Rigidbody2D>();
         }
 
@@ -26,8 +27,10 @@ namespace grizzledwarveteran23 {
         {
             if(other.gameObject.name.Contains("Enemy"))
             {
+                rb.velocity = Vector2.zero;
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
                 Managers.MinigamesManager.EndCurrentMinigame(1f);
+                this.enabled = false;
             }
         }
     }

@@ -43,13 +43,13 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 1419705431
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Foreground
+  - name: Layer 1
+    uniqueID: 1419705431
+    locked: 0
+  - name: Layer 2
     uniqueID: 346326257
     locked: 0
   - name: Layer 3

@@ -42,10 +42,11 @@ namespace Solo_General_Red_8888
             
             CapybaraBucket currentBucket = buckets[_currentBucketIndex];
             
-            Vector3 newTransform = wand.transform.position;
-            newTransform.x = currentBucket.transform.position.x;
+            float oldY = wand.transform.position.y;
+            float bucketX = currentBucket.transform.position.x;
+            Vector3 newPosition = new Vector3(bucketX, oldY);
 
-            wand.transform.DOMove(newTransform, moveDuration);
+            wand.transform.DOMove(newPosition, moveDuration);
         }
 
         // Event callbacks
@@ -65,19 +66,23 @@ namespace Solo_General_Red_8888
         {
             if (isLeft)
             {
-                if (_currentBucketIndex > 0)
+                if (_currentBucketIndex <= 0)
                 {
-                    --_currentBucketIndex;
-                    MoveWandToCurrentBucket(wand);
+                    return;
                 }
+                
+                --_currentBucketIndex;
+                MoveWandToCurrentBucket(wand);
             }
             else
             {
-                if (_currentBucketIndex < buckets.Count)
+                if (_currentBucketIndex >= buckets.Count - 1)
                 {
-                    ++_currentBucketIndex;
-                    MoveWandToCurrentBucket(wand);
+                    return;
                 }
+                
+                ++_currentBucketIndex;
+                MoveWandToCurrentBucket(wand);
             }
         }
 

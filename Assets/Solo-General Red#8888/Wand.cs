@@ -14,7 +14,8 @@ namespace Solo_General_Red_8888
         {
             if (Input.GetButtonDown("Horizontal"))
             {
-                HandleHorizontal(Input.GetAxis("Horizontal"));
+                bool isLeft = Input.GetAxis("Horizontal") < 0;
+                WandMovedHorizontal?.Invoke(this, isLeft);
             }
 
             if (Input.GetButtonDown("Space"))
@@ -22,13 +23,5 @@ namespace Solo_General_Red_8888
                 WandActivated?.Invoke();
             }
         }
-        
-        // Handle Horizontal movement
-        void HandleHorizontal(float axisValue)
-        {
-            bool isLeft = axisValue < 0;
-            WandMovedHorizontal?.Invoke(this, isLeft);
-        }
-
     }
 }

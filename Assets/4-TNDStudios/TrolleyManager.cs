@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
 
 namespace TNDStudios
@@ -8,9 +9,10 @@ namespace TNDStudios
         const int MAX_LAYERS = 3;
         const int MAX_CHILDREN = 3;
         const int MIN_HOSTAGES = 1;
-        const int MAX_HOSTAGES = 10;
+        const int MAX_HOSTAGES = 5;
         public int currentId = 0;
         public List<Node> allNodes = new List<Node>();
+        [System.Serializable]
         public class Node
         {
             public int m_id;
@@ -18,6 +20,10 @@ namespace TNDStudios
             public int m_y;
             public List<KeyValuePair<int, Node>> m_children;
             private TrolleyManager trolleyManager;
+            public Vector3 m_position;
+            public List<LineRenderer> m_lineRenderers = new List<LineRenderer>();
+            public LineRenderer horizontalLR;
+            public int numHostages;
 
             public Node(int layer, int id, TrolleyManager tm)
             {
@@ -33,6 +39,7 @@ namespace TNDStudios
                 if(m_layer == MAX_LAYERS) return false;
                 if(m_children.Count >= MAX_CHILDREN) return false;
                 Node child = new Node(m_layer + 1, trolleyManager.currentId++, trolleyManager);
+                child.numHostages = weight;
                 trolleyManager.allNodes.Add(child);
                 m_children.Add(new KeyValuePair<int, Node>(weight, child));
                 return true;
@@ -43,6 +50,7 @@ namespace TNDStudios
                 if(m_layer == MAX_LAYERS) return false;
                 if(m_children.Count >= MAX_CHILDREN) return false;
                 child.m_layer = m_layer + 1;
+                child.numHostages = weight;
                 m_children.Add(new KeyValuePair<int, Node>(weight, child));
                 return true;
             }
@@ -127,6 +135,7 @@ namespace TNDStudios
                 if(parent.m_children.Count == MAX_CHILDREN - 1)
                 {
                     int index = Random.Range(0, 3);
+                    if (parent.m_layer == 0) index = 1;
                     if(index == 0)
                     {
                         parent.m_children[0].Value.m_y = (int)(parent.m_y + Mathf.Pow(MAX_CHILDREN, MAX_LAYERS - parent.m_layer));
@@ -150,5 +159,12 @@ namespace TNDStudios
             }
         }
 
+        public void AssignPositions()
+        {
+            foreach (Node n in allNodes)
+            {
+                n.m_position = new Vector3(n.m_layer * 3.5f - 4.5f, n.m_y / 3.0f * 7 / 27 + 0.5f, 0);
+            }
+        }
     }
 }

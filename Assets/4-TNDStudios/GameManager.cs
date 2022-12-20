@@ -10,6 +10,7 @@ namespace TNDStudios {
         public GameObject linePrefab;
         public GameObject player;
         public GameObject wizardPrefab; 
+        public List<GameObject> destroyAllObjects = new List<GameObject>();
         public TrolleyManager.Node headNode;
         public TrolleyManager.Node currentNode;
         public int selectedPath = -1; 
@@ -18,17 +19,46 @@ namespace TNDStudios {
         public Vector3 startPos = new Vector3(-6.5f, 0.8f, -3.5f);
         public List<TrolleyManager.Node> currentChildren = new List<TrolleyManager.Node>();
         public int onDecision = 0;
+        public int wizardsKilled = 0; 
+        
+        public AudioClip backgroundClip;
+        public AudioSource backgroundSource = null;
 
+        public AudioClip whistleClip;
+        public int bestScore = 0;
+
+        private TrolleyManager tm;
         // Start is called before the first frame update
         void Start()
         {
-            TrolleyManager tm = new TrolleyManager();
+            tm = new TrolleyManager();
             tm.GenerateGraph(3);
             tm.AssignYValues();
             tm.AssignPositions();
             headNode = tm.headNode;
-            Debug.Log("Best score: " + tm.headNode.BestScoreFromHere());
+            bestScore = tm.headNode.BestScoreFromHere();
+            Debug.Log("Best score: " + bestScore);
             headNode.numHostages = 0;
+
+            try
+            {
+
+                backgroundSource = Managers.AudioManager.CreateAudioSource();
+                if (backgroundSource != null)
+                {
+                    backgroundSource.clip = backgroundClip;
+                    backgroundSource.Play();
+                }
+
+                AudioSource whistleSource = Managers.AudioManager.CreateAudioSource();
+                if (whistleSource != null)
+                {
+                    whistleSource.clip = whistleClip;
+                    whistleSource.Play();
+                }
+            }
+            catch { }
+            
 
             foreach (TrolleyManager.Node n in tm.allNodes)
             {
@@ -36,7 +66,6 @@ namespace TNDStudios {
 
                 foreach (KeyValuePair<int, TrolleyManager.Node> c in n.m_children)
                 {
-                    int weight = c.Key;
                     TrolleyManager.Node child = c.Value;
                     // diagonal transition
                     GameObject l = Instantiate(linePrefab, new Vector3(0,0,0), Quaternion.identity);
@@ -44,20 +73,24 @@ namespace TNDStudios {
                     Vector3[] positions = new Vector3[2] { n.m_position, child.m_position + new Vector3(horizontalLength, 0, 0) };
                     lr.SetPositions(positions);
                     n.m_lineRenderers.Add(lr);
+                    destroyAllObjects.Add(l);
                 }
 
                 // horizontal bit before
                 GameObject l2 = Instantiate(linePrefab, new Vector3(0, 0, 0), Quaternion.identity);
                 LineRenderer lr2 = l2.GetComponent<LineRenderer>();
                 Vector3[] positions2 = new Vector3[2] { n.m_position, n.m_position + new Vector3(horizontalLength, 0, 0) };
-                lr2.endColor = Color.black;
                 lr2.SetPositions(positions2);
                 n.horizontalLR = lr2;
+                destroyAllObjects.Add(l2);
 
                 for (int i = 0; i < n.numHostages; i++)
                 {
                     GameObject wiz = Instantiate(wizardPrefab, wizardPlacementStartingPos, Quaternion.identity);
                     wizardPlacementStartingPos -= new Vector3(horizontalLength * 0.2f, 0, 0);
+                    Wizard w = wiz.GetComponent<Wizard>();
+                    w.gameManager = this;
+                    destroyAllObjects.Add(wiz);
                 }
 
                 if (n.m_layer > 0) nodes[n.m_layer - 1].Add(n);
@@ -73,7 +106,22 @@ namespace TNDStudios {
         {
             player.transform.position += new Vector3(1.25f, 0, 0) * Time.deltaTime;
 
-            if (onDecision == 3) { return; }
+            if (onDecision == 3) {
+                if (player.transform.position.x > 6)
+                {
+                    if (wizardsKilled == bestScore)
+                    {
+                        Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                    }
+                    else
+                    {
+                        Managers.MinigamesManager.DeclareCurrentMinigameLost();
+                    }
+                    Managers.MinigamesManager.EndCurrentMinigame();
+                }
+                
+                return;
+            }
 
             if (
                 (onDecision == 0 && player.transform.position.x > -4.5f) || 
@@ -89,6 +137,7 @@ namespace TNDStudios {
                 {
                     if (onDecision == 2)
                     {
+                        Debug.Log("ondecision is 3");
                         onDecision = 3;
                         return;
                     }
@@ -130,10 +179,25 @@ namespace TNDStudios {
                     //Debug.Log("selectedPath set to " + selectedPath);
                 }
             }
+        }
 
 
+        private void OnDestroy()
+        {
+            Debug.Log("DESTORYED");
+            foreach(GameObject g in destroyAllObjects)
+            {
+                Destroy(g);
+            }
+            
+            tm = new TrolleyManager();
             
 
+            
+           if (backgroundSource != null)
+            {
+                backgroundSource.Stop();
+            }
         }
     }
 

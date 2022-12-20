@@ -14,17 +14,21 @@ namespace grizzledwarveteran23 {
             rb = GetComponent<Rigidbody2D>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
 
         void FixedUpdate()
         {
             Vector2 move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             move = move.normalized * speed;
             rb.velocity = move;
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if(other.gameObject.name.Contains("Enemy"))
+            {
+                Managers.MinigamesManager.DeclareCurrentMinigameLost();
+                Managers.MinigamesManager.EndCurrentMinigame(1f);
+            }
         }
     }
 }

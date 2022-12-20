@@ -37,7 +37,7 @@ namespace TNDStudios {
             tm.AssignPositions();
             headNode = tm.headNode;
             bestScore = tm.headNode.BestScoreFromHere();
-            Debug.Log("Best score: " + bestScore);
+            //Debug.Log("Best score: " + bestScore);
             headNode.numHostages = 0;
 
             try
@@ -62,7 +62,7 @@ namespace TNDStudios {
 
             foreach (TrolleyManager.Node n in tm.allNodes)
             {
-                Vector3 wizardPlacementStartingPos = n.m_position + new Vector3(horizontalLength * 0.8f, 0, -3.5f);
+                Vector3 wizardPlacementStartingPos = n.m_position + new Vector3(horizontalLength * 0.8f, 0, -3.4f);
 
                 foreach (KeyValuePair<int, TrolleyManager.Node> c in n.m_children)
                 {
@@ -137,11 +137,11 @@ namespace TNDStudios {
                 {
                     if (onDecision == 2)
                     {
-                        Debug.Log("ondecision is 3");
+                        //Debug.Log("ondecision is 3");
                         onDecision = 3;
                         return;
                     }
-                    Debug.Log("MOVING TO NEXT NODE");
+                    //Debug.Log("MOVING TO NEXT NODE");
                     currentNode.m_lineRenderers[selectedPath].startColor = Color.gray;
                     currentNode.m_lineRenderers[selectedPath].endColor = Color.gray;
                     currentNode = currentNode.m_children[selectedPath].Value;
@@ -184,7 +184,7 @@ namespace TNDStudios {
 
         private void OnDestroy()
         {
-            Debug.Log("DESTORYED");
+            //Debug.Log("DESTORYED");
             foreach(GameObject g in destroyAllObjects)
             {
                 Destroy(g);

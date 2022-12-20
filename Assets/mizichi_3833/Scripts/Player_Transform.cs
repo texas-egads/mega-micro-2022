@@ -13,8 +13,16 @@ namespace MIZICHI
         }
         void Update()
        {
-        
-       }
+
+            //Transfrom when holding down SPACEBAR
+            //Set Off Animation
+            //Disable Box Collider
+
+            //When let go of SPACEBAR, detransform
+            //Set Off Animation
+            //Enable Box Collider
+
+        }
 
 
 

@@ -7,28 +7,14 @@ namespace MIZICHI
     public class Enemy_Lantern : MonoBehaviour
     {
         [SerializeField]
-        Transform player;
-        [SerializeField]
         Transform castPoint;
         [SerializeField]
         float enemyRange;
 
-        bool isFacingLeft;
-
         void Update()
         {
-            //float disToPlayer = Vector2.Distance(transform.position, player.position);
+            StartCoroutine(WaitBeforeTurn(Random.Range(2f,6f)));//random time for the character to turn
 
-            if (CanSeePlayer(enemyRange))
-            {
-                //player is caught
-                //Managers.MinigamesManager.DeclareCurrentMinigameLost();
-
-            }
-            else
-            {
-                //player is safe
-            }
         }
 
         bool CanSeePlayer(float range)
@@ -52,14 +38,34 @@ namespace MIZICHI
             else
             {
                 Debug.DrawLine(castPoint.position, endPos, Color.yellow);
-
             }
 
             return val;
         }
+
+        IEnumerator WaitBeforeTurn(float time)
+        {
+            yield return new WaitForSeconds(time);
+            Debug.Log("Tranform!");
+            yield return new WaitForSeconds(1);
+            //activate animation transition
+            if (CanSeePlayer(enemyRange))
+            {
+                Debug.Log("Caught");
+                //player is caught
+                Managers.MinigamesManager.DeclareCurrentMinigameLost();
+                Managers.MinigamesManager.EndCurrentMinigame(1);
+
+            }
+            else
+            {
+                Debug.Log("safe");
+                Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                enemyRange = -enemyRange;
+                //player is safe
+            }
+        }
     }
 }
-
-//Managers.MinigamesManager.DeclareCurrentMinigameWon();
 
 

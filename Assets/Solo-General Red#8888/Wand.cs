@@ -5,12 +5,6 @@ namespace Solo_General_Red_8888
 {
     public class Wand : MonoBehaviour
     {
-        // Tunable Control Properties
-        [SerializeField] private float horizontalDeadZone = .1f;
-        
-        // Public Properties
-        
-        
         // Events
         public static event Action WandActivated;
         public static event Action<Wand, bool> WandMovedHorizontal;  // params: Wand wand, bool isLeft
@@ -18,10 +12,9 @@ namespace Solo_General_Red_8888
         // Update is called once per frame
         void Update()
         {
-            float horizontalValue = Input.GetAxis("Horizontal");
-            if (Math.Abs(horizontalValue) > horizontalDeadZone)
+            if (Input.GetButtonDown("Horizontal"))
             {
-                HandleHorizontal(horizontalValue);
+                HandleHorizontal(Input.GetAxis("Horizontal"));
             }
 
             if (Input.GetButtonDown("Space"))

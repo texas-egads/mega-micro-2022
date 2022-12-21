@@ -17,5 +17,5 @@ MonoBehaviour:
   gameTime: 10286
   instruction: Pull Up!
   title: Magic Hare Ride
-  creditsText: 'Zayaan Rahman - Programming, Art, Music   '
+  creditsText: Zayaan Rahman - Programming, Art, Music
   minigameScreenshot: {fileID: 0}

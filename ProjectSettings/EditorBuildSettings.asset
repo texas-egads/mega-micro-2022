@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0-MyTeam (Example - Dont Touch)/0-Scene.unity
     guid: d9ff06deefccc284d841371feb3b8c3c
+  - enabled: 1
+    path: Assets/2-grizzledwarveteran23/2-grizzledwarveteran23.unity
+    guid: 7a4222fdc6289f64885636e58c384b48
   m_configObjects: {}

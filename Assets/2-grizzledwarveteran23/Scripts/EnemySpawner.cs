@@ -21,7 +21,7 @@ namespace grizzledwarveteran23 {
         {
             if(!isSpawning)
             {
-            StartCoroutine(SpawnEnemies());
+                StartCoroutine(SpawnEnemies());
             }
         }
 
@@ -31,6 +31,7 @@ namespace grizzledwarveteran23 {
             yield return new WaitForSeconds(spawnRate);
             int spawnPointIndex = Random.Range(0, spawnPoints.Length);
             Instantiate(enemyPrefab, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            spawnRate = Mathf.Max(0.5f, spawnRate - 0.1f);
             isSpawning = false;
         }
     }

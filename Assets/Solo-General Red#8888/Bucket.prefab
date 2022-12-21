@@ -96,4 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7ed271a2fc0405f9888eec2e6b42af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transformNeutralClip: {fileID: 8300000, guid: bf8e1ac63fa1b499f960ae365bb95b11,
+    type: 3}
+  transformSuccessClip: {fileID: 8300000, guid: 0f41c3c0ee2dd4b3db6b76b4516591e7,
+    type: 3}
+  transformFailedClip: {fileID: 8300000, guid: e45e46de328f14218ad982058dccc9d1, type: 3}
   maxFillLevel: 3

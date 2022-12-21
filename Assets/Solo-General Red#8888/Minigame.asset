@@ -10,12 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10b6289b71b71e942a2499ed4eb71c02, type: 3}
-  m_Name: MinigameDefinition
+  m_Name: Minigame
   m_EditorClassIdentifier: 
   sceneName: Solo-General Red#8888
   minigameType: 0
   gameTime: 6857
-  instruction: HYDRATE
-  title: Capybara Springs
-  creditsText: Programming - Adhan Razzaque
+  instruction: TRANSFORM
+  title: Capybara-nator
+  creditsText: 'Programming and Art - <link=https://generalred.itch.io/><color=#8888ff><u>Adhan
+    Razzaque</u></color></link>
+
+    <link=https://freesound.org/s/264981/><color=#8888ff><u>SFX
+    Magic by renatalmar</u></color></link>
+
+    <link=https://freesound.org/s/519414/><color=#8888ff><u>Energy/magic
+    Shot by Iridiuss</u></color></link>'
   minigameScreenshot: {fileID: 0}

@@ -15,7 +15,9 @@ MonoBehaviour:
   sceneName: 2-grizzledwarveteran23
   minigameType: 0
   gameTime: 10286
-  instruction: Pull Up!
-  title: Magic Hare Ride
-  creditsText: Zayaan Rahman - Programming, Art, Music
-  minigameScreenshot: {fileID: 0}
+  instruction: Pull Up
+  title: Magic Carpetbara
+  creditsText: 'Zayaan Rahman - Programming, Art, Music
+
+    <link=https://www.youtube.com/channel/UCB6m5wyEZqTTMU8gg40aWtg><color=#8888ff><u>YouTube</u></color></link>'
+  minigameScreenshot: {fileID: 21300000, guid: 7086505a3a6fe8849931ea8858514322, type: 3}

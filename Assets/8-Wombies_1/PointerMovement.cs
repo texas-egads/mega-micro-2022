@@ -9,8 +9,8 @@ namespace Wombies
     {
         Vector2 newPosition;
         private float moveXAmount = 4;
-        private int currentPosition = 1;
-
+        private int currentPosition = 3;
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -24,21 +24,43 @@ namespace Wombies
         {
             // move position of pointer right to next
             // hat
-            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && currentPosition < 2)
+            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && currentPosition < 4)
             {
-                // move along x axis by how ever much
-                // in our case 4 units (right)
-                newPosition.x += moveXAmount;
-                transform.position = newPosition;
+
+                // moving to first hat of second row
+                if (currentPosition == 1)
+                {
+                    newPosition.y = 0.75f;
+                    newPosition.x = -14f;
+                }
+                else
+                {
+                    // move along x axis by how ever much
+                    // in our case 4 units (right)
+                    newPosition.x += moveXAmount;
+                    
+                }
                 currentPosition++;
+                transform.position = newPosition;
             }
 
             // move position of pointer to left 
             if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) && currentPosition > 0)
             {
-                newPosition.x -= moveXAmount;
-                transform.position = newPosition;
+                // moving back to second hat on first row
+                if (currentPosition == 2)
+                {
+                    newPosition.y = 3.75f;
+                    newPosition.x = -8f;
+                }
+                else
+                {
+                    newPosition.x -= moveXAmount;
+                    transform.position = newPosition;
+                    
+                }
                 currentPosition--;
+                transform.position = newPosition;
             }
         }
 

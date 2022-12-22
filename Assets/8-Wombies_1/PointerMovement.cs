@@ -10,7 +10,7 @@ namespace Wombies
         Vector2 newPosition;
         private float moveXAmount = 4;
         private int currentPosition = 3;
-        
+
         // Start is called before the first frame update
         void Start()
         {
@@ -22,6 +22,7 @@ namespace Wombies
 
         void Update()
         {
+
             // move position of pointer right to next
             // hat
             if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && currentPosition < 4)
@@ -62,6 +63,7 @@ namespace Wombies
                 currentPosition--;
                 transform.position = newPosition;
             }
+
         }
 
     }

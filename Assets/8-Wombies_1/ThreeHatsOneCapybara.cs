@@ -60,11 +60,11 @@ namespace Wombies {
                 {
                     // render capybara for winning hat
                     this.gameObject.transform.GetChild(currentPos).GetChild(0).GetComponent<Renderer>().enabled = true;
-                    
+
                     // play sound
                     AudioSource win = Managers.AudioManager.CreateAudioSource();
                     win.PlayOneShot(winSound);
-
+                    
                     Managers.MinigamesManager.DeclareCurrentMinigameWon();
                     Managers.MinigamesManager.EndCurrentMinigame(1.2f);
                 }

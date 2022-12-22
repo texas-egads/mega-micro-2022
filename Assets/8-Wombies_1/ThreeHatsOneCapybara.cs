@@ -17,14 +17,14 @@ namespace Wombies {
         // Sound
         public AudioClip winSound;
 
-        // positions must be between 0 and 2 inclusive
-        private int currentPos = 1;
-        public int winningPos;
+        // positions must be between 0 and 4 inclusive
+        private int currentPos = 3;
+        private int winningPos;
 
         private void Start()
         {
             // randomly assigning 
-            winningPos = UnityEngine.Random.Range(0, 3);
+            winningPos = UnityEngine.Random.Range(0, 5);
 
             // start text
             uiText.text = startText;
@@ -34,7 +34,7 @@ namespace Wombies {
         private void Update()
         {
             // keep track of current position
-            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && currentPos < 2)
+            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && currentPos < 4)
             {
                 // move along x axis by how ever much
                 // in our case 4 units (right)

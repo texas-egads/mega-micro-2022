@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b6289b71b71e942a2499ed4eb71c02, type: 3}
+  m_Name: New Minigame Definition
+  m_EditorClassIdentifier: 
+  sceneName: 8-Wombies_2
+  minigameType: 0
+  gameTime: 6857
+  instruction: Spam Spacebar
+  title: Zombiebara
+  creditsText: 'enair3 - programmer
+
+    ShaEithan - art'
+  minigameScreenshot: {fileID: 0}

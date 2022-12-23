@@ -1,27 +1,37 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Solo_General_Red_8888
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class CapybaraBucket : MonoBehaviour
     {
         // Events
         public static event Action BucketFilled;
-        public static event Action BucketOverfilled;
+        public static event Action<float> BucketOverfilled;
 
         // Public Properties
         public AudioClip transformNeutralClip;
         public AudioClip transformSuccessClip;
         public AudioClip transformFailedClip;
+        public SpriteRenderer spriteRenderer;
         
         // Private properties
         [SerializeField] private int maxFillLevel = 3;
+        [SerializeField] private List<Sprite> transformations;
         private int _fillLevel;
         private AudioSource _bucketAudioSource;
 
         private void Start()
         {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = null;
             _bucketAudioSource = Managers.AudioManager.CreateAudioSource();
+            if (maxFillLevel != transformations.Count)
+            {
+                Debug.Log("Number of transformation sprites doesn't match the transformations");
+            }
         }
 
         public void FillBucket()
@@ -29,26 +39,24 @@ namespace Solo_General_Red_8888
             ++_fillLevel;
             if (_fillLevel < maxFillLevel)
             {
+                spriteRenderer.sprite = transformations[_fillLevel - 1];
                 _bucketAudioSource.clip = transformNeutralClip;
                 _bucketAudioSource.Play();
             }
             else if (_fillLevel == maxFillLevel)
             {
+                spriteRenderer.sprite = transformations[_fillLevel - 1];
                 _bucketAudioSource.clip = transformSuccessClip;
                 _bucketAudioSource.Play();
                 BucketFilled?.Invoke();
             }
-            else if (_fillLevel == maxFillLevel + 1)
+            else
             {
+                spriteRenderer.sprite = null;
                 _bucketAudioSource.clip = transformFailedClip;
                 _bucketAudioSource.Play();
-                Invoke("PlayBucketOverfilled", transformSuccessClip.length);
+                BucketOverfilled?.Invoke(transformSuccessClip.length);
             }
-        }
-
-        void PlayBucketOverfilled()
-        {
-            BucketOverfilled?.Invoke();
         }
     }
 }

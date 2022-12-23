@@ -102,11 +102,16 @@ namespace Solo_General_Red_8888
             }
         }
 
-        public void HandleBucketOverfilled()
+        public void HandleBucketOverfilled(float timeDelay)
         {
             _hasOverfilled = true;
             Managers.MinigamesManager.DeclareCurrentMinigameLost();
-            Managers.MinigamesManager.EndCurrentMinigame();  // Maybe do this after animation
+            Invoke("EndMinigame", timeDelay);
+        }
+
+        public void EndMinigame()
+        {
+            Managers.MinigamesManager.EndCurrentMinigame();
         }
     }
 }

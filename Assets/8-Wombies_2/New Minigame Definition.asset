@@ -15,9 +15,9 @@ MonoBehaviour:
   sceneName: 8-Wombies_2
   minigameType: 0
   gameTime: 6857
-  instruction: Spam Spacebar
+  instruction: Spacebar to Resurrect!
   title: Zombiebara
-  creditsText: 'enair3 - programmer
+  creditsText: 'Eriane Austria - Programmer
 
-    ShaEithan - art'
+    Eithan Austria - Art'
   minigameScreenshot: {fileID: 0}

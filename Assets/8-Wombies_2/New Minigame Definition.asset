@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 8-Wombies_2
   minigameType: 0
-  gameTime: 6857
+  gameTime: 5143
   instruction: Spacebar to Resurrect!
   title: Zombiebara
-  creditsText: 'Eriane Austria - Programmer
+  creditsText: 'Eriane Austria - Programmer, Animation (enair3)
 
-    Eithan Austria - Art'
+    Eithan Austria
+    - Sound, Art (ShaEithan)'
   minigameScreenshot: {fileID: 0}

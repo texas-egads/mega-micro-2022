@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
-    public int hits = 0;
+    private int hits = 0;
     public Text hitsText;
 
     // Update is called once per frame

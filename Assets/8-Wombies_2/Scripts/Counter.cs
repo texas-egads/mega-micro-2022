@@ -5,21 +5,32 @@ public class Counter : MonoBehaviour
 {
     private int hits = 0;
     public Text hitsText;
+    Animator anim;
+
+    private void Start()
+    {
+        //start zombie off
+        //this.gameObject.GetComponent<Renderer>().enabled = false; //anim still plays at start, not solution
+        anim = GetComponent<Animator>();
+        anim.SetBool("isAlive", false); //anim controller parameter
+    }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetButtonDown("Space"))
         {
             hits += 1;
-            //do grave animation
         }
 
         //end game once hit count is met
         if (hits == 15)
         {
             Debug.Log("you won omg");
-            //zombiebara anim
+            //zombiebara anim and music
+            //this.gameObject.GetComponent<Renderer>().enabled = true;
+            anim.SetBool("isAlive", true);
 
             // from example script
             Managers.MinigamesManager.DeclareCurrentMinigameWon();
@@ -27,7 +38,7 @@ public class Counter : MonoBehaviour
         }
 
 
-        // keep track of hits for testing; del for final ver
+        //keep track of hits; del for final ver
         hitsText.text = hits.ToString("spacebar hits: 0");
     }
 }

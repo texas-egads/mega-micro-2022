@@ -6,6 +6,8 @@ public class Counter : MonoBehaviour
     private int hits = 0;
     public Text hitsText;
     Animator anim;
+    public AudioSource backgroundMusic;
+    public AudioSource winMusic;
 
     private void Start()
     {
@@ -13,6 +15,7 @@ public class Counter : MonoBehaviour
         //this.gameObject.GetComponent<Renderer>().enabled = false; //anim still plays at start, not solution
         anim = GetComponent<Animator>();
         anim.SetBool("isAlive", false); //anim controller parameter
+        backgroundMusic.Play();
     }
 
     // Update is called once per frame
@@ -31,12 +34,12 @@ public class Counter : MonoBehaviour
             //zombiebara anim and music
             //this.gameObject.GetComponent<Renderer>().enabled = true;
             anim.SetBool("isAlive", true);
+            winMusic.Play();
 
             // from example script
             Managers.MinigamesManager.DeclareCurrentMinigameWon();
             Managers.MinigamesManager.EndCurrentMinigame(1.2f);
         }
-
 
         //keep track of hits; del for final ver
         hitsText.text = hits.ToString("spacebar hits: 0");

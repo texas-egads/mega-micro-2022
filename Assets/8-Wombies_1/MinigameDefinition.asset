@@ -17,7 +17,8 @@ MonoBehaviour:
   gameTime: 5143
   instruction: Space to Select Hat
   title: No Cap
-  creditsText: 'Eriane Austria - Artist
+  creditsText: 'Eriane Austria - Artist (enair3)
 
-    Eithan Austria - Sound & Programmer'
+    Eithan Austria - Sound & Programmer
+    (ShaEithan)'
   minigameScreenshot: {fileID: 0}

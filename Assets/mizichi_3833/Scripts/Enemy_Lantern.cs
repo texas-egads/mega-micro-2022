@@ -11,10 +11,14 @@ namespace MIZICHI
         [SerializeField]
         float enemyRange;
 
+        private Animator anim;
+        private void Start()
+        {
+            anim = GetComponent<Animator>();
+        }
         void Update()
         {
             StartCoroutine(WaitBeforeTurn(Random.Range(2f,6f)));//random time for the character to turn
-
         }
 
         bool CanSeePlayer(float range)
@@ -45,8 +49,12 @@ namespace MIZICHI
 
         IEnumerator WaitBeforeTurn(float time)
         {
+
             yield return new WaitForSeconds(time);
-            Debug.Log("Tranform!");
+
+            //anim.ResetTrigger("notLook");
+            anim.SetTrigger("look");
+
             yield return new WaitForSeconds(1);
             //activate animation transition
             if (CanSeePlayer(enemyRange))
@@ -54,13 +62,15 @@ namespace MIZICHI
                 Debug.Log("Caught");
                 //player is caught
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
-                Managers.MinigamesManager.EndCurrentMinigame(1);
+                Managers.MinigamesManager.EndCurrentMinigame(1.5f);
 
             }
             else
             {
                 Debug.Log("safe");
                 Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                Managers.MinigamesManager.EndCurrentMinigame(1.5f);
+
                 enemyRange = -enemyRange;
                 //player is safe
             }

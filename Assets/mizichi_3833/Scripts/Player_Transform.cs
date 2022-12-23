@@ -21,7 +21,7 @@ namespace MIZICHI
 
         void Update()
         {
-            if (Input.GetButton("Space") )
+            if (Input.GetButton("Space"))
             {
                 noroiBox.enabled = false;
                 noliteAnim.ResetTrigger("notTransform");

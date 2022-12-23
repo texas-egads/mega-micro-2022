@@ -20,9 +20,11 @@ MonoBehaviour:
   creditsText: 'Programming and Art - <link=https://generalred.itch.io/><color=#8888ff><u>Adhan
     Razzaque</u></color></link>
 
+    Assets Used:
+
     <link=https://freesound.org/s/264981/><color=#8888ff><u>SFX
     Magic by renatalmar</u></color></link>
 
     <link=https://freesound.org/s/519414/><color=#8888ff><u>Energy/magic
     Shot by Iridiuss</u></color></link>'
-  minigameScreenshot: {fileID: 0}
+  minigameScreenshot: {fileID: 21300000, guid: 4c94a4ce13d24474698bfe71064632c6, type: 3}

@@ -26,7 +26,7 @@ namespace Solo_General_Red_8888
         private void Start()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = null;
+            spriteRenderer.sprite = transformations[0];
             _bucketAudioSource = Managers.AudioManager.CreateAudioSource();
             if (maxFillLevel != transformations.Count)
             {
@@ -39,13 +39,13 @@ namespace Solo_General_Red_8888
             ++_fillLevel;
             if (_fillLevel < maxFillLevel)
             {
-                spriteRenderer.sprite = transformations[_fillLevel - 1];
+                spriteRenderer.sprite = transformations[_fillLevel];
                 _bucketAudioSource.clip = transformNeutralClip;
                 _bucketAudioSource.Play();
             }
             else if (_fillLevel == maxFillLevel)
             {
-                spriteRenderer.sprite = transformations[_fillLevel - 1];
+                spriteRenderer.sprite = transformations[_fillLevel];
                 _bucketAudioSource.clip = transformSuccessClip;
                 _bucketAudioSource.Play();
                 BucketFilled?.Invoke();

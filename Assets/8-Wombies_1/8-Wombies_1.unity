@@ -411,7 +411,9 @@ MonoBehaviour:
   uiText: {fileID: 0}
   startText: Press Space
   winText: You Won
-  winSound: {fileID: 8300000, guid: a07e933985f314bbca44e4e880ee4f7f, type: 3}
+  winSound: {fileID: 8300000, guid: 50e463227be2549ddaea00f8a938b904, type: 3}
+  loopSound: {fileID: 8300000, guid: 433fb04ef44254350b1d2c6ce6fe314c, type: 3}
+  musicTimer: 5
 --- !u!1 &777672635
 GameObject:
   m_ObjectHideFlags: 0

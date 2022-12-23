@@ -16,13 +16,24 @@ namespace Wombies {
 
         // Sound
         public AudioClip winSound;
-        
+        public AudioClip loopSound;
+
+        public int musicTimer = 5;
+
         // positions must be between 0 and 4 inclusive
         private int currentPos = 3;
         private int winningPos;
 
         private void Start()
         {
+
+            // audio source loop
+            AudioSource musicLoop = Managers.AudioManager.CreateAudioSource();
+
+            musicLoop.loop = true;
+            musicLoop.clip = loopSound;
+            musicLoop.Play();
+            
             // randomly assigning 
             winningPos = UnityEngine.Random.Range(0, 5);
 
@@ -49,6 +60,7 @@ namespace Wombies {
             // space bar interaction
             if (Input.GetKeyDown(KeyCode.Space))
             {
+            
                 // reveal what's underneath the hat
                 if (this.gameObject.transform.GetChild(currentPos).GetComponent<Renderer>().enabled)
                 {
@@ -58,6 +70,9 @@ namespace Wombies {
                 // if we pick the correct one (win) 
                 if (currentPos == winningPos)
                 {
+                    // stop music loop
+                    this.enabled = false;
+
                     // render capybara for winning hat
                     this.gameObject.transform.GetChild(currentPos).GetChild(0).GetComponent<Renderer>().enabled = true;
 
@@ -66,7 +81,7 @@ namespace Wombies {
                     win.PlayOneShot(winSound);
                     
                     Managers.MinigamesManager.DeclareCurrentMinigameWon();
-                    Managers.MinigamesManager.EndCurrentMinigame(1.2f);
+                    Managers.MinigamesManager.EndCurrentMinigame(1f);
                 }
             }
         }

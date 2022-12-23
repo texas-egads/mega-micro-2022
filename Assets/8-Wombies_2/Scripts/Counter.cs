@@ -35,7 +35,7 @@ namespace Wombies
             //end game once hit count is met
             if (hits == 15)
             {
-                Debug.Log("you won omg");
+                //Debug.Log("you won omg");
                 //zombiebara anim and music
                 //this.gameObject.GetComponent<Renderer>().enabled = true;
                 anim.SetBool("isAlive", true);

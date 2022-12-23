@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: MainScene
   minigameType: 0
-  gameTime: 0
-  instruction: Press
-  title: Example Minigame
-  creditsText: 'Example Example - Design
+  gameTime: 6857
+  instruction: Brew The Potion
+  title: Potion Brewing
+  creditsText: 'Max Somarriba - Programming & Design
 
-    Blah Blah - Programming
+    -Credit: daydream.cappuccino
+    on itch.io
+
+    Vecteezy.com
 
     <link=https://discord.gg/rREcZd72Az><color=#8888ff><u>EGaDS!</u></color></link>'
-  minigameScreenshot: {fileID: 0}
+  minigameScreenshot: {fileID: 6748961020063920395, guid: b72fd2de37c78f34c9a8a09d9c6f6b5f,
+    type: 3}

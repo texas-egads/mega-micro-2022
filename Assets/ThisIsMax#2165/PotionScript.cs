@@ -13,6 +13,11 @@ namespace ThisIsMax{
             YellowD
         };
 
+        // Sounds
+        public AudioClip buttonPressSound;
+        public AudioClip winSound;
+        public AudioClip loseSound;
+
         public Ingredients[] correctIngredientSequence;
         public Ingredients[] playerIngredientSequence;
         public int lengthOfCorrectIngredientSequence;
@@ -22,6 +27,17 @@ namespace ThisIsMax{
         public SpriteRenderer[] potionDisplays;
         public Sprite[] potionSprites;
 
+        // For the falling potion
+        public GameObject fallingPotionPrefab;
+        public GameObject bluePotionIcon;
+        public GameObject redPotionIcon;
+        public GameObject greenPotionIcon;
+        public GameObject yellowPotionIcon;
+
+        // For capybara
+        public GameObject capybara;
+        public float capybaraXOffset;
+        public float capybaraYOffset;
 
         // Start is called before the first frame update
         void Start()
@@ -66,23 +82,94 @@ namespace ThisIsMax{
             if(currentPlayerIngredientSequenceIndex < lengthOfCorrectIngredientSequence){
                 if (Input.GetKeyDown(KeyCode.W))
                 {
+                    AudioSource pop = Managers.AudioManager.CreateAudioSource();
+                    pop.PlayOneShot(buttonPressSound);
+
                     playerIngredientSequence[currentPlayerIngredientSequenceIndex] = Ingredients.BlueW;
                     currentPlayerIngredientSequenceIndex++;
+                    // Create a falling potion
+                    GameObject created = Instantiate(fallingPotionPrefab, bluePotionIcon.transform.position, Quaternion.identity);
+                    // Create a capybara
+                    Vector3 pos = bluePotionIcon.transform.position;
+                    pos.y += capybaraYOffset;
+                    pos.x -= capybaraXOffset;
+                    pos.z -= 1;
+                    GameObject charlie = Instantiate(capybara, pos, Quaternion.identity);
+                    charlie.transform.rotation = Quaternion.Euler(0, 0, 320);
+                    // Set Correct Sprite
+                    created.GetComponent<SpriteRenderer>().sprite = potionSprites[0];
+                    // Apply force 
+                    created.GetComponent<Rigidbody2D>().AddForce(new Vector2(100,5));
+                    created.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-100, 100));
                 }
                 else if (Input.GetKeyDown(KeyCode.A))
                 {
+                    AudioSource pop = Managers.AudioManager.CreateAudioSource();
+                    pop.PlayOneShot(buttonPressSound);
+
                     playerIngredientSequence[currentPlayerIngredientSequenceIndex] = Ingredients.RedA;
                     currentPlayerIngredientSequenceIndex++;
+                    // Create a falling potion
+                    GameObject created = Instantiate(fallingPotionPrefab, redPotionIcon.transform.position, Quaternion.identity);
+                    // Create a capybara
+                    Vector3 pos = redPotionIcon.transform.position;
+                    pos.y += capybaraYOffset;
+                    pos.x -= capybaraXOffset;
+                    pos.z -= 1;
+                    GameObject charlie = Instantiate(capybara, pos, Quaternion.identity);
+                    charlie.transform.rotation = Quaternion.Euler(0, 0, 320);
+
+                    // Set Correct Sprite
+                    created.GetComponent<SpriteRenderer>().sprite = potionSprites[1];
+                    // Apply force
+                    created.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-100, 100));
                 }
                 else if (Input.GetKeyDown(KeyCode.S))
                 {
+                    AudioSource pop = Managers.AudioManager.CreateAudioSource();
+                    pop.PlayOneShot(buttonPressSound);
+
                     playerIngredientSequence[currentPlayerIngredientSequenceIndex] = Ingredients.GreenS;
                     currentPlayerIngredientSequenceIndex++;
+                    // Create a falling potion
+                    GameObject created = Instantiate(fallingPotionPrefab, greenPotionIcon.transform.position, Quaternion.identity);
+
+                    // Create a capybara
+                    Vector3 pos = greenPotionIcon.transform.position;
+                    pos.y += capybaraYOffset;
+                    pos.x -= capybaraXOffset;
+                    pos.z -= 1;
+                    GameObject charlie = Instantiate(capybara, pos, Quaternion.identity);
+                    charlie.transform.rotation = Quaternion.Euler(0, 0, 320);
+
+                    // Set Correct Sprite
+                    created.GetComponent<SpriteRenderer>().sprite = potionSprites[2];
+                    // Apply force
+                    created.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-100, 100));
                 }
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
+                    AudioSource pop = Managers.AudioManager.CreateAudioSource();
+                    pop.PlayOneShot(buttonPressSound);
+
                     playerIngredientSequence[currentPlayerIngredientSequenceIndex] = Ingredients.YellowD;
                     currentPlayerIngredientSequenceIndex++;
+                    // Create a falling potion
+                    GameObject created = Instantiate(fallingPotionPrefab, yellowPotionIcon.transform.position, Quaternion.identity);
+
+                    // Create a capybara
+                    Vector3 pos = yellowPotionIcon.transform.position;
+                    pos.y += capybaraYOffset;
+                    pos.x -= capybaraXOffset;
+                    pos.z -= 1;
+                    GameObject charlie = Instantiate(capybara, pos, Quaternion.identity);
+                    charlie.transform.rotation = Quaternion.Euler(0, 0, 320);
+
+                    // Set Correct Sprite
+                    created.GetComponent<SpriteRenderer>().sprite = potionSprites[3];
+                    // Apply force
+                    created.GetComponent<Rigidbody2D>().AddForce(new Vector2(-100,5));
+                    created.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-100, 100));
                 }
             }else
             {
@@ -98,8 +185,18 @@ namespace ThisIsMax{
                 }
                 if(isCorrect){
                     Debug.Log("Correct!");
+                    AudioSource win = Managers.AudioManager.CreateAudioSource();
+                    win.PlayOneShot(winSound);
+                    Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                    Managers.MinigamesManager.EndCurrentMinigame(1f);
+                    this.enabled = false;
                 }else{
                     Debug.Log("Incorrect!");
+                    AudioSource lose = Managers.AudioManager.CreateAudioSource();
+                    lose.PlayOneShot(loseSound);
+                    Managers.MinigamesManager.DeclareCurrentMinigameLost();
+                    Managers.MinigamesManager.EndCurrentMinigame(1f);
+                    this.enabled = false;
                 }
             }
         }

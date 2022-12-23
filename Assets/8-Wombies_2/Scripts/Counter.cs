@@ -38,10 +38,12 @@ public class Counter : MonoBehaviour
             //this.gameObject.GetComponent<Renderer>().enabled = true;
             anim.SetBool("isAlive", true);
 
+            this.enabled = false;
+
             AudioSource winSound = Managers.AudioManager.CreateAudioSource();
             winSound.PlayOneShot(winMusic);
 
-            // from example script
+            // from example script to end game
             Managers.MinigamesManager.DeclareCurrentMinigameWon();
             Managers.MinigamesManager.EndCurrentMinigame(1.5f);
         }

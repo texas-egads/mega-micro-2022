@@ -38,7 +38,7 @@ public class Counter : MonoBehaviour
 
             // from example script
             Managers.MinigamesManager.DeclareCurrentMinigameWon();
-            Managers.MinigamesManager.EndCurrentMinigame(1.2f);
+            Managers.MinigamesManager.EndCurrentMinigame(1.5f);
         }
 
         //keep track of hits; del for final ver

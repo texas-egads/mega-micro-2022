@@ -19,11 +19,18 @@ MonoBehaviour:
   title: Potion Brewing
   creditsText: 'Max Somarriba - Programming & Design
 
-    -Credit: daydream.cappuccino
+    <link=https://maxstudios.itch.io//><color=#8888ff><u>Display
+    Text</u></color></link>
+
+
+    Art:
+
+    -Capybara Sprite - daydream.cappuccino
     on itch.io
 
-    Vecteezy.com
+    -Wood background - Vecteezy.com
 
-    <link=https://discord.gg/rREcZd72Az><color=#8888ff><u>EGaDS!</u></color></link>'
+    - Potion Sprites - Flip
+    (https://flippurgatory.itch.io/)'
   minigameScreenshot: {fileID: 6748961020063920395, guid: b72fd2de37c78f34c9a8a09d9c6f6b5f,
     type: 3}

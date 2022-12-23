@@ -184,14 +184,12 @@ namespace ThisIsMax{
                     }
                 }
                 if(isCorrect){
-                    Debug.Log("Correct!");
                     AudioSource win = Managers.AudioManager.CreateAudioSource();
                     win.PlayOneShot(winSound);
                     Managers.MinigamesManager.DeclareCurrentMinigameWon();
                     Managers.MinigamesManager.EndCurrentMinigame(1f);
                     this.enabled = false;
                 }else{
-                    Debug.Log("Incorrect!");
                     AudioSource lose = Managers.AudioManager.CreateAudioSource();
                     lose.PlayOneShot(loseSound);
                     Managers.MinigamesManager.DeclareCurrentMinigameLost();

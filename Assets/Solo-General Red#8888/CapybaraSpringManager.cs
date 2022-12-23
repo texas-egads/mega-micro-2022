@@ -50,13 +50,15 @@ namespace Solo_General_Red_8888
         }
 
         // Event callbacks
-        public void HandleWandActivated()
+        public void HandleWandActivated(Wand wand)
         {
             if (buckets.Count == 0 || buckets.Count <= _currentBucketIndex)
             {
                 Debug.Log($"Invalid bucket index {_currentBucketIndex}");
                 return;
             }
+
+            wand.transform.DOPunchRotation(new Vector3(0f, 0f, -20f), 0.1f);
 
             CapybaraBucket currentBucket = buckets[_currentBucketIndex];
             currentBucket.FillBucket();

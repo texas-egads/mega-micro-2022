@@ -76,16 +76,26 @@ public class ScenesManager : MonoBehaviour
         currentMinigameLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         currentMinigameLoad.allowSceneActivation = false;
 
+        currentMinigameLoad.completed += _ => {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+            minigameLoadedCallback?.Invoke();
+            minigameLoadedCallback = null;
+            currentMinigameLoad = null;
+            Debug.Log("current minigame load completed");
+        };
+
         while (currentMinigameLoad.progress < 0.9f || !canActivateMinigame)
             yield return null;
         
         currentMinigameLoad.allowSceneActivation = true;
+        /*
         while (!currentMinigameLoad.isDone)
             yield return null;
         
         minigameLoadedCallback?.Invoke();
         minigameLoadedCallback = null;
         currentMinigameLoad = null;
+        */
     }
 
 

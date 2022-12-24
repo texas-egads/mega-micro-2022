@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: mizichiScene
   minigameType: 0
-  gameTime: 6857
-  instruction: Press Spacebar to Transform
-  title: Wait a meow-ment
-  creditsText: 'Julieta Cruz (mizichi) - All Programming, Art, and Design
+  gameTime: 5143
+  instruction: Hold Down Spacebar to Transform!
+  title: Sneaky Capi
+  creditsText: 'Julieta Cruz (mizichi) - Programming, Art, and Design
 
-    <link=https://discord.gg/rREcZd72Az><color=#8888ff><u>EGaDS!</u></color></link>'
-  minigameScreenshot: {fileID: 0}
+    Audio:
+    poof of smoke by planman, dare16_eerie by bliss Freesound.org
+
+    <link=https://mizichi.carrd.co/#digital><color=#8888ff><u>EGaDS!</u></color></link>'
+  minigameScreenshot: {fileID: 21300000, guid: cfc203afd92c26f48badc44dbfcb5b3d, type: 3}

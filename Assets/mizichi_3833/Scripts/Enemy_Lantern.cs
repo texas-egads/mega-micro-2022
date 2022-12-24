@@ -62,14 +62,15 @@ namespace MIZICHI
             if (CanSeePlayer(enemyRange))
             {
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
+                yield return new WaitForSeconds(1);
                 Managers.MinigamesManager.EndCurrentMinigame(1);
             }
             else
             {
 
                 Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                yield return new WaitForSeconds(1);
                 Managers.MinigamesManager.EndCurrentMinigame(1);
-                yield return new WaitForSeconds(5);
 
             }
         }

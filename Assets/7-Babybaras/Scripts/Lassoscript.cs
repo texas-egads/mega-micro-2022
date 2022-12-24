@@ -40,9 +40,7 @@ namespace Babybaras
             //transform.Rotate(new Vector3(0, ))
             if (Input.GetButtonDown("Space") && (Bugvars.lassoing == false)){
                 throwVector = new Vector3(3 * Mathf.Cos(angleCounter), 3 * Mathf.Sin(angleCounter), 0);
-                Debug.Log(Bugvars.lassoing);
                 Bugvars.lassoing = true;
-                Debug.Log("Space has been pressed");
             }
 
             if (Bugvars.lassoing == true){
@@ -63,7 +61,6 @@ namespace Babybaras
         void OnTriggerExit2D(Collider2D collision){
                 if ((collision.gameObject.tag == "Ground") && (Bugvars.lassoing == true) && (Bugvars.throwing == 1)){
                     Bugvars.throwing = -1;
-                    Debug.Log("coming back?");
                     
                 }
             
@@ -76,7 +73,6 @@ namespace Babybaras
                 Bugvars.throwing = 1;
                 transform.position = collision.gameObject.transform.position;
             }
-            Debug.Log("On trigger enter");
         }
 
         /*  void OnTriggerStay2D(Collider2D collision) {

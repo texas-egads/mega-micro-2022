@@ -22,7 +22,6 @@ public class Capybarascript : MonoBehaviour
         music = Managers.AudioManager.CreateAudioSource();
         music.clip = Resources.Load("Babybaras music") as AudioClip;
         music.Play();
-        Debug.Log(music.isPlaying);
     }
 
     // Update is called once per frame
@@ -44,7 +43,7 @@ public class Capybarascript : MonoBehaviour
             swingwhoosh.clip = Resources.Load("60013__qubodup__whoosh") as AudioClip;
             if (playedThrowSound == false)
             {
-
+                swingwhoosh.time = 0.1f;
                 swingwhoosh.Play();
                 playedThrowSound = true;
             }

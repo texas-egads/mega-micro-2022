@@ -1,0 +1,513 @@
+fileFormatVersion: 2
+guid: 9df10a5099ceb3f4c9de7649244c75bd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5644469637071207252
+    second: sprite_sheet_space_bar_1
+  - first:
+      213: 605412572397117349
+    second: sprite_sheet_space_bar_2
+  - first:
+      213: 6432341440586643397
+    second: sprite_sheet_space_bar_3
+  - first:
+      213: 4782533057582543168
+    second: sprite_sheet_space_bar_4
+  - first:
+      213: -7523541865878035907
+    second: sprite_sheet_space_bar_5
+  - first:
+      213: 3687405379747976576
+    second: sprite_sheet_space_bar_6
+  - first:
+      213: 1182775529380491340
+    second: sprite_sheet_space_bar_7
+  - first:
+      213: -7059237568468300131
+    second: sprite_sheet_space_bar_8
+  - first:
+      213: -2344265208358423143
+    second: sprite_sheet_space_bar_9
+  - first:
+      213: -4846319440641825163
+    second: sprite_sheet_space_bar_10
+  - first:
+      213: 5909025708038686324
+    second: sprite_sheet_space_bar_11
+  - first:
+      213: 3313704836838673151
+    second: sprite_sheet_space_bar_12
+  - first:
+      213: 7776002564908472526
+    second: sprite_sheet_space_bar_13
+  - first:
+      213: 5210516824310249975
+    second: sprite_sheet_space_bar_14
+  - first:
+      213: 3173245591698540446
+    second: sprite_sheet_space_bar_15
+  - first:
+      213: 246266602211581273
+    second: sprite_sheet_space_bar_16
+  - first:
+      213: 7477474534872454217
+    second: sprite_sheet_space_bar_17
+  - first:
+      213: 6442753445126080137
+    second: sprite_sheet_space_bar_18
+  - first:
+      213: -1206487935757367473
+    second: sprite_sheet_space_bar_19
+  - first:
+      213: 7948157764532343922
+    second: sprite_sheet_space_bar_20
+  - first:
+      213: 5196650162429135627
+    second: sprite_sheet_space_bar_21
+  - first:
+      213: -8111060757945715304
+    second: sprite_sheet_space_bar_22
+  - first:
+      213: 4468919969992885659
+    second: sprite_sheet_space_bar_23
+  - first:
+      213: -132035237704298759
+    second: sprite_sheet_space_bar_24
+  - first:
+      213: 3337357850529557676
+    second: sprite_sheet_space_bar_25
+  - first:
+      213: 7702231658143609751
+    second: sprite_sheet_space_bar_26
+  - first:
+      213: -6274850127451789343
+    second: sprite_sheet_space_bar_27
+  - first:
+      213: -8939277726459379554
+    second: sprite_sheet_space_bar_28
+  - first:
+      213: 1024083451135898400
+    second: sprite_sheet_space_bar_29
+  - first:
+      213: 6194461769294654804
+    second: sprite_sheet_space_bar_30
+  - first:
+      213: -639060380075443147
+    second: sprite_sheet_space_bar_31
+  - first:
+      213: -5649401469517906888
+    second: sprite_sheet_space_bar_32
+  - first:
+      213: -8255349360290989199
+    second: sprite_sheet_space_bar_33
+  - first:
+      213: 7644268852508252020
+    second: sprite_sheet_space_bar_34
+  - first:
+      213: 3189748704818011872
+    second: sprite_sheet_space_bar_35
+  - first:
+      213: -5609215718140071520
+    second: sprite_sheet_space_bar_36
+  - first:
+      213: 731227395674732669
+    second: sprite_sheet_space_bar_37
+  - first:
+      213: -1142731746848388359
+    second: sprite_sheet_space_bar_38
+  - first:
+      213: 4921131129068689452
+    second: sprite_sheet_space_bar_39
+  - first:
+      213: -2943003210127616574
+    second: sprite_sheet_space_bar_40
+  - first:
+      213: -2636758705552343764
+    second: sprite_sheet_space_bar_41
+  - first:
+      213: -4495144377269701306
+    second: sprite_sheet_space_bar_42
+  - first:
+      213: -1801308480713859614
+    second: sprite_sheet_space_bar_43
+  - first:
+      213: -2433444269694798820
+    second: sprite_sheet_space_bar_44
+  - first:
+      213: 8617037527574061781
+    second: sprite_sheet_space_bar_45
+  - first:
+      213: 5108783583092342655
+    second: sprite_sheet_space_bar_46
+  - first:
+      213: 7396726008735302840
+    second: sprite_sheet_space_bar_47
+  - first:
+      213: 3071348620027760132
+    second: sprite_sheet_space_bar_48
+  - first:
+      213: -5799692074020255318
+    second: sprite_sheet_space_bar_49
+  - first:
+      213: -6599594985086259334
+    second: sprite_sheet_space_bar_50
+  - first:
+      213: -7412370541969900815
+    second: sprite_sheet_space_bar_51
+  - first:
+      213: -6622412759860050892
+    second: sprite_sheet_space_bar_52
+  - first:
+      213: -5201332470903608815
+    second: sprite_sheet_space_bar_53
+  - first:
+      213: 5754640967150848727
+    second: sprite_sheet_space_bar_54
+  - first:
+      213: -7913661487746277520
+    second: sprite_sheet_space_bar_55
+  - first:
+      213: -8374818206589155260
+    second: sprite_sheet_space_bar_56
+  - first:
+      213: -3150688670139323171
+    second: sprite_sheet_space_bar_57
+  - first:
+      213: -890092754714306321
+    second: sprite_sheet_space_bar_58
+  - first:
+      213: -3318256707135569282
+    second: sprite_sheet_space_bar_59
+  - first:
+      213: -6605062608403564541
+    second: sprite_sheet_space_bar_60
+  - first:
+      213: 104546798248213791
+    second: sprite_sheet_space_bar_61
+  - first:
+      213: 996092163621683909
+    second: sprite_sheet_space_bar_62
+  - first:
+      213: -1642110293809586737
+    second: sprite_sheet_space_bar_63
+  - first:
+      213: 1671415817353895592
+    second: sprite_sheet_space_bar_64
+  - first:
+      213: -2038148804629183228
+    second: sprite_sheet_space_bar_65
+  - first:
+      213: -2683195442554386684
+    second: sprite_sheet_space_bar_66
+  - first:
+      213: 3483961376871820299
+    second: sprite_sheet_space_bar_67
+  - first:
+      213: 2010484259956033283
+    second: sprite_sheet_space_bar_68
+  - first:
+      213: -7766781903233012937
+    second: sprite_sheet_space_bar_69
+  - first:
+      213: -5575571250635532643
+    second: sprite_sheet_space_bar_70
+  - first:
+      213: -340018882086843294
+    second: sprite_sheet_space_bar_71
+  - first:
+      213: 7875226099819419010
+    second: sprite_sheet_space_bar_72
+  - first:
+      213: 1840597854408892654
+    second: sprite_sheet_space_bar_73
+  - first:
+      213: 425910648060098808
+    second: sprite_sheet_space_bar_74
+  - first:
+      213: 2045238797585454639
+    second: sprite_sheet_space_bar_75
+  - first:
+      213: -4918130153459536361
+    second: sprite_sheet_space_bar_76
+  - first:
+      213: -3095302675984546233
+    second: sprite_sheet_space_bar_77
+  - first:
+      213: 1457668174519032266
+    second: sprite_sheet_space_bar_78
+  - first:
+      213: -7407626540960035559
+    second: sprite_sheet_space_bar_0
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprite_sheet_space_bar_1
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 264
+        width: 924
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca484e055c0daa1b0800000000000000
+      internalID: -5644469637071207252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_space_bar_2
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 264
+        width: 924
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af1948e68bd66800800000000000000
+      internalID: 605412572397117349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_space_bar_3
+      rect:
+        serializedVersion: 2
+        x: 2772
+        y: 264
+        width: 924
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7f030d574444950800000000000000
+      internalID: 6432341440586643397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_space_bar_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 924
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04135c71a78fe5240800000000000000
+      internalID: 4782533057582543168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_space_bar_5
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 0
+        width: 924
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d326f8fc882079790800000000000000
+      internalID: -7523541865878035907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_space_bar_6
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 0
+        width: 924
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0851ebaf7ab4c2330800000000000000
+      internalID: 3687405379747976576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_space_bar_7
+      rect:
+        serializedVersion: 2
+        x: 2772
+        y: 0
+        width: 924
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40bfbdc3101a6010800000000000000
+      internalID: 1182775529380491340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_space_bar_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 924
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91d425588e2d23990800000000000000
+      internalID: -7407626540960035559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -10,7 +10,7 @@ namespace MIZICHI
         {
             if(other.tag == "Object 4")
             {
-                Debug.Log("OutOfBound");
+                Destroy(other);
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
                 Managers.MinigamesManager.EndCurrentMinigame(0);
             }

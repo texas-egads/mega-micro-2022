@@ -10,32 +10,38 @@ namespace MIZICHI
         private BoxCollider2D noroiBox;
         private Rigidbody2D rb;
         public float force = -10;
-        public bool freeze;
 
+        public AudioClip transAudio;
+        public AudioClip loopAudio;
         private void Start()
         {
             noliteAnim = GetComponent<Animator>();
             noroiBox = GetComponent<BoxCollider2D>();
             rb = GetComponent<Rigidbody2D>();
+
+            AudioSource loop = Managers.AudioManager.CreateAudioSource();
+            loop.loop = true;
+            loop.clip = loopAudio;
+            loop.Play();
         }
 
         void Update()
         {
+            AudioSource transformAudio = Managers.AudioManager.CreateAudioSource();
+            transformAudio.loop = false;
+            transformAudio.clip = transAudio;
+
             if (Input.GetButton("Space"))
             {
                 noroiBox.enabled = false;
                 noliteAnim.ResetTrigger("notTransform");
                 noliteAnim.SetTrigger("transform");
+                transformAudio.Play();
 
-                //StartCoroutine(punishmentForce());
 
                 rb.constraints = RigidbodyConstraints2D.None;
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-
-                //Transfrom when holding down SPACEBAR
-                //Set Off Animation
-                //Disable Box Collider
             }
             else
             {
@@ -44,24 +50,10 @@ namespace MIZICHI
                 noliteAnim.SetTrigger("notTransform");
 
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-                //When let go of SPACEBAR, detransform
-                //Set Off Animation
-                //Enable Box Collider
             }
             rb.AddForce(transform.right * force);
 
         }
 
-        IEnumerator punishmentForce()
-        {
-           rb.constraints = RigidbodyConstraints2D.None;
-           rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-           rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-            yield return new WaitForSeconds(4);
-        }
-
   }
 }
-
-//|| Input.GetButtonDown("Space")

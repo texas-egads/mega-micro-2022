@@ -11,6 +11,8 @@ namespace MIZICHI
         [SerializeField]
         float enemyRange;
 
+        GameObject killerWall;
+
         private Animator anim;
         private void Start()
         {
@@ -18,7 +20,8 @@ namespace MIZICHI
         }
         void Update()
         {
-            StartCoroutine(WaitBeforeTurn(Random.Range(2f,6f)));//random time for the character to turn
+            StartCoroutine(WaitBeforeTurn(Random.Range(2f,9f)));//random time for the character to turn
+
         }
 
         bool CanSeePlayer(float range)
@@ -32,16 +35,20 @@ namespace MIZICHI
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
                     val = true;
+                    Debug.DrawLine(castPoint.position, hit.point, Color.red);
+
+
                 }
                 else
                 {
                     val = false;
                 }
-                Debug.DrawLine(castPoint.position, hit.point, Color.red);
             }
             else
             {
                 Debug.DrawLine(castPoint.position, endPos, Color.yellow);
+                val = false;
+
             }
 
             return val;
@@ -49,32 +56,24 @@ namespace MIZICHI
 
         IEnumerator WaitBeforeTurn(float time)
         {
-
             yield return new WaitForSeconds(time);
-
-            //anim.ResetTrigger("notLook");
             anim.SetTrigger("look");
 
-            yield return new WaitForSeconds(1);
-            //activate animation transition
             if (CanSeePlayer(enemyRange))
             {
-                Debug.Log("Caught");
-                //player is caught
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
-                Managers.MinigamesManager.EndCurrentMinigame(1.5f);
-
+                Managers.MinigamesManager.EndCurrentMinigame(1);
             }
             else
             {
-                Debug.Log("safe");
-                Managers.MinigamesManager.DeclareCurrentMinigameWon();
-                Managers.MinigamesManager.EndCurrentMinigame(1.5f);
 
-                enemyRange = -enemyRange;
-                //player is safe
+                Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                Managers.MinigamesManager.EndCurrentMinigame(1);
+                yield return new WaitForSeconds(5);
+
             }
         }
+
     }
 }
 

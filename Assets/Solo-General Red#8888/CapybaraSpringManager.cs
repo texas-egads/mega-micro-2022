@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -8,12 +9,14 @@ namespace Solo_General_Red_8888
     {
         // Public Properties
         public List<CapybaraBucket> buckets = new List<CapybaraBucket>();
+        public AudioClip backgroundMusic;
         
         // Private Properties
         [SerializeField] private float moveDuration = .25f;
         private int _currentBucketIndex;
         private int _bucketsFilled;
         private bool _hasOverfilled;
+        private AudioSource _musicSource;
 
         private void OnEnable()
         {
@@ -31,6 +34,20 @@ namespace Solo_General_Red_8888
             CapybaraBucket.BucketOverfilled -= HandleBucketOverfilled;
         }
 
+        private void Start()
+        {
+            _musicSource = Managers.AudioManager.CreateAudioSource();
+            if (_musicSource)
+            {
+                _musicSource.clip = backgroundMusic;
+                _musicSource.loop = true;
+                _musicSource.Play();
+            }
+            else
+            {
+                Debug.Log("Music source is null");
+            }
+        }
 
         private void MoveWandToCurrentBucket(Wand wand)
         {

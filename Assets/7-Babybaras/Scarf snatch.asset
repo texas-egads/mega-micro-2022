@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 7-Babybaras
   minigameType: 0
-  gameTime: 6857
+  gameTime: 5143
   instruction: Snag! (spacebar)
   title: Bug-AHHHH!!
-  creditsText: 'Lovejoy - Design, Art, Music
+  creditsText: 'Lovejoy - Art, Music
 
     Madeleine Lee - Programming, Music
 

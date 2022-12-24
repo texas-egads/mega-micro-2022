@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: dashi-Scene
   minigameType: 0
-  gameTime: 0
-  instruction: 
+  gameTime: 10286
+  instruction: Dodge the bees!
   title: 
-  creditsText: 
-  minigameScreenshot: {fileID: 0}
+  creditsText: 'Credits:
+
+    <link=https://https://dashofdashi.itch.io/><color=#E59AF6><u>Robin</u></color></link>'
+  minigameScreenshot: {fileID: 21300000, guid: cd4f4004a4fabe246af61b4c43712429, type: 3}

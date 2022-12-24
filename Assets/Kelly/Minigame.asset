@@ -16,10 +16,9 @@ MonoBehaviour:
   minigameType: 0
   gameTime: 5143
   instruction: Summon!
-  title: Summonings
-  creditsText: 'Example Example - Design
+  title: Occult Capybaras
+  creditsText: '<link=https://aquafroq.itch.io><color=#87dbff><u>Kelly</u></color></link>
+    - Art, Programming
 
-    Blah Blah - Programming
-
-    <link=https://discord.gg/rREcZd72Az><color=#8888ff><u>EGaDS!</u></color></link>'
+    Sounds from Pixabay and Mixkit'
   minigameScreenshot: {fileID: 0}

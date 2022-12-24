@@ -164,7 +164,6 @@ namespace kelly
 
         private void handleWin()
         {
-            Debug.Log("win");
             shakeTimer = .2f;
 
             particle.Play();

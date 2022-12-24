@@ -143,6 +143,8 @@ namespace dashi
             StopCoroutine(_timer);
             StopCoroutine(_spawner);
             Managers.MinigamesManager.DeclareCurrentMinigameLost();
+            _bgAudioSource.Stop();
+            _sfxAudioSource.PlayOneShot(_endMusic,.5f);
             StartCoroutine(LostStop());
             Rigidbody rb = _capybara.GetComponentInChildren<Rigidbody>();
             rb.isKinematic = false;
@@ -153,7 +155,7 @@ namespace dashi
 
         private IEnumerator LostStop()
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2.5f);
             Managers.MinigamesManager.EndCurrentMinigame();
         }
     }

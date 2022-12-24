@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -43,17 +42,12 @@ namespace Solo_General_Red_8888
                 _musicSource.loop = true;
                 _musicSource.Play();
             }
-            else
-            {
-                Debug.Log("Music source is null");
-            }
         }
 
         private void MoveWandToCurrentBucket(Wand wand)
         {
             if (buckets.Count == 0 || buckets.Count <= _currentBucketIndex)
             {
-                Debug.Log($"Invalid bucket index {_currentBucketIndex}");
                 return;
             }
             
@@ -71,7 +65,6 @@ namespace Solo_General_Red_8888
         {
             if (buckets.Count == 0 || buckets.Count <= _currentBucketIndex)
             {
-                Debug.Log($"Invalid bucket index {_currentBucketIndex}");
                 return;
             }
 

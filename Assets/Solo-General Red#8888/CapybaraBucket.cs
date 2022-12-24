@@ -28,10 +28,6 @@ namespace Solo_General_Red_8888
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = transformations[0];
             _bucketAudioSource = Managers.AudioManager.CreateAudioSource();
-            if (maxFillLevel + 1 != transformations.Count)
-            {
-                Debug.Log("Number of transformation sprites doesn't match the transformations");
-            }
         }
 
         public void FillBucket()

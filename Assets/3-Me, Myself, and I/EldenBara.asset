@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b6289b71b71e942a2499ed4eb71c02, type: 3}
+  m_Name: EldenBara
+  m_EditorClassIdentifier: 
+  sceneName: EldenBara
+  minigameType: 0
+  gameTime: 10286
+  instruction: Dodge!
+  title: Elden Bara
+  creditsText: "An elden ring inspired Capybara \nDodge Minigame by MrFlambo \n<link=https://www.youtube.com/channel/UCpEjMzOskGUhj61Y8K1Uwog/><color=#FA624D><u>Youtube</u></color></link>"
+  minigameScreenshot: {fileID: 21300000, guid: 3865ea632a05b9a438d0ff578237199e, type: 3}

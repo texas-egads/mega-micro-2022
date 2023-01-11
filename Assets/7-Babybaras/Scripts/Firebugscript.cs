@@ -9,11 +9,15 @@ namespace Babybaras
     int i;
     Vector3 wiggle = new Vector3(0, 0, 5);
     int wiggleflip = 1;
+    AudioSource bugSounds;
+    AudioSource catchSounds;
 
     // Start is called before the first frame update
     void Start()
     {
         i = 0;
+        bugSounds = Managers.AudioManager.CreateAudioSource();
+        catchSounds = Managers.AudioManager.CreateAudioSource();
         
     }
 
@@ -43,17 +47,17 @@ namespace Babybaras
             Bugvars.throwing = -1;
             transform.position = GameObject.FindGameObjectsWithTag("Finish")[0].transform.position + new Vector3(-25, 0, 0);
             transform.Rotate(0, 0, 250);
-            Bugvars.bugSounds.clip = Resources.Load("472688__silverillusionist__fire-burst") as AudioClip;
-            Bugvars.bugSounds.Play();
-            Bugvars.catchSounds.clip = Resources.Load("650943__ajanhallinta__pickupsfx") as AudioClip;
-            Bugvars.catchSounds.Play();
+            bugSounds.clip = Resources.Load("472688__silverillusionist__fire-burst") as AudioClip;
+            bugSounds.Play();
+            catchSounds.clip = Resources.Load("650943__ajanhallinta__pickupsfx") as AudioClip;
+            catchSounds.Play();
 
            
             if (Bugvars.gotWaterbug && Bugvars.gotLightningbug && Bugvars.gotFirebug) {
                 Managers.MinigamesManager.DeclareCurrentMinigameWon();
                 Managers.MinigamesManager.EndCurrentMinigame(1);
-                Bugvars.catchSounds.clip = Resources.Load("325805__wagna__collect") as AudioClip;
-                Bugvars.catchSounds.Play();
+                catchSounds.clip = Resources.Load("325805__wagna__collect") as AudioClip;
+                catchSounds.Play();
             }
         }
 

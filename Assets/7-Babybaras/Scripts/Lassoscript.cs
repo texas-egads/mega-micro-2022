@@ -11,10 +11,9 @@ namespace Babybaras
         public static bool gotLightningbug = false;
         public static int throwing = 1; // throwing is 1 is throwing, -1 if pulling
         public static bool lassoing = false;
-        public static AudioSource bugSounds = Managers.AudioManager.CreateAudioSource();
-        public static AudioSource catchSounds = Managers.AudioManager.CreateAudioSource();
-
     }
+
+    
     
 
     public class Lassoscript : MonoBehaviour
@@ -74,14 +73,6 @@ namespace Babybaras
                 transform.position = collision.gameObject.transform.position;
             }
         }
-
-        /*  void OnTriggerStay2D(Collider2D collision) {
-            if (collision.gameObject.tag == "player") {
-                lassoing = false;
-                throwing = 1;
-            }
-            Debug.Log("On trigger stay");
-        } */
 
         public static float getLassoAngle() 
         {

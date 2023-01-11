@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6b7a9aa652a6f2f4ca9a0fcc8985d9c2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - UIText: {instanceID: 0}
+  - loopSound: {fileID: 8300000, guid: 6d6d6da655193ab45929e932cfbfd525, type: 3}
+  - winSound: {fileID: 8300000, guid: 338661444fb70164d816238cbaa9fdfa, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

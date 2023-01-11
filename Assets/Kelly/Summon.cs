@@ -52,6 +52,7 @@ namespace kelly
         public AudioClip castSound;
         public AudioClip failSound;
         public AudioClip winSound;
+        public AudioClip music;
 
         private List<GameObject> genArrows;
         private List<int> expected;
@@ -62,6 +63,13 @@ namespace kelly
         // Start is called before the first frame update
         void Start()
         {
+
+            AudioSource loop = Managers.AudioManager.CreateAudioSource();
+            loop.loop = true;
+            loop.clip = music;
+            loop.pitch = 1.7f;
+            loop.Play();
+
             cur = 0;
             genArrows = new List<GameObject>();
             expected = new List<int>();
@@ -148,7 +156,7 @@ namespace kelly
 
         private void playSpellSound()
         {
-            AudioSource audioSource = GetComponent<AudioSource>();
+            AudioSource audioSource = Managers.AudioManager.CreateAudioSource();
             audioSource.pitch = (Random.Range(0.9f, 2f));
             audioSource.clip = castSound;
             audioSource.Play();
@@ -156,7 +164,7 @@ namespace kelly
 
         private void playFailSound()
         {
-            AudioSource audioSource = GetComponent<AudioSource>();
+            AudioSource audioSource = Managers.AudioManager.CreateAudioSource();
             audioSource.pitch = (Random.Range(0.9f, 1f));
             audioSource.clip = failSound;
             audioSource.Play();

@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace TNDStudios { 
+namespace TNDStudios
+{
     public class GameManager : MonoBehaviour
     {
         public GameObject nodePrefab;

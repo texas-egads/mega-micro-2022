@@ -696,23 +696,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6715441104139681951, guid: c6119d33da80d8f489c53cee9e12c03c,
-        type: 3}
-      propertyPath: m_text
-      value: 'Programming and Art - <link=https://generalred.itch.io/><color=#8888ff><u>Adhan
-        Razzaque</u></color></link>
-
-        <link=https://freesound.org/s/264981/><color=#8888ff><u>SFX
-        Magic by renatalmar</u></color></link>
-
-        <link=https://freesound.org/s/519414/><color=#8888ff><u>Energy/magic
-        Shot by Iridiuss</u></color></link>'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6715441104554478712, guid: c6119d33da80d8f489c53cee9e12c03c,
-        type: 3}
-      propertyPath: m_text
-      value: Capybara-nator
-      objectReference: {fileID: 0}
     - target: {fileID: 6715441104554478713, guid: c6119d33da80d8f489c53cee9e12c03c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -768,12 +751,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6715441104993009012, guid: c6119d33da80d8f489c53cee9e12c03c,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4c94a4ce13d24474698bfe71064632c6,
-        type: 3}
     - target: {fileID: 6715441104993009014, guid: c6119d33da80d8f489c53cee9e12c03c,
         type: 3}
       propertyPath: m_SizeDelta.y

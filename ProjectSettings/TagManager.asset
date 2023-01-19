@@ -10,11 +10,6 @@ TagManager:
   - Object 4
   - Ground
   - Normal
-  - Healer
-  - Necromancer
-  - Flame
-  - Water
-  - Earth
   layers:
   - Default
   - TransparentFX

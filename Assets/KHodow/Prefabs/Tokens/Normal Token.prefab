@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 3130333136650644560}
   m_Layer: 0
   m_Name: Normal Token
-  m_TagString: Normal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

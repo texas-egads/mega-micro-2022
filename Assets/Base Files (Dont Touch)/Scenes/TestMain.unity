@@ -770,8 +770,110 @@ PrefabInstance:
     - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
       propertyPath: allMinigames.Array.size
-      value: 0
+      value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b6f0f460a36534e45a1135f14b07119c,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d6734330b5c03e46a0c9261efb0bf3a,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ca630ea49b82234895423420efd60c5,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 87aefea6ce47c9c42bd72d546c0a2894,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e5f4d3fa3c45b047887bf3e63691819,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2909f59072e2d4d4ca4c53bc43732080,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: e94f095c66fc343acb9cc0baaa9cff87,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 825cd6406f39afa4b99cfb4cad4d4411,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 72548d815cef843428b58e468ef73876,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 104e68704923f1041bd643758ca4ca3d,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 30ee8c0b7c2423543941f6e0082e7138,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab95cde4bf181244b95ded07a2bdc086,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ecd43c496dc0f7428dc5c3584276ee2,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: c87042073bc7f15458c468165218356a,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 623deb003ccc160489202804d2b4f930,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d00c29d02ba7431399896a7184abdd0,
+        type: 2}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f847cbab2112f4da8a3c9ef471a378,
+        type: 2}
     - target: {fileID: 566529860167362531, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
       propertyPath: m_RootOrder

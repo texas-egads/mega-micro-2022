@@ -22,7 +22,12 @@ public class MainScene : MonoBehaviour
     private Action spacePressedAction;
 
     private void Awake() {
-        normalBG = background.color;
+        if(background != null) {
+            normalBG = background.color;
+        } else {
+            Debug.Log("Background is Null in MainScene.cs");
+        }
+        
     }
 
     private void Start() {

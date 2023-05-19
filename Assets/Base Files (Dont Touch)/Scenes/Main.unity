@@ -254,8 +254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 0}
   statusText: {fileID: 0}
+  promptText: {fileID: 0}
   instructionText: {fileID: 0}
-  background: {fileID: 0}
+  background: {fileID: 1298500458}
   loseBG: {r: 0, g: 0, b: 0, a: 0}
   winBG: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &286624172
@@ -547,6 +548,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: allMinigames.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b6f0f460a36534e45a1135f14b07119c,
+        type: 2}
     - target: {fileID: 101251815701078123, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
       propertyPath: m_IsActive
@@ -1156,8 +1163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b93a7992b9a8b4b90c1ca774eea5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerObject: {fileID: 0}
-  timer: {fileID: 0}
 --- !u!114 &1237186472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1508,8 +1513,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 0}
   statusText: {fileID: 0}
+  promptText: {fileID: 0}
   instructionText: {fileID: 0}
-  background: {fileID: 0}
+  background: {fileID: 1298500458}
   loseBG: {r: 0, g: 0, b: 0, a: 0}
   winBG: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1620940450

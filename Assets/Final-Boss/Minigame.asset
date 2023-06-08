@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Final-Boss
   minigameType: 0
-  gameTime: 5143
+  gameTime: 0
   instruction: Press
   title: Final Boss
   creditsText: 'Example Example - Design

@@ -9,43 +9,56 @@ namespace Final_Boss
     public class Card : MonoBehaviour
     {
         public CardDescriptor cardDescriptor;
-        public float moveAmount = 5;
+        public float moveAmount = 25;
 
         // Events
-        public static event Action<int> CardPlayed; 
+        public static event Action<int> CardSelected;
+        public static event Action<int> CardUnselected;
         
-        private bool _hasBeenPlayed;
+        private bool _hasBeenSelected;
         private int _handIndex;
+        private float _deckY;
 
         private void Start()
         {
             cardDescriptor = Instantiate(cardDescriptor);
         }
 
-        public void DealCard(int handIndex)
+        public void DealCard(Vector3 position, int handIndex)
         {
+            transform.position = position;
+            _deckY = position.y;
             _handIndex = handIndex;
         }
 
         private void OnMouseDown()
         {
-            if (_hasBeenPlayed) return;
-            
-            Debug.Log("Playing card");
-            
-            CardPlayed?.Invoke(_handIndex);
+            if (_hasBeenSelected)
+            {
+                Debug.Log("Unselecting card");
+                
+                CardUnselected?.Invoke(_handIndex);
+            }
+            else
+            {
+                Debug.Log("Selecting card");
+                
+                CardSelected?.Invoke(_handIndex);
+            }
         }
 
-        public void CardSelected()
+        public void SelectCard()
         {
-            _hasBeenPlayed = true;
-            transform.DOMoveY(moveAmount, 0.5f);
+            Debug.Log("Card Selected");
+            _hasBeenSelected = true;
+            transform.DOMoveY(_deckY + moveAmount, 0.5f);
         }
 
-        public void CardUnselected()
+        public void UnselectCard()
         {
-            _hasBeenPlayed = false;
-            transform.DOMoveY(-moveAmount, 0.5f);
+            Debug.Log("Card Unselected");
+            _hasBeenSelected = false;
+            transform.DOMoveY(_deckY, 0.5f);
         }
     }
 }

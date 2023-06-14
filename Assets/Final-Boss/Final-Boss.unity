@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardDescriptor: {fileID: 11400000, guid: e2fa672cec2e34845a6beb643d31a4c7, type: 2}
-  moveAmount: 5
+  moveAmount: 25
 --- !u!61 &37234716
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardDescriptor: {fileID: 11400000, guid: a9878859c8e5d4ad18160b726ee52986, type: 2}
-  moveAmount: 5
+  moveAmount: 25
 --- !u!61 &796429997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1413,7 +1413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardDescriptor: {fileID: 11400000, guid: accfdabf5a93143b7aaf967da0842495, type: 2}
-  moveAmount: 5
+  moveAmount: 25
 --- !u!61 &1283775379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2188,7 +2188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardDescriptor: {fileID: 11400000, guid: 5a76347e445f148b0a4031a5d8f101ca, type: 2}
-  moveAmount: 5
+  moveAmount: 25
 --- !u!61 &2079209866
 BoxCollider2D:
   m_ObjectHideFlags: 0

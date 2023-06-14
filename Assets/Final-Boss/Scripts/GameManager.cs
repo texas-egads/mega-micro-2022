@@ -16,27 +16,27 @@ namespace Final_Boss
         public TMP_Text deckSizeText;
         public TMP_Text roundTimerText;
 
-        private bool[] _availableCardSlots;
+        private Card[] _cardsInHand;
+        private int _selectedCardIndex;
         private int _currentPlayerHealth;
         private int _currentEnemyHealth;
         private Coroutine _roundTimer;
 
         private void Start()
         {
-            _availableCardSlots = new bool[cardSlots.Length];
-            for (var i = 0; i < _availableCardSlots.Length; ++i)
-            {
-                _availableCardSlots[i] = true;
-            }
+            _cardsInHand = new Card[cardSlots.Length];
 
             deckSizeText.text = deck.Count.ToString();
 
-            Card.CardPlayed += OnCardPlayed;
+            Card.CardSelected += OnCardSelected;
+            Card.CardUnselected += OnCardUnselected;
 
             foreach (var card in deck)
             {
                 card.gameObject.SetActive(false);
             }
+
+            _selectedCardIndex = -1;
             
             // TODO: REMOVE
             _roundTimer = StartCoroutine(RunRoundTimer());
@@ -51,14 +51,13 @@ namespace Final_Boss
 
             var randomCard = deck[Random.Range(0, deck.Count)];
 
-            for (var i = 0; i < _availableCardSlots.Length; ++i)
+            for (var i = 0; i < _cardsInHand.Length; ++i)
             {
-                if (_availableCardSlots[i] == false) continue;
+                if (_cardsInHand[i] != null) continue;
 
                 randomCard.gameObject.SetActive(true);
-                randomCard.transform.position = cardSlots[i].position;
-                randomCard.DealCard(i);
-                _availableCardSlots[i] = false;
+                randomCard.DealCard(cardSlots[i].position, i);
+                _cardsInHand[i] = randomCard;
                 deck.Remove(randomCard);
                 deckSizeText.text = deck.Count.ToString();
                 return;
@@ -68,20 +67,38 @@ namespace Final_Boss
             Debug.Log("No available card slots");
         }
 
-        private void OnCardPlayed(int handIndex)
+        private void OnCardSelected(int handIndex)
         {
             Debug.Log($"Card {handIndex} was played");
-            _availableCardSlots[handIndex] = true;
+
+            if (_selectedCardIndex >= 0 && _cardsInHand[_selectedCardIndex])
+            {
+                _cardsInHand[_selectedCardIndex].UnselectCard();
+            }
+
+            _selectedCardIndex = handIndex;
+            _cardsInHand[handIndex].SelectCard();
+        }
+
+        private void OnCardUnselected(int handIndex)
+        {
+            // Already unselected
+            if (handIndex != _selectedCardIndex) return;
+
+            _selectedCardIndex = -1;
+            _cardsInHand[handIndex].UnselectCard();
         }
 
         public void OnConfirmRoundPressed()
         {
             if (_roundTimer == null) return;
 
-            var roundTimer = _roundTimer;
+            StopCoroutine(_roundTimer);
             _roundTimer = null;
-            StopCoroutine(roundTimer);
+            
             roundTimerText.gameObject.SetActive(false);
+            
+            EvaluateRound();
         }
 
         private IEnumerator RunRoundTimer()
@@ -98,6 +115,13 @@ namespace Final_Boss
 
             roundTimerText.text = "0";
             roundTimerText.gameObject.SetActive(false);
+            
+            EvaluateRound();
+        }
+
+        private void EvaluateRound()
+        {
+            
         }
     }
 }

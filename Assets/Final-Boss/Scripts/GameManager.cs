@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Final_Boss.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,15 +19,15 @@ namespace Final_Boss
 
         private Card[] _cardsInHand;
         private int _selectedCardIndex;
-        private int _currentPlayerHealth;
-        private int _currentEnemyHealth;
+        private int _currentPlayerHealth = 30;
+        private int _currentPlayerMana = 0;
+        private int _currentEnemyHealth = 30;
+        private int _currentEnemyMana = 0;
         private Coroutine _roundTimer;
 
         private void Start()
         {
             _cardsInHand = new Card[cardSlots.Length];
-
-            deckSizeText.text = deck.Count.ToString();
 
             Card.CardSelected += OnCardSelected;
             Card.CardUnselected += OnCardUnselected;
@@ -36,16 +37,119 @@ namespace Final_Boss
                 card.gameObject.SetActive(false);
             }
 
+            deckSizeText.text = deck.Count.ToString();
+
+            StartRound();
+        }
+
+        public void StartRound()
+        {
             _selectedCardIndex = -1;
-            
-            // TODO: REMOVE
+            ClearHand();
+
+            var dealAmount = Math.Min(_cardsInHand.Length, deck.Count);
+            for (var i = 0; i < dealAmount; ++i)
+            {
+                DrawCard();
+            }
+
+            // 1 mana per round
+            _currentPlayerMana += 1;
+            _currentEnemyMana += 1;
+
             _roundTimer = StartCoroutine(RunRoundTimer());
+        }
+
+        public void EndRound()
+        {
+            EvaluateRound();
+
+            if (_currentEnemyHealth <= 0)
+            {
+                Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                Managers.MinigamesManager.EndCurrentMinigame();
+            }
+            else if (_currentPlayerHealth <= 0)
+            {
+                Managers.MinigamesManager.DeclareCurrentMinigameLost();
+                Managers.MinigamesManager.EndCurrentMinigame();
+            }
+            else
+            {
+                StartRound();
+            }
+        }
+
+        private void EvaluateRound()
+        {
+            // Nothing selected
+            if (_selectedCardIndex < 0 || !_cardsInHand[_selectedCardIndex]) return;
+
+            var selectedCard = _cardsInHand[_selectedCardIndex];
+            var cardDescriptor = selectedCard.cardDescriptor;
+
+            switch (cardDescriptor)
+            {
+                case CardDescriptorAttack attackCard:
+                {
+                    HandleAttack(attackCard);
+                    break;
+                }
+                case CardDescriptorDefense defenseCard:
+                {
+                    HandleDefense(defenseCard);
+                    break;
+                }
+                case CardDescriptorHeal healCard:
+                {
+                    HandleHeal(healCard);
+                    break;
+                }
+                case CardDescriptorStun stunCard:
+                {
+                    HandleStun(stunCard);
+                    break;
+                }
+                case CardDescriptorCopy copyCard:
+                {
+                    HandleCopy(copyCard);
+                    break;
+                }
+                default:
+                {
+                    Debug.LogError("Could not cast card descriptor");
+                    break;
+                }
+            }
+        }
+
+        private void HandleAttack(CardDescriptorAttack card)
+        {
+            _currentEnemyHealth -= card.damage;
+            _currentPlayerMana -= card.manaCost;
+        }
+
+        private void HandleDefense(CardDescriptorDefense card)
+        {
+        }
+
+        private void HandleHeal(CardDescriptorHeal card)
+        {
+        }
+
+        private void HandleStun(CardDescriptorStun card)
+        {
+        }
+
+        private void HandleCopy(CardDescriptorCopy card)
+        {
         }
 
         public void DrawCard()
         {
             if (deck.Count < 1)
             {
+                Debug.Log("Out of cards in deck");
                 return;
             }
 
@@ -62,8 +166,8 @@ namespace Final_Boss
                 deckSizeText.text = deck.Count.ToString();
                 return;
             }
-            
-            
+
+
             Debug.Log("No available card slots");
         }
 
@@ -95,10 +199,30 @@ namespace Final_Boss
 
             StopCoroutine(_roundTimer);
             _roundTimer = null;
-            
+
             roundTimerText.gameObject.SetActive(false);
-            
-            EvaluateRound();
+
+            EndRound();
+        }
+
+        private void RemoveCardAt(int index)
+        {
+            if (index < 0) return;
+
+            var card = _cardsInHand[index];
+            _cardsInHand[index] = null;
+
+            if (card == null) return;
+
+            Destroy(card.gameObject);
+        }
+
+        private void ClearHand()
+        {
+            for (var i = 0; i < _cardsInHand.Length; ++i)
+            {
+                RemoveCardAt(i);
+            }
         }
 
         private IEnumerator RunRoundTimer()
@@ -115,13 +239,8 @@ namespace Final_Boss
 
             roundTimerText.text = "0";
             roundTimerText.gameObject.SetActive(false);
-            
-            EvaluateRound();
-        }
 
-        private void EvaluateRound()
-        {
-            
+            EndRound();
         }
     }
 }

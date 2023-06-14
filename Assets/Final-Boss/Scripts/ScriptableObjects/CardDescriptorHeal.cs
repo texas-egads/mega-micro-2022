@@ -1,5 +1,8 @@
+using UnityEngine;
+
 namespace Final_Boss.ScriptableObjects
 {
+    [CreateAssetMenu]
     public class CardDescriptorHeal : CardDescriptor
     {
         public int healAmount;

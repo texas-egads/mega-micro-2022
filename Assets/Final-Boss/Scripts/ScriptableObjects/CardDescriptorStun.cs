@@ -1,5 +1,8 @@
+using UnityEngine;
+
 namespace Final_Boss.ScriptableObjects
 {
+    [CreateAssetMenu]
     public class CardDescriptorStun : CardDescriptor
     {
         public int turnsApplied;

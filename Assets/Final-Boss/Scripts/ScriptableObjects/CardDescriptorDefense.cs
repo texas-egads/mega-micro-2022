@@ -1,5 +1,8 @@
+using UnityEngine;
+
 namespace Final_Boss.ScriptableObjects
 {
+    [CreateAssetMenu]
     public class CardDescriptorDefense : CardDescriptor
     {
         public int blockAmount;

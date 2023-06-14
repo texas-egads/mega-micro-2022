@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 37234717}
   - component: {fileID: 37234716}
   m_Layer: 0
-  m_Name: Card (1)
+  m_Name: Defense Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,11 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49cb8788758447caeb86f38f843f04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardName: Claw Slash
-  cardType: 0
-  manaCost: 0
-  cardValue: 3
-  turnsApplied: 1
+  cardDescriptor: {fileID: 11400000, guid: e2fa672cec2e34845a6beb643d31a4c7, type: 2}
+  moveAmount: 5
 --- !u!61 &37234716
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -242,7 +239,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.1510973, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1045,7 +1042,7 @@ GameObject:
   - component: {fileID: 796429998}
   - component: {fileID: 796429997}
   m_Layer: 0
-  m_Name: Card (3)
+  m_Name: Enemy Special Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1077,11 +1074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49cb8788758447caeb86f38f843f04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardName: Claw Slash
-  cardType: 0
-  manaCost: 0
-  cardValue: 3
-  turnsApplied: 1
+  cardDescriptor: {fileID: 11400000, guid: a9878859c8e5d4ad18160b726ee52986, type: 2}
+  moveAmount: 5
 --- !u!61 &796429997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1150,7 +1144,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.96862745, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1386,7 +1380,7 @@ GameObject:
   - component: {fileID: 1283775380}
   - component: {fileID: 1283775379}
   m_Layer: 0
-  m_Name: Card (2)
+  m_Name: Hero Special Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,11 +1412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49cb8788758447caeb86f38f843f04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardName: Claw Slash
-  cardType: 0
-  manaCost: 0
-  cardValue: 3
-  turnsApplied: 1
+  cardDescriptor: {fileID: 11400000, guid: accfdabf5a93143b7aaf967da0842495, type: 2}
+  moveAmount: 5
 --- !u!61 &1283775379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1491,7 +1482,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9652157, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2164,7 +2155,7 @@ GameObject:
   - component: {fileID: 2079209867}
   - component: {fileID: 2079209866}
   m_Layer: 0
-  m_Name: Card
+  m_Name: Attack Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2196,11 +2187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49cb8788758447caeb86f38f843f04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardName: Claw Slash
-  cardType: 0
-  manaCost: 0
-  cardValue: 3
-  turnsApplied: 1
+  cardDescriptor: {fileID: 11400000, guid: 5a76347e445f148b0a4031a5d8f101ca, type: 2}
+  moveAmount: 5
 --- !u!61 &2079209866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2269,7 +2257,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

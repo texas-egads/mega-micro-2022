@@ -1,5 +1,8 @@
+using UnityEngine;
+
 namespace Final_Boss.ScriptableObjects
 {
+    [CreateAssetMenu]
     public class CardDescriptorCopy : CardDescriptor
     {
         public int upgradeScale = 1;

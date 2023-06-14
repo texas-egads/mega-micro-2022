@@ -1,5 +1,8 @@
+using UnityEngine;
+
 namespace Final_Boss.ScriptableObjects
 {
+    [CreateAssetMenu]
     public class CardDescriptorAttack : CardDescriptor
     {
         public int damage;

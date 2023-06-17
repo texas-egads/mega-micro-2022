@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using Final_Boss.ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Final_Boss
 {
     public class GameManager : MonoBehaviour
     {
+        // Emit percentage of health
+        public UnityEvent<float> playerHealthChanged;
+        public UnityEvent<float> enemyHealthChanged;
+        
         public List<Card> deck = new List<Card>();
         public Transform[] cardSlots;
         public int roundLengthInSeconds = 30;
@@ -19,11 +26,13 @@ namespace Final_Boss
 
         private Card[] _cardsInHand;
         private int _selectedCardIndex;
-        private int _currentPlayerHealth = 30;
+        [SerializeField] private int playerHealth = 30;
         private int _currentPlayerMana = 0;
-        private int _currentEnemyHealth = 30;
+        [SerializeField] private int enemyHealth = 30;
         private int _currentEnemyMana = 0;
         private Coroutine _roundTimer;
+        private int _maxPlayerHealth;
+        private int _maxEnemyHealth;
 
         private void Start()
         {
@@ -38,6 +47,9 @@ namespace Final_Boss
             }
 
             deckSizeText.text = deck.Count.ToString();
+
+            _maxPlayerHealth = playerHealth;
+            _maxEnemyHealth = enemyHealth;
 
             StartRound();
         }
@@ -64,12 +76,12 @@ namespace Final_Boss
         {
             EvaluateRound();
 
-            if (_currentEnemyHealth <= 0)
+            if (enemyHealth <= 0)
             {
                 Managers.MinigamesManager.DeclareCurrentMinigameWon();
                 Managers.MinigamesManager.EndCurrentMinigame();
             }
-            else if (_currentPlayerHealth <= 0)
+            else if (playerHealth <= 0)
             {
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
                 Managers.MinigamesManager.EndCurrentMinigame();
@@ -123,9 +135,21 @@ namespace Final_Boss
             }
         }
 
+        private void DamageEnemy(int damage)
+        {
+            enemyHealth -= damage;
+            enemyHealthChanged.Invoke((float) enemyHealth/_maxEnemyHealth);
+        }
+
+        private void DamagePlayer(int damage)
+        {
+            playerHealth -= damage;
+            playerHealthChanged.Invoke((float) playerHealth / _maxPlayerHealth);
+        }
+
         private void HandleAttack(CardDescriptorAttack card)
         {
-            _currentEnemyHealth -= card.damage;
+            DamageEnemy(card.damage);
             _currentPlayerMana -= card.manaCost;
         }
 

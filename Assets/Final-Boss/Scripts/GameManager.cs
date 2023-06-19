@@ -145,7 +145,11 @@ namespace Final_Boss
             var cardDescriptor = selectedCard.cardDescriptor;
 
             // Not enough mana
-            if (PlayerMana < cardDescriptor.manaCost) return;
+            if (PlayerMana < cardDescriptor.manaCost)
+            {
+                selectedCard.UnselectCard();
+                return;
+            }
 
             switch (cardDescriptor)
             {
@@ -192,18 +196,23 @@ namespace Final_Boss
 
         private void HandleDefense(CardDescriptorDefense card)
         {
+            PlayerMana -= card.manaCost;
         }
 
         private void HandleHeal(CardDescriptorHeal card)
         {
+            PlayerHealth += card.healAmount;
+            PlayerMana -= card.manaCost;
         }
 
         private void HandleStun(CardDescriptorStun card)
         {
+            PlayerMana -= card.manaCost;
         }
 
         private void HandleCopy(CardDescriptorCopy card)
         {
+            PlayerMana -= card.manaCost;
         }
 
         public void DrawCard()

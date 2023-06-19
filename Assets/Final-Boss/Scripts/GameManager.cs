@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using Final_Boss.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Final_Boss
@@ -148,7 +146,7 @@ namespace Final_Boss
 
             // Not enough mana
             if (PlayerMana < cardDescriptor.manaCost) return;
-            
+
             switch (cardDescriptor)
             {
                 case CardDescriptorAttack attackCard:
@@ -179,9 +177,11 @@ namespace Final_Boss
                 default:
                 {
                     Debug.LogError("Could not cast card descriptor");
-                    break;
+                    return;
                 }
             }
+            
+            RemoveCardAt(_selectedCardIndex);
         }
 
         private void HandleAttack(CardDescriptorAttack card)
@@ -278,11 +278,26 @@ namespace Final_Boss
             Destroy(card.gameObject);
         }
 
+        private void ReturnCardAt(int index)
+        {
+            if (index < 0) return;
+
+            var card = _cardsInHand[index];
+            _cardsInHand[index] = null;
+
+            if (card == null) return;
+            
+            card.gameObject.SetActive(false);
+            
+            deck.Add(card);
+            deckSizeChanged.Invoke(deck.Count);
+        }
+
         private void ClearHand()
         {
             for (var i = 0; i < _cardsInHand.Length; ++i)
             {
-                RemoveCardAt(i);
+                ReturnCardAt(i);
             }
         }
 

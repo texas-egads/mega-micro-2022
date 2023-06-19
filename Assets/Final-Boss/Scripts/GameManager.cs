@@ -22,6 +22,9 @@ namespace Final_Boss
         // Emit size of deck
         public UnityEvent<int> deckSizeChanged;
 
+        public UnityEvent roundStarted;
+        public UnityEvent cardSelected;
+
         public List<Card> deck = new List<Card>();
         public Transform[] cardSlots;
         public int roundLengthInSeconds = 30;
@@ -114,6 +117,7 @@ namespace Final_Boss
             EnemyMana += 1;
 
             _roundTimer = StartCoroutine(RunRoundTimer());
+            roundStarted.Invoke();
         }
 
         public void EndRound()
@@ -252,6 +256,8 @@ namespace Final_Boss
 
             _selectedCardIndex = handIndex;
             _cardsInHand[handIndex].SelectCard();
+            
+            cardSelected.Invoke();
         }
 
         private void OnCardUnselected(int handIndex)

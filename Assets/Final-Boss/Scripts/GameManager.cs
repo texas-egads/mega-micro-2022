@@ -26,13 +26,33 @@ namespace Final_Boss
 
         private Card[] _cardsInHand;
         private int _selectedCardIndex;
-        [SerializeField] private int playerHealth = 30;
+        private int _playerHealth;
         private int _currentPlayerMana = 0;
-        [SerializeField] private int enemyHealth = 30;
+        private int _enemyHealth;
         private int _currentEnemyMana = 0;
         private Coroutine _roundTimer;
-        private int _maxPlayerHealth;
-        private int _maxEnemyHealth;
+        [SerializeField] private int maxPlayerHealth = 30;
+        [SerializeField] private int maxEnemyHealth = 30;
+
+        private int PlayerHealth
+        {
+            get => _playerHealth;
+            set
+            {
+                _playerHealth = value;
+                playerHealthChanged.Invoke((float) _playerHealth / maxPlayerHealth);
+            }
+        }
+
+        private int EnemyHealth
+        {
+            get => _enemyHealth;
+            set
+            {
+                _enemyHealth = value;
+                enemyHealthChanged.Invoke((float) _enemyHealth / maxEnemyHealth);
+            }
+        }
 
         private void Start()
         {
@@ -48,8 +68,8 @@ namespace Final_Boss
 
             deckSizeText.text = deck.Count.ToString();
 
-            _maxPlayerHealth = playerHealth;
-            _maxEnemyHealth = enemyHealth;
+            PlayerHealth = maxPlayerHealth;
+            EnemyHealth = maxEnemyHealth;
 
             StartRound();
         }
@@ -76,12 +96,12 @@ namespace Final_Boss
         {
             EvaluateRound();
 
-            if (enemyHealth <= 0)
+            if (EnemyHealth <= 0)
             {
                 Managers.MinigamesManager.DeclareCurrentMinigameWon();
                 Managers.MinigamesManager.EndCurrentMinigame();
             }
-            else if (playerHealth <= 0)
+            else if (PlayerHealth <= 0)
             {
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
                 Managers.MinigamesManager.EndCurrentMinigame();
@@ -135,21 +155,9 @@ namespace Final_Boss
             }
         }
 
-        private void DamageEnemy(int damage)
-        {
-            enemyHealth -= damage;
-            enemyHealthChanged.Invoke((float) enemyHealth/_maxEnemyHealth);
-        }
-
-        private void DamagePlayer(int damage)
-        {
-            playerHealth -= damage;
-            playerHealthChanged.Invoke((float) playerHealth / _maxPlayerHealth);
-        }
-
         private void HandleAttack(CardDescriptorAttack card)
         {
-            DamageEnemy(card.damage);
+            EnemyHealth -= card.damage;
             _currentPlayerMana -= card.manaCost;
         }
 

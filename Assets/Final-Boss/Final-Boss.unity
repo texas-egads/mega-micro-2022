@@ -412,80 +412,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1453784937 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4570555613353706973, guid: 5a764e4854b3e42c2ace82d03224c147,
-    type: 3}
-  m_PrefabInstance: {fileID: 6841138039852720599}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1453784939 stripped
+--- !u!114 &1453784941 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9222151264640216954, guid: 5a764e4854b3e42c2ace82d03224c147,
-    type: 3}
-  m_PrefabInstance: {fileID: 6841138039852720599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453784937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1453784941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453784937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811eb789520434864a36cffef64c4678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tmp: {fileID: 1453784939}
---- !u!114 &1511845076 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6841138041361894659, guid: 5a764e4854b3e42c2ace82d03224c147,
+  m_CorrespondingSourceObject: {fileID: 6738862444726495030, guid: 5a764e4854b3e42c2ace82d03224c147,
     type: 3}
   m_PrefabInstance: {fileID: 6841138039852720599}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 811eb789520434864a36cffef64c4678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1552954561 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 736117636084768715, guid: 5a764e4854b3e42c2ace82d03224c147,
+--- !u!114 &1552954565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2481622230177897334, guid: 5a764e4854b3e42c2ace82d03224c147,
     type: 3}
   m_PrefabInstance: {fileID: 6841138039852720599}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1552954563 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2924750263078964848, guid: 5a764e4854b3e42c2ace82d03224c147,
-    type: 3}
-  m_PrefabInstance: {fileID: 6841138039852720599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552954561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1552954565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552954561}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 811eb789520434864a36cffef64c4678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmp: {fileID: 1552954563}
 --- !u!1 &1696004558
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +513,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  deckSizeChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6841138039852720600}
+        m_TargetAssemblyTypeName: Final_Boss.Scripts.IntToTMPText, Assembly-CSharp
+        m_MethodName: OnIntToText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   deck:
   - {fileID: 2079209865}
   - {fileID: 37234715}
@@ -573,7 +538,6 @@ MonoBehaviour:
   - {fileID: 57011999}
   - {fileID: 1822305328}
   roundLengthInSeconds: 30
-  deckSizeText: {fileID: 1511845076}
   roundTimerText: {fileID: 701091478}
   maxPlayerHealth: 30
   maxEnemyHealth: 30
@@ -995,6 +959,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a764e4854b3e42c2ace82d03224c147, type: 3}
+--- !u!114 &6841138039852720600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1872296017246810742, guid: 5a764e4854b3e42c2ace82d03224c147,
+    type: 3}
+  m_PrefabInstance: {fileID: 6841138039852720599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811eb789520434864a36cffef64c4678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7562287632850297841
 PrefabInstance:
   m_ObjectHideFlags: 0

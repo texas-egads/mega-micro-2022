@@ -20,12 +20,14 @@ namespace Final_Boss
         // Emit number of mana remaining
         public UnityEvent<int> playerManaChanged;
         public UnityEvent<int> enemyManaChanged;
+        
+        // Emit size of deck
+        public UnityEvent<int> deckSizeChanged;
 
         public List<Card> deck = new List<Card>();
         public Transform[] cardSlots;
         public int roundLengthInSeconds = 30;
-
-        public TMP_Text deckSizeText;
+        
         public TMP_Text roundTimerText;
 
         private Card[] _cardsInHand;
@@ -89,8 +91,8 @@ namespace Final_Boss
             {
                 card.gameObject.SetActive(false);
             }
-
-            deckSizeText.text = deck.Count.ToString();
+            
+            deckSizeChanged.Invoke(deck.Count);
 
             PlayerHealth = maxPlayerHealth;
             EnemyHealth = maxEnemyHealth;
@@ -144,6 +146,9 @@ namespace Final_Boss
             var selectedCard = _cardsInHand[_selectedCardIndex];
             var cardDescriptor = selectedCard.cardDescriptor;
 
+            // Not enough mana
+            if (PlayerMana < cardDescriptor.manaCost) return;
+            
             switch (cardDescriptor)
             {
                 case CardDescriptorAttack attackCard:
@@ -219,7 +224,7 @@ namespace Final_Boss
                 randomCard.DealCard(cardSlots[i].position, i);
                 _cardsInHand[i] = randomCard;
                 deck.Remove(randomCard);
-                deckSizeText.text = deck.Count.ToString();
+                deckSizeChanged.Invoke(deck.Count);
                 return;
             }
 

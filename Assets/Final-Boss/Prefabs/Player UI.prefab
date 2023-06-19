@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5792161349306846031}
   - component: {fileID: 2923549410346930092}
   - component: {fileID: 2924750263078964848}
+  - component: {fileID: 2481622230177897334}
   m_Layer: 5
   m_Name: Amount
   m_TagString: Untagged
@@ -134,6 +135,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2481622230177897334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736117636084768715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811eb789520434864a36cffef64c4678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmp: {fileID: 2924750263078964848}
 --- !u!1 &3233157755645105335
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +330,7 @@ GameObject:
   - component: {fileID: 1922043644661504051}
   - component: {fileID: 4244045051449747857}
   - component: {fileID: 9222151264640216954}
+  - component: {fileID: 6738862444726495030}
   m_Layer: 5
   m_Name: Amount
   m_TagString: Untagged
@@ -439,6 +454,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6738862444726495030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570555613353706973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811eb789520434864a36cffef64c4678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmp: {fileID: 9222151264640216954}
 --- !u!1 &5559973643816518115
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,6 +2426,7 @@ GameObject:
   - component: {fileID: 6841138041361894660}
   - component: {fileID: 6841138041361894658}
   - component: {fileID: 6841138041361894659}
+  - component: {fileID: 1872296017246810742}
   m_Layer: 5
   m_Name: Deck Count Text
   m_TagString: Untagged
@@ -2521,3 +2550,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1872296017246810742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841138041361894661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811eb789520434864a36cffef64c4678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmp: {fileID: 6841138041361894659}

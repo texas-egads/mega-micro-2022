@@ -17,6 +17,10 @@ namespace Final_Boss
         public UnityEvent<float> playerHealthChanged;
         public UnityEvent<float> enemyHealthChanged;
         
+        // Emit number of mana remaining
+        public UnityEvent<int> playerManaChanged;
+        public UnityEvent<int> enemyManaChanged;
+
         public List<Card> deck = new List<Card>();
         public Transform[] cardSlots;
         public int roundLengthInSeconds = 30;
@@ -27,9 +31,9 @@ namespace Final_Boss
         private Card[] _cardsInHand;
         private int _selectedCardIndex;
         private int _playerHealth;
-        private int _currentPlayerMana = 0;
+        private int _playerMana;
         private int _enemyHealth;
-        private int _currentEnemyMana = 0;
+        private int _enemyMana;
         private Coroutine _roundTimer;
         [SerializeField] private int maxPlayerHealth = 30;
         [SerializeField] private int maxEnemyHealth = 30;
@@ -51,6 +55,26 @@ namespace Final_Boss
             {
                 _enemyHealth = value;
                 enemyHealthChanged.Invoke((float) _enemyHealth / maxEnemyHealth);
+            }
+        }
+
+        private int PlayerMana
+        {
+            get => _playerMana;
+            set
+            {
+                _playerMana = value;
+                playerManaChanged.Invoke(value);
+            }
+        }
+
+        private int EnemyMana
+        {
+            get => _enemyMana;
+            set
+            {
+                _enemyMana = value;
+                enemyManaChanged.Invoke(value);
             }
         }
 
@@ -86,8 +110,8 @@ namespace Final_Boss
             }
 
             // 1 mana per round
-            _currentPlayerMana += 1;
-            _currentEnemyMana += 1;
+            PlayerMana += 1;
+            EnemyMana += 1;
 
             _roundTimer = StartCoroutine(RunRoundTimer());
         }
@@ -158,7 +182,7 @@ namespace Final_Boss
         private void HandleAttack(CardDescriptorAttack card)
         {
             EnemyHealth -= card.damage;
-            _currentPlayerMana -= card.manaCost;
+            PlayerMana -= card.manaCost;
         }
 
         private void HandleDefense(CardDescriptorDefense card)

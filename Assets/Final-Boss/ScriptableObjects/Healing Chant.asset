@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Healing Chant
   m_EditorClassIdentifier: 
   cardName: Healing Chant
+  cardDescription: d
   manaCost: 1
   healAmount: 4

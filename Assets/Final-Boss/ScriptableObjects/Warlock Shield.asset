@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Warlock Shield
   m_EditorClassIdentifier: 
   cardName: Warlock Shield
+  cardDescription: h
   manaCost: 0
   blockAmount: 3
   shouldEvade: 0

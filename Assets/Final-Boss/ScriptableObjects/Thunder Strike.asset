@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Thunder Strike
   m_EditorClassIdentifier: 
   cardName: Thunder Strike
+  cardDescription: g
   manaCost: 3
   damage: 7

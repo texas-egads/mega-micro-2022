@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Fire Blast
   m_EditorClassIdentifier: 
   cardName: Fire Blast
+  cardDescription: c
   manaCost: 1
   damage: 5

@@ -30,6 +30,8 @@ namespace Final_Boss
         public int roundLengthInSeconds = 30;
         
         public TMP_Text roundTimerText;
+        public TMP_Text cardTitleText;
+        public TMP_Text cardDescriptionText;
 
         private Card[] _cardsInHand;
         private int _selectedCardIndex;
@@ -256,7 +258,10 @@ namespace Final_Boss
 
             _selectedCardIndex = handIndex;
             _cardsInHand[handIndex].SelectCard();
-            
+
+            cardTitleText.text = _cardsInHand[handIndex].cardDescriptor.cardName;
+            cardDescriptionText.text = _cardsInHand[handIndex].cardDescriptor.cardDescription;
+
             cardSelected.Invoke();
         }
 

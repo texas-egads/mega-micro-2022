@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Is this your card
   m_EditorClassIdentifier: 
   cardName: Is this your card?
+  cardDescription: e
   manaCost: 1
   turnsApplied: 1

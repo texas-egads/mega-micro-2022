@@ -1190,6 +1190,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 2213839061921389555, guid: 5a764e4854b3e42c2ace82d03224c147,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4547548048963283610, guid: 5a764e4854b3e42c2ace82d03224c147,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1379,6 +1384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299939662693415748, guid: 5a764e4854b3e42c2ace82d03224c147,
+        type: 3}
+      propertyPath: m_text
+      value: Select a Card!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a764e4854b3e42c2ace82d03224c147, type: 3}

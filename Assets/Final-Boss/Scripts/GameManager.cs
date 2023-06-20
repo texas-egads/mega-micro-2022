@@ -270,6 +270,9 @@ namespace Final_Boss
             // Already unselected
             if (handIndex != _selectedCardIndex) return;
 
+            cardTitleText.text = "Select a card!";
+            cardDescriptionText.text = "";
+
             _selectedCardIndex = -1;
             _cardsInHand[handIndex].UnselectCard();
         }

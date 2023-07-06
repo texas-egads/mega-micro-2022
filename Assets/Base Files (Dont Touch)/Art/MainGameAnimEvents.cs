@@ -13,6 +13,7 @@ public class MainGameAnimEvents : MonoBehaviour
         potion.Clear();
     }*/
     [SerializeField] private Animator UIAnim;
+    [SerializeField] private Animator CamAnim;
 
     public int currentHealthTest = 3;
     public bool winTest;
@@ -33,6 +34,10 @@ public class MainGameAnimEvents : MonoBehaviour
             UIAnim.Play("A_Life_" + (currentHealthTest));
         }
 
+    }
+    public void CameraShake()
+    {
+        CamAnim.Play("A_CameraShake");
     }
 }
 }

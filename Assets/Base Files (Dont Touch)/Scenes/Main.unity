@@ -157,10 +157,10 @@ RectTransform:
   m_Father: {fileID: 1115318140}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -187.7, y: 113.3}
-  m_SizeDelta: {x: 35.602, y: 45.5987}
+  m_AnchorMin: {x: 0.24375, y: 0.70000005}
+  m_AnchorMax: {x: 0.28625003, y: 0.80222225}
+  m_AnchoredPosition: {x: 0.30004883, y: 0.2999878}
+  m_SizeDelta: {x: 1.602005, y: -0.40129852}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9263752
 MonoBehaviour:
@@ -6060,10 +6060,10 @@ RectTransform:
   m_Father: {fileID: 1115318140}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -243.5, y: 119.9}
-  m_SizeDelta: {x: 40.5952, y: 51.9939}
+  m_AnchorMin: {x: 0.16875, y: 0.708889}
+  m_AnchorMax: {x: 0.22000001, y: 0.8222223}
+  m_AnchoredPosition: {x: 1, y: 0.3999939}
+  m_SizeDelta: {x: -0.40480042, y: 0.9938965}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911793462
 MonoBehaviour:
@@ -6404,10 +6404,10 @@ RectTransform:
   m_Father: {fileID: 1115318140}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -301, y: 124}
-  m_SizeDelta: {x: 40.5952, y: 51.9939}
+  m_AnchorMin: {x: 0.09875, y: 0.7177778}
+  m_AnchorMax: {x: 0.14875, y: 0.8333335}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.59521484, y: -0.0061035156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005693772
 MonoBehaviour:
@@ -6915,6 +6915,7 @@ GameObject:
   - component: {fileID: 1298500457}
   - component: {fileID: 1298500459}
   - component: {fileID: 1298500458}
+  - component: {fileID: 1298500460}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -6959,6 +6960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIAnim: {fileID: 0}
+  CamAnim: {fileID: 0}
   currentHealthTest: 0
   winTest: 0
 --- !u!222 &1298500459
@@ -6969,6 +6971,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298500456}
   m_CullTransparentMesh: 0
+--- !u!95 &1298500460
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298500456}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6b7605276f82f94ca5aa22ea9a9469e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1320359631
 GameObject:
   m_ObjectHideFlags: 0
@@ -7718,6 +7739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIAnim: {fileID: 1115318141}
+  CamAnim: {fileID: 1298500460}
   currentHealthTest: 2
   winTest: 0
 --- !u!1 &1739601161

@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace MainGameArt
+{
 public class MainGameAnimEvents : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //[SerializeField] private ParticleSystem potion;
+    private MinigameStatus status;
+    /*void ResetParticleSystem()
     {
-        
-    }
+        potion.Clear();
+    }*/
+    [SerializeField] private Animator UIAnim;
 
-    // Update is called once per frame
-    void Update()
+    public int currentHealthTest = 3;
+    public bool winTest;
+    private void Awake()
     {
-        
+        UIAnim.Play("A_LifeHold_" + (currentHealthTest));
     }
+    public void UpdateUI()
+    {
+        Debug.Log("ui is being updated");
+
+        if (winTest == true) //status.previousMinigameResult == WinLose.WIN)
+        {
+            UIAnim.Play("A_LifeHold_" + (currentHealthTest));
+        }
+        else
+        {
+            UIAnim.Play("A_Life_" + (currentHealthTest));
+        }
+
+    }
+}
 }

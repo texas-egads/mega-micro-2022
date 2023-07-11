@@ -30,8 +30,8 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.0166667
-        value: 0
+        time: 1
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -58,7 +58,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.0166667
+        time: 1
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -158,6 +158,44 @@ AnimationClip:
     path: VFX + Cauldron Front/UIParticle/Potion
     classID: 198
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_OverrideSorting
+    path: Cauldron Back
+    classID: 223
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_OverrideSorting
+    path: VFX + Cauldron Front
+    classID: 223
+    script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
@@ -180,6 +218,8 @@ AnimationClip:
       value: {fileID: 21300000, guid: fce03f07d06123f4490101d8944e509a, type: 3}
     - time: 0.9
       value: {fileID: 21300000, guid: af2061b3ba69aff4d9a11abcb301a846, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: 2b39b3474033dfb4f931a3eb73143896, type: 3}
     attribute: m_Sprite
     path: Babybara
     classID: 114
@@ -244,6 +284,20 @@ AnimationClip:
       customType: 27
       isPPtrCurve: 0
     - serializedVersion: 2
+      path: 1978207165
+      attribute: 1211281033
+      script: {fileID: 0}
+      typeID: 223
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3302253125
+      attribute: 1211281033
+      script: {fileID: 0}
+      typeID: 223
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
       path: 1831052642
       attribute: 2015549526
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -289,6 +343,7 @@ AnimationClip:
     - {fileID: 21300000, guid: 28d4a5812a4553c44a415759759cea50, type: 3}
     - {fileID: 21300000, guid: fce03f07d06123f4490101d8944e509a, type: 3}
     - {fileID: 21300000, guid: af2061b3ba69aff4d9a11abcb301a846, type: 3}
+    - {fileID: 21300000, guid: 2b39b3474033dfb4f931a3eb73143896, type: 3}
     - {fileID: 21300000, guid: 682be7f9577856b4c84140b435b73967, type: 3}
     - {fileID: 21300000, guid: 645ecf1de940bd64d8203b2c7aa914dc, type: 3}
     - {fileID: 21300000, guid: f972ad5e5d48da641a211178b406a310, type: 3}
@@ -336,8 +391,8 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.0166667
-        value: 0
+        time: 1
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -364,7 +419,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.0166667
+        time: 1
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -463,6 +518,44 @@ AnimationClip:
     attribute: InitialModule.gravityModifier.scalar
     path: VFX + Cauldron Front/UIParticle/Potion
     classID: 198
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_OverrideSorting
+    path: Cauldron Back
+    classID: 223
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_OverrideSorting
+    path: VFX + Cauldron Front
+    classID: 223
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0

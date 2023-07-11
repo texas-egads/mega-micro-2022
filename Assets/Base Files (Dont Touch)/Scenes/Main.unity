@@ -6013,6 +6013,7 @@ GameObject:
   - component: {fileID: 858258720}
   - component: {fileID: 858258723}
   - component: {fileID: 858258721}
+  - component: {fileID: 858258722}
   m_Layer: 5
   m_Name: VFX + Cauldron Front
   m_TagString: Untagged
@@ -6094,6 +6095,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!223 &858258722
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858258719}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 6
+  m_TargetDisplay: 0
 --- !u!222 &858258723
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7299,6 +7321,7 @@ GameObject:
   - component: {fileID: 1330256121}
   - component: {fileID: 1330256123}
   - component: {fileID: 1330256122}
+  - component: {fileID: 1330256124}
   m_Layer: 5
   m_Name: Cauldron Back
   m_TagString: Untagged
@@ -7363,6 +7386,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330256120}
   m_CullTransparentMesh: 1
+--- !u!223 &1330256124
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330256120}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 5
+  m_TargetDisplay: 0
 --- !u!1 &1335606615
 GameObject:
   m_ObjectHideFlags: 0

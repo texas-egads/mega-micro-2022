@@ -6,32 +6,34 @@ namespace MainGameArt
 {
 public class MainGameAnimEvents : MonoBehaviour
 {
-    //[SerializeField] private ParticleSystem potion;
     private MinigameStatus status;
-    /*void ResetParticleSystem()
-    {
-        potion.Clear();
-    }*/
-    [SerializeField] private Animator UIAnim;
-    [SerializeField] private Animator CamAnim;
+    [SerializeField] private Animator UIAnim; //animator on Background > Animation Manager > Chalkboard > Lives
+    [SerializeField] private Animator AnimManager; //animator on Background > Animation Manager
+    [SerializeField] private Animator CamAnim; //animator on Background
 
-    public int currentHealthTest = 3;
-    public bool winTest;
+    //public int currentHealthTest = 3;
+    //public bool winTest;
     private void Awake()
     {
-        UIAnim.Play("A_LifeHold_" + (currentHealthTest));
+        UIAnim.Play("A_LifeHold_" + (status.currentHealth));
     }
     public void UpdateUI()
     {
         Debug.Log("ui is being updated");
 
-        if (winTest == true) //status.previousMinigameResult == WinLose.WIN)
+        if (status.previousMinigameResult == WinLose.WIN)
         {
-            UIAnim.Play("A_LifeHold_" + (currentHealthTest));
+            //if minigame is won, life UI stays the same
+            UIAnim.Play("A_LifeHold_" + (status.currentHealth));
         }
         else
         {
-            UIAnim.Play("A_Life_" + (currentHealthTest));
+            //if minigame is lose, add a strike to life UI
+            UIAnim.Play("A_Life_" + (status.currentHealth));
+            if (status.currentHealth <= 0)
+            {
+                AnimManager.Play("A_lose_gameover");
+            }
         }
 
     }

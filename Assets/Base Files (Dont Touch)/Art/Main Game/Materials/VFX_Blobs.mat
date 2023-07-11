@@ -9,12 +9,13 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: VFX_Blobs
   m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _ALPHATEST_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - ALWAYS
   m_SavedProperties:
@@ -39,7 +40,7 @@ Material:
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
     - _ColorMode: 0
-    - _Cull: 2
+    - _Cull: 0
     - _Cutoff: 0.5
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
@@ -49,7 +50,7 @@ Material:
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
     - _LightingEnabled: 0
-    - _Mode: 0
+    - _Mode: 1
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0

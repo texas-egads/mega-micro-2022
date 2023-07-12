@@ -26,4 +26,58 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0-MyTeam (Example - Dont Touch)/0-Scene.unity
     guid: d9ff06deefccc284d841371feb3b8c3c
+  - enabled: 1
+    path: Assets/2-grizzledwarveteran23/2-grizzledwarveteran23.unity
+    guid: 7a4222fdc6289f64885636e58c384b48
+  - enabled: 1
+    path: Assets/1-GamersWithGangrene/1-GamersWithGangrene.unity
+    guid: 7d3a0650f40aafa498c974d13acf1494
+  - enabled: 1
+    path: Assets/3-Me, Myself, and I/EldenBara.unity
+    guid: 000c2bcea7e9244439b9fdeca1c4a199
+  - enabled: 1
+    path: Assets/4-TNDStudios/4-TNDStudios.unity
+    guid: 028e826e2edf1494487810324759d709
+  - enabled: 1
+    path: Assets/6-LonePinkCapybara/6-Potions101.unity
+    guid: 239d1d3518c88d0449ae2b6efe3f5a5a
+  - enabled: 1
+    path: Assets/7-Babybaras/7-Babybaras.unity
+    guid: 7c38fab155fadd64d9c9082e456c2a41
+  - enabled: 1
+    path: Assets/8-Wombies_1/8-Wombies_1.unity
+    guid: fc78ed11af371a844a4da8bb360e33db
+  - enabled: 1
+    path: Assets/8-Wombies_2/8-Wombies_2.unity
+    guid: 3ca6b7a310644b24c8b8f4804a3c223d
+  - enabled: 1
+    path: Assets/9-MateriaHunter/9-MateriaHunter.unity
+    guid: ecede59a4ec6f41debb10f7255d3035b
+  - enabled: 1
+    path: Assets/dashi/dashi-Scene.unity
+    guid: dfefc9106252ca746a85ef69bed8a924
+  - enabled: 1
+    path: Assets/iDrowned/iDrowned.unity
+    guid: 450f7ccddd6d48948ae4f088807eb808
+  - enabled: 1
+    path: Assets/imjayk8815/imjayk8815.unity
+    guid: d638a3b1782fdee4b9315b5caa1bf850
+  - enabled: 1
+    path: Assets/Kelly/kelly.unity
+    guid: 7a4557d726bd9ad4294706da7496adec
+  - enabled: 1
+    path: Assets/KHodow/KHodow.unity
+    guid: 6f33dc226ba9c8947b6f15a441396627
+  - enabled: 1
+    path: Assets/Loremonger/Loremonger.unity
+    guid: f16bf2d12e5abba4297c3b05f151383a
+  - enabled: 1
+    path: Assets/Solo-General Red#8888/Solo-General Red#8888.unity
+    guid: 081200ffb189f4a0c83468ae5075982b
+  - enabled: 1
+    path: Assets/ThisIsMax#2165/MainScene.unity
+    guid: 5cae82322e4a88945878ea73175eb7ed
+  - enabled: 1
+    path: Assets/Final-Boss/Final-Boss.unity
+    guid: f61b53a44272bd146bda05e290969f1e
   m_configObjects: {}

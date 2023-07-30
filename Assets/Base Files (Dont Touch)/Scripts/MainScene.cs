@@ -21,6 +21,10 @@ public class MainScene : MonoBehaviour
     private bool oldSpacePressed;
     private Action spacePressedAction;
 
+    //this will be on my default,
+    //turn it off for the actual game implementation.
+    public bool debugMode = true;
+
     private void Awake() {
         if(background != null) {
             normalBG = background.color;
@@ -68,31 +72,41 @@ public class MainScene : MonoBehaviour
     }
 
     private void OnBeginIntermission(MinigameStatus status, Action intermissionFinishedCallback) {
-        // write all of the status to the screen
-        statusText.text =
-            $"Result of previous minigame: {(status.previousMinigameResult == WinLose.WIN ? "Won" : status.previousMinigameResult == WinLose.LOSE ? "Lost" : "N/A")}\n" +
-            $"Rounds completed: {status.nextRoundNumber} out of {status.totalRounds}\n" +
-            $"Lives: {status.currentHealth}\n" +
-            $"Overall game status: {(status.gameResult == WinLose.WIN ? "Won" : status.gameResult == WinLose.LOSE ? "Lost" : "Playing")}";
+        if(debugMode) {
+            // write all of the status to the screen
+            statusText.text =
+                $"Result of previous minigame: {(status.previousMinigameResult == WinLose.WIN ? "Won" : status.previousMinigameResult == WinLose.LOSE ? "Lost" : "N/A")}\n" +
+                $"Rounds completed: {status.nextRoundNumber} out of {status.totalRounds}\n" +
+                $"Lives: {status.currentHealth}\n" +
+                $"Overall game status: {(status.gameResult == WinLose.WIN ? "Won" : status.gameResult == WinLose.LOSE ? "Lost" : "Playing")}";
+        }
 
         // flash a color if the game was won/lost
-        if (status.previousMinigameResult == WinLose.WIN) {
-            background.color = winBG;
-        }
-        if (status.previousMinigameResult == WinLose.LOSE) {
-            background.color = loseBG;
+        if(debugMode) {
+            if (status.previousMinigameResult == WinLose.WIN) {
+                background.color = winBG;
+            }
+            if (status.previousMinigameResult == WinLose.LOSE) {
+                background.color = loseBG;
+            }
         }
 
-        if (status.nextMinigame != null) {
-            // prepare for the next minigame
-            DOVirtual.DelayedCall(1f, () => {
-                // return the background color to what it was before
-                background.color = normalBG;
+        if(debugMode) {
+            if (status.nextMinigame != null) {
+                // prepare for the next minigame
+                DOVirtual.DelayedCall(1f, () => {
+                    // return the background color to what it was before
+                    background.color = normalBG;
 
-                // await input
-                promptText.text = "Press SPACE to start next minigame";
-                spacePressedAction = () => OnProceed(status, intermissionFinishedCallback);
-            }, false);
+                    // await input
+                    promptText.text = "Press SPACE to start next minigame";
+                    spacePressedAction = () => OnProceed(status, intermissionFinishedCallback);
+                }, false);
+            }
+        } else {
+            //do like the statement above, except do not use wait on space:
+            //just call the action after a delay of 3 seconds.
+            DOVirtual.DelayedCall(4.66f, () => OnProceed(status, intermissionFinishedCallback), false);
         }
     }
 

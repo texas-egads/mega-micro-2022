@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: 9e99fec12380642ff95ba49b93bf90fc, type: 3}
   pressedImage: {fileID: 21300000, guid: edfc1605906a046499472f42ef479fc9, type: 3}
-  keyToPress: 275
+  keyToPress: 100
 --- !u!212 &262262423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  keyToPress: 274
+  keyToPress: 115
 --- !u!61 &270208874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  keyToPress: 276
+  keyToPress: 97
 --- !u!61 &514440991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  keyToPress: 273
+  keyToPress: 119
 --- !u!61 &1204515265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  keyToPress: 275
+  keyToPress: 100
 --- !u!61 &1311864446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1534,7 +1534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583011666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9, y: -4.44, z: 0}
+  m_LocalPosition: {x: 3.1, y: -4.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1637,7 +1637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePressed: 0
-  keyToPress: 273
+  keyToPress: 119
 --- !u!61 &1651907589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: fd445595de23d4037b9b4d5fae41f2df, type: 3}
   pressedImage: {fileID: 21300000, guid: 56bed9e1f228947b68ba6eaaeff21a73, type: 3}
-  keyToPress: 276
+  keyToPress: 97
 --- !u!212 &1973213358
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1845,7 +1845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: 390640df4ff5144f09dc0c6f44a163f7, type: 3}
   pressedImage: {fileID: 21300000, guid: e6b23c2e572884b7c9ca7a4fa8b95c51, type: 3}
-  keyToPress: 273
+  keyToPress: 119
 --- !u!212 &2011745443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1992,7 +1992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: e9d6bc059d9124d3bb40d9276dc2bfcc, type: 3}
   pressedImage: {fileID: 21300000, guid: 8989bc7ec7b00480fac472d7a9808f2d, type: 3}
-  keyToPress: 274
+  keyToPress: 115
 --- !u!212 &2071442966
 SpriteRenderer:
   m_ObjectHideFlags: 0

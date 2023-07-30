@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +20,13 @@ public class MainScene : MonoBehaviour
 
     private bool oldSpacePressed;
     private Action spacePressedAction;
+
+    public Animator bgAnimator;
+
+    //delay between each minigame
+    public float winDelay, loseDelay, introDelay;
+
+    public string winAnim, loseAnim, introAnim;
 
     //this will be on my default,
     //turn it off for the actual game implementation.
@@ -81,6 +88,8 @@ public class MainScene : MonoBehaviour
                 $"Overall game status: {(status.gameResult == WinLose.WIN ? "Won" : status.gameResult == WinLose.LOSE ? "Lost" : "Playing")}";
         }
 
+        Debug.Log(status.gameResult);
+
         // flash a color if the game was won/lost
         if(debugMode) {
             if (status.previousMinigameResult == WinLose.WIN) {
@@ -88,6 +97,20 @@ public class MainScene : MonoBehaviour
             }
             if (status.previousMinigameResult == WinLose.LOSE) {
                 background.color = loseBG;
+            }
+        } else { //here, let's decide the animation that is going to play
+            //play the animation win/lose/intro
+            Debug.Log("Playing animation");
+            switch (status.previousMinigameResult) {
+                case WinLose.WIN:
+                    bgAnimator.Play(winAnim);
+                    break;
+                case WinLose.LOSE:
+                    bgAnimator.Play(loseAnim);
+                    break;
+                default:
+                    bgAnimator.Play(introAnim);
+                    break;
             }
         }
 
@@ -106,7 +129,19 @@ public class MainScene : MonoBehaviour
         } else {
             //do like the statement above, except do not use wait on space:
             //just call the action after a delay of 3 seconds.
-            DOVirtual.DelayedCall(4.66f, () => OnProceed(status, intermissionFinishedCallback), false);
+          //  DOVirtual.DelayedCall(4.66f, () => OnProceed(status, intermissionFinishedCallback), false);
+          switch (status.previousMinigameResult) {
+            case WinLose.WIN:
+                DOVirtual.DelayedCall(winDelay, () => OnProceed(status, intermissionFinishedCallback), false);
+                break;
+            case WinLose.LOSE:
+                DOVirtual.DelayedCall(loseDelay, () => OnProceed(status, intermissionFinishedCallback), false);
+                break;
+            default:
+                DOVirtual.DelayedCall(introDelay, () => OnProceed(status, intermissionFinishedCallback), false);
+                break;
+
+          }
         }
     }
 

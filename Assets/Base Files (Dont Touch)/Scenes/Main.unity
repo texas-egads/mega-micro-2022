@@ -364,6 +364,13 @@ MonoBehaviour:
   background: {fileID: 1335606617}
   loseBG: {r: 0, g: 0, b: 0, a: 0}
   winBG: {r: 0, g: 0, b: 0, a: 0}
+  bgAnimator: {fileID: 1689756763}
+  winDelay: 5.15
+  loseDelay: 5.63
+  introDelay: 4.4
+  winAnim: A_winmini
+  loseAnim: A_losemini
+  introAnim: A_intro
   debugMode: 0
 --- !u!95 &286624172
 Animator:

@@ -25,6 +25,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
+    ignoreMasterTextureLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -46,6 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -79,7 +81,6 @@ ScriptedImporter:
       width: 0
       height: 0
     spriteID: 
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -89,9 +90,10 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: BackLeg2
+  - name: 'Copy of Paint Layer 11 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -103,7 +105,6 @@ ScriptedImporter:
       width: 179
       height: 322
     spriteID: db9fab8480e4cd943872ef781a1badbd
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -112,8 +113,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1439, y: 743}
-  - name: BackLeg1
+    uvTransform: {x: 4, y: 1384}
+    spritePosition: {x: 1443, y: 641}
+  - name: 'Paint Layer 11 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -125,7 +127,6 @@ ScriptedImporter:
       width: 179
       height: 322
     spriteID: 7d689295fa7b50040a836fdfdfee016b
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -134,8 +135,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1439, y: 1073}
-  - name: BackThigh2
+    uvTransform: {x: 4, y: 1714}
+    spritePosition: {x: 1443, y: 641}
+  - name: 'Copy of Paint Layer 13 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -147,7 +149,6 @@ ScriptedImporter:
       width: 291
       height: 199
     spriteID: 427013a8076ed314bbc5c4438bcb6500
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -156,8 +157,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1405, y: 31}
-  - name: BackThigh1
+    uvTransform: {x: 4, y: 970}
+    spritePosition: {x: 1409, y: 939}
+  - name: 'Paint Layer 13 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -169,7 +171,6 @@ ScriptedImporter:
       width: 291
       height: 199
     spriteID: 6a9abc526e3be1d439db3a6362e94e38
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -178,8 +179,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1405, y: 238}
-  - name: Pelvis
+    uvTransform: {x: 4, y: 1177}
+    spritePosition: {x: 1409, y: 939}
+  - name: 'Paint Layer 14 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -191,7 +193,6 @@ ScriptedImporter:
       width: 165
       height: 335
     spriteID: 1c8c24d63ab7dc64ebbcb9e4f6cee6fb
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -200,8 +201,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -699, y: -980}
-  - name: Ribcage
+    uvTransform: {x: 854, y: 4}
+    spritePosition: {x: 1553, y: 984}
+  - name: 'Paint Layer 15 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -213,7 +215,6 @@ ScriptedImporter:
       width: 842
       height: 340
     spriteID: a6155840a21bc3c4b8b241d5eb88b0fa
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -222,8 +223,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -862, y: -1048}
-  - name: Foot2
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 866, y: 1052}
+  - name: 'Copy of Paint Layer 16 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -235,7 +237,6 @@ ScriptedImporter:
       width: 85
       height: 41
     spriteID: c4d7492c3dc13a8489ff9976c297158c
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -244,8 +245,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -559, y: 241}
-  - name: Foot1
+    uvTransform: {x: 202, y: 902}
+    spritePosition: {x: 761, y: 661}
+  - name: 'Paint Layer 16 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -257,7 +259,6 @@ ScriptedImporter:
       width: 85
       height: 41
     spriteID: 4ba00c92754ae6b44b7948eb0c98e27c
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -266,8 +267,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -570, y: 980}
-  - name: FrontLeg2
+    uvTransform: {x: 191, y: 1641}
+    spritePosition: {x: 761, y: 661}
+  - name: 'Copy of Paint Layer 17 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -279,7 +281,6 @@ ScriptedImporter:
       width: 90
       height: 249
     spriteID: 44e5988989776764b8a593d8c5ceec78
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -288,8 +289,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -602, y: -40}
-  - name: FrontLeg1
+    uvTransform: {x: 202, y: 645}
+    spritePosition: {x: 804, y: 685}
+  - name: 'Paint Layer 17 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -301,7 +303,6 @@ ScriptedImporter:
       width: 90
       height: 249
     spriteID: 23256aee76e028d4e927db69118c353d
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -310,8 +311,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -613, y: 699}
-  - name: Arm2
+    uvTransform: {x: 191, y: 1384}
+    spritePosition: {x: 804, y: 685}
+  - name: 'Copy of Paint Layer 18 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -323,7 +325,6 @@ ScriptedImporter:
       width: 172
       height: 223
     spriteID: fd7eb801ee6db3b4e9f662e9c5ca181f
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -332,8 +333,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -343, y: -300}
-  - name: Arm1
+    uvTransform: {x: 348, y: 555}
+    spritePosition: {x: 691, y: 855}
+  - name: 'Paint Layer 18 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -345,7 +347,6 @@ ScriptedImporter:
       width: 172
       height: 223
     spriteID: 65e4e2e04bf485c47a2ad5481b13cac8
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -354,8 +355,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -343, y: -69}
-  - name: Shoulder
+    uvTransform: {x: 348, y: 786}
+    spritePosition: {x: 691, y: 855}
+  - name: 'Paint Layer 19 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -367,7 +369,6 @@ ScriptedImporter:
       width: 190
       height: 317
     spriteID: 55ae0c8b916fa4e44b2f4f3ae1f1b2b9
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -376,8 +377,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -758, y: -356}
-  - name: Neck
+    uvTransform: {x: 4, y: 645}
+    spritePosition: {x: 762, y: 1001}
+  - name: 'Paint Layer 20 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -389,7 +391,6 @@ ScriptedImporter:
       width: 227
       height: 195
     spriteID: b896cf2b58b845944865108a5941de67
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -398,8 +399,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -275, y: -782}
-  - name: Skull
+    uvTransform: {x: 348, y: 352}
+    spritePosition: {x: 623, y: 1134}
+  - name: 'Paint Layer 21 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -411,7 +413,6 @@ ScriptedImporter:
       width: 336
       height: 285
     spriteID: ff13e8d929456254aa357a2cf191a54d
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -420,138 +421,193 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -344, y: -733}
-  platformSettings: []
-  mosaicLayers: 1
-  documentPivot: {x: 0, y: 0}
-  documentAlignment: 7
-  importHiddenLayers: 0
-  importedTextureWidth: 1024
-  importedTextureHeight: 2048
-  documentSize: {x: 2048, y: 2048}
-  paperDollMode: 0
-  keepDupilcateSpriteName: 0
-  spriteCategoryList:
-    categories: []
-  textureActualWidth: 1024
-  textureActualHeight: 2048
-  spritePackingTag: 
-  resliceFromLayer: 0
-  characterMode: 1
-  mosaicPSDLayers: []
-  rigPSDLayers:
-  - name: Copy of Paint Layer 11
-    spriteName: Copy of Paint Layer 11
-    isGroup: 0
-    parentIndex: -1
-    spriteID: db9fab8480e4cd943872ef781a1badbd
-    layerID: 0
-    mosaicPosition: {x: 4, y: 1384}
-  - name: Paint Layer 11
-    spriteName: Paint Layer 11
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 7d689295fa7b50040a836fdfdfee016b
-    layerID: 1993234585
-    mosaicPosition: {x: 4, y: 1714}
-  - name: Copy of Paint Layer 13
-    spriteName: Copy of Paint Layer 13
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 427013a8076ed314bbc5c4438bcb6500
-    layerID: -1379440801
-    mosaicPosition: {x: 4, y: 970}
-  - name: Paint Layer 13
-    spriteName: Paint Layer 13
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 6a9abc526e3be1d439db3a6362e94e38
-    layerID: -1138933297
-    mosaicPosition: {x: 4, y: 1177}
-  - name: Paint Layer 14
-    spriteName: Paint Layer 14
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 1c8c24d63ab7dc64ebbcb9e4f6cee6fb
-    layerID: -1542217824
-    mosaicPosition: {x: 854, y: 4}
-  - name: Paint Layer 15
-    spriteName: Paint Layer 15
-    isGroup: 0
-    parentIndex: -1
-    spriteID: a6155840a21bc3c4b8b241d5eb88b0fa
-    layerID: 23866117
-    mosaicPosition: {x: 4, y: 4}
-  - name: Copy of Paint Layer 16
-    spriteName: Copy of Paint Layer 16
-    isGroup: 0
-    parentIndex: -1
-    spriteID: c4d7492c3dc13a8489ff9976c297158c
-    layerID: -1782725328
-    mosaicPosition: {x: 202, y: 902}
-  - name: Paint Layer 16
-    spriteName: Paint Layer 16
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 4ba00c92754ae6b44b7948eb0c98e27c
-    layerID: -379418410
-    mosaicPosition: {x: 191, y: 1641}
-  - name: Copy of Paint Layer 17
-    spriteName: Copy of Paint Layer 17
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 44e5988989776764b8a593d8c5ceec78
-    layerID: 946158027
-    mosaicPosition: {x: 202, y: 645}
-  - name: Paint Layer 17
-    spriteName: Paint Layer 17
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 23256aee76e028d4e927db69118c353d
-    layerID: 1186665531
-    mosaicPosition: {x: 191, y: 1384}
-  - name: Copy of Paint Layer 18
-    spriteName: Copy of Paint Layer 18
-    isGroup: 0
-    parentIndex: -1
-    spriteID: fd7eb801ee6db3b4e9f662e9c5ca181f
-    layerID: -1332386634
-    mosaicPosition: {x: 348, y: 555}
-  - name: Paint Layer 18
-    spriteName: Paint Layer 18
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 65e4e2e04bf485c47a2ad5481b13cac8
-    layerID: 783381004
-    mosaicPosition: {x: 348, y: 786}
-  - name: Paint Layer 19
-    spriteName: Paint Layer 19
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 55ae0c8b916fa4e44b2f4f3ae1f1b2b9
-    layerID: -1945502351
-    mosaicPosition: {x: 4, y: 645}
-  - name: Paint Layer 20
-    spriteName: Paint Layer 20
-    isGroup: 0
-    parentIndex: -1
-    spriteID: b896cf2b58b845944865108a5941de67
-    layerID: 427150643
-    mosaicPosition: {x: 348, y: 352}
-  - name: Paint Layer 21
-    spriteName: Paint Layer 21
-    isGroup: 0
-    parentIndex: -1
-    spriteID: ff13e8d929456254aa357a2cf191a54d
-    layerID: 1993234584
-    mosaicPosition: {x: 4, y: 352}
+    uvTransform: {x: 4, y: 352}
+    spritePosition: {x: 348, y: 1085}
   characterData:
     bones: []
     parts: []
     dimension: {x: 0, y: 0}
     characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Copy of Paint Layer 11
+    spriteName: 'Copy of Paint Layer 11 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: db9fab8480e4cd943872ef781a1badbd
+    layerID: 0
+    mosaicPosition: {x: 4, y: 1384}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 11
+    spriteName: 'Paint Layer 11 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7d689295fa7b50040a836fdfdfee016b
+    layerID: 1993234585
+    mosaicPosition: {x: 4, y: 1714}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Copy of Paint Layer 13
+    spriteName: 'Copy of Paint Layer 13 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 427013a8076ed314bbc5c4438bcb6500
+    layerID: -1379440801
+    mosaicPosition: {x: 4, y: 970}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 13
+    spriteName: 'Paint Layer 13 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6a9abc526e3be1d439db3a6362e94e38
+    layerID: -1138933297
+    mosaicPosition: {x: 4, y: 1177}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 14
+    spriteName: 'Paint Layer 14 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1c8c24d63ab7dc64ebbcb9e4f6cee6fb
+    layerID: -1542217824
+    mosaicPosition: {x: 854, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 15
+    spriteName: 'Paint Layer 15 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a6155840a21bc3c4b8b241d5eb88b0fa
+    layerID: 23866117
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Copy of Paint Layer 16
+    spriteName: 'Copy of Paint Layer 16 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c4d7492c3dc13a8489ff9976c297158c
+    layerID: -1782725328
+    mosaicPosition: {x: 202, y: 902}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 16
+    spriteName: 'Paint Layer 16 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4ba00c92754ae6b44b7948eb0c98e27c
+    layerID: -379418410
+    mosaicPosition: {x: 191, y: 1641}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Copy of Paint Layer 17
+    spriteName: 'Copy of Paint Layer 17 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 44e5988989776764b8a593d8c5ceec78
+    layerID: 946158027
+    mosaicPosition: {x: 202, y: 645}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 17
+    spriteName: 'Paint Layer 17 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 23256aee76e028d4e927db69118c353d
+    layerID: 1186665531
+    mosaicPosition: {x: 191, y: 1384}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Copy of Paint Layer 18
+    spriteName: 'Copy of Paint Layer 18 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fd7eb801ee6db3b4e9f662e9c5ca181f
+    layerID: -1332386634
+    mosaicPosition: {x: 348, y: 555}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 18
+    spriteName: 'Paint Layer 18 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 65e4e2e04bf485c47a2ad5481b13cac8
+    layerID: 783381004
+    mosaicPosition: {x: 348, y: 786}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 19
+    spriteName: 'Paint Layer 19 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 55ae0c8b916fa4e44b2f4f3ae1f1b2b9
+    layerID: -1945502351
+    mosaicPosition: {x: 4, y: 645}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 20
+    spriteName: 'Paint Layer 20 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b896cf2b58b845944865108a5941de67
+    layerID: 427150643
+    mosaicPosition: {x: 348, y: 352}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paint Layer 21
+    spriteName: 'Paint Layer 21 '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ff13e8d929456254aa357a2cf191a54d
+    layerID: 1993234584
+    mosaicPosition: {x: 4, y: 352}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
   generateGOHierarchy: 0
   textureAssetName: skeleton Texture
   prefabAssetName: skeleton Prefab
   spriteLibAssetName: skeleton Sprite Lib
+  skeletonAssetName: 
   secondarySpriteTextures: []

@@ -18,7 +18,8 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     public Action<MinigameDefinition> OnStartMinigame;
     public Action OnEndMinigame;
 
-    private MinigameStatus status;
+    [System.NonSerialized]
+    public MinigameStatus status;
     private List<MinigameDefinition> minigames;
 
     private bool isMinigamePlaying;

@@ -25,6 +25,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
+    ignoreMasterTextureLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -46,6 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -79,7 +81,6 @@ ScriptedImporter:
       width: 0
       height: 0
     spriteID: 
-    internalID: 0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -89,6 +90,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
   - name: EyesOpen
@@ -98,18 +100,21 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1379
-      y: 532
+      x: 874
+      y: 995
       width: 31
       height: 24
     spriteID: 089c022ceb655734eab898d5b1c21924
-    internalID: 0
     spriteBone:
     - name: Head
+      guid: 
       position: {x: 106.312256, y: -44.892212, z: 0}
       rotation: {x: 0, y: 0, z: -0.9763453, w: -0.21621737}
       length: 150.34236
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 17.652954, y: 0.05102539}
@@ -367,7 +372,8 @@ ScriptedImporter:
     - {x: 0, y: 19}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 895, y: -741}
+    uvTransform: {x: 390, y: -278}
+    spritePosition: {x: 484, y: 1273}
   - name: EyesSquint
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -375,18 +381,21 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1325
-      y: 532
+      x: 874
+      y: 961
       width: 46
       height: 26
     spriteID: 14a6f3d266eefbf4fa14c253a4856b56
-    internalID: 0
     spriteBone:
     - name: Head
+      guid: 
       position: {x: 112.312256, y: -43.892212, z: 0}
       rotation: {x: 0, y: 0, z: -0.9763453, w: -0.21621737}
       length: 150.34236
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 15.563965, y: 0.7670288}
@@ -859,7 +868,8 @@ ScriptedImporter:
     - {x: 43, y: 22}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 847, y: -740}
+    uvTransform: {x: 396, y: -311}
+    spritePosition: {x: 478, y: 1272}
   - name: BackLeg3Color
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -867,28 +877,39 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1232
+      x: 814
       y: 877
       width: 116
       height: 76
     spriteID: 671ff706acc311548b2c68487d3a4938
-    internalID: 0
     spriteBone:
     - name: FG Foot
+      guid: 
       position: {x: 198.08777, y: -0.000039011342, z: 1}
       rotation: {x: 0, y: 0, z: -0.69817495, w: 0.7159272}
       length: 39.249977
       parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Leg
+      guid: 
       position: {x: 1.9075928, y: 221.25537, z: 1}
       rotation: {x: 0, y: 0, z: -0.54531443, w: 0.83823156}
       length: 198.08789
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Leg
+      guid: 
       position: {x: 1.9069824, y: 223.12183, z: -1}
       rotation: {x: 0, y: 0, z: -0.54893297, w: 0.83586645}
       length: 197.33757
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 51.27295, y: 0.072021484}
@@ -1262,7 +1283,8 @@ ScriptedImporter:
     - {x: 0, y: 25}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -288, y: 251}
+    uvTransform: {x: -706, y: 251}
+    spritePosition: {x: 1520, y: 626}
   - name: BackLeg2Color
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1275,28 +1297,43 @@ ScriptedImporter:
       width: 194
       height: 243
     spriteID: fbaecaa88624d21429f33aff04a151eb
-    internalID: 0
     spriteBone:
     - name: FG Leg
+      guid: 
       position: {x: 238.15526, y: -0.00017416754, z: 1}
       rotation: {x: 0, y: 0, z: 0.2529598, w: 0.9674768}
       length: 198.08789
       parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Body
+      guid: 
       position: {x: -326.4126, y: 550.90247, z: 0}
       rotation: {x: 0, y: 0, z: -0.9989932, w: 0.04486298}
       length: 374.8941
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Arm
+      guid: 
       position: {x: -651.2577, y: 235.39154, z: 1}
       rotation: {x: 0, y: 0, z: -0.6809095, w: 0.7323675}
       length: 179.70047
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Hip
+      guid: 
       position: {x: 84.31067, y: 446.3546, z: 0}
       rotation: {x: 0, y: 0, z: -0.73961794, w: 0.673027}
       length: 238.15533
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 149.198, y: 0.55400085}
@@ -1845,6 +1882,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 320, y: -634}
+    spritePosition: {x: 1460, y: 638}
   - name: BackLeg1Color
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1857,13 +1895,16 @@ ScriptedImporter:
       width: 338
       height: 404
     spriteID: da76c95cf8eab9e4aacbd035044780c7
-    internalID: 0
     spriteBone:
     - name: FG Hip
+      guid: 
       position: {x: 180.31067, y: 270.3546, z: 0}
       rotation: {x: 0, y: 0, z: -0.73961794, w: 0.673027}
       length: 238.15533
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 162.23596, y: 0.46099854}
@@ -2201,6 +2242,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 70, y: -810}
+    spritePosition: {x: 1364, y: 814}
   - name: FrontLeg2Color
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2208,38 +2250,57 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1232
+      x: 814
       y: 578
       width: 139
       height: 291
     spriteID: 2aaa8894de7e273448ef13d525717c56
-    internalID: 0
     spriteBone:
     - name: FG Arm
+      guid: 
       position: {x: 197.71822, y: 0.00011185495, z: 1}
       rotation: {x: 0, y: 0, z: 0.13101077, w: 0.991381}
       length: 179.70044
       parentId: 2
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Neck
+      guid: 
       position: {x: 22.202393, y: 495.2981, z: 0}
       rotation: {x: 0, y: 0, z: -0.97957796, w: -0.20106511}
       length: 184.83472
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Shoulder
+      guid: 
       position: {x: 108.08081, y: 407.55212, z: 0}
       rotation: {x: 0, y: 0, z: -0.77098876, w: 0.63684875}
       length: 197.71822
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Leg
+      guid: 
       position: {x: 783.9076, y: 187.25543, z: 1}
       rotation: {x: 0, y: 0, z: -0.54531443, w: 0.83823156}
       length: 198.08789
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Leg
+      guid: 
       position: {x: 783.907, y: 189.12183, z: -1}
       rotation: {x: 0, y: 0, z: -0.54893297, w: 0.83586645}
       length: 197.33757
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 84.21106, y: 0.5469971}
@@ -2607,7 +2668,8 @@ ScriptedImporter:
     - {x: 0, y: 29}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 494, y: -82}
+    uvTransform: {x: 76, y: -82}
+    spritePosition: {x: 738, y: 660}
   - name: FrontLeg1Color
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2615,28 +2677,39 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 684
-      y: 578
+      x: 1109
+      y: 468
       width: 266
       height: 338
     spriteID: dbd05ecfadf469341982b5cac444c670
-    internalID: 0
     spriteBone:
     - name: FG Shoulder
+      guid: 
       position: {x: 151.08081, y: 227.55212, z: 0}
       rotation: {x: 0, y: 0, z: -0.77098876, w: 0.63684875}
       length: 197.71822
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Shoulder
+      guid: 
       position: {x: 151.08075, y: 225.68518, z: 0}
       rotation: {x: 0, y: 0, z: -0.770989, w: 0.6368485}
       length: 197.7188
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Arm
+      guid: 
       position: {x: 197.7182, y: 0.000066913046, z: 1}
       rotation: {x: 0, y: 0, z: 0.13101074, w: 0.99138093}
       length: 179.70044
       parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 144.67401, y: 0.46801758}
@@ -3062,7 +3135,8 @@ ScriptedImporter:
     - {x: 0, y: 27}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -11, y: -262}
+    uvTransform: {x: 414, y: -372}
+    spritePosition: {x: 695, y: 840}
   - name: Ear1Color
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3070,18 +3144,21 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1233
-      y: 468
+      x: 961
+      y: 915
       width: 84
       height: 80
     spriteID: 543c4cd257cdefa4fa8c0ead6b156e40
-    internalID: 0
     spriteBone:
     - name: FG Ear
+      guid: 
       position: {x: 20.243774, y: 20.25647, z: 0}
       rotation: {x: 0, y: 0, z: -0.37191656, w: -0.92826617}
       length: 56.780228
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 44.46997, y: 0.4169922}
@@ -3384,7 +3461,8 @@ ScriptedImporter:
     - {x: 0, y: 24}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 676, y: -850}
+    uvTransform: {x: 404, y: -403}
+    spritePosition: {x: 557, y: 1318}
   - name: HeadColor
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3392,28 +3470,39 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 350
+      x: 4
       y: 578
       width: 326
       height: 330
     spriteID: 303b73f8c2c91b74492529d120b46f2a
-    internalID: 0
     spriteBone:
     - name: Head
+      guid: 
       position: {x: 184.83467, y: 0.00012664686, z: 0}
       rotation: {x: 0, y: 0, z: -0.015492779, w: 0.99987996}
       length: 150.34236
       parentId: 2
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Body
+      guid: 
       position: {x: 809.5874, y: 128.90247, z: 0}
       rotation: {x: 0, y: 0, z: -0.9989932, w: 0.04486298}
       length: 374.8941
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Neck
+      guid: 
       position: {x: 374.89417, y: 0.0005105834, z: 0}
       rotation: {x: 0, y: 0, z: -0.24480943, w: 0.96957123}
       length: 184.8347
       parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 58.23001, y: 0.49401855}
@@ -3811,7 +3900,8 @@ ScriptedImporter:
     - {x: 0, y: 29}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 26, y: -482}
+    uvTransform: {x: -320, y: -482}
+    spritePosition: {x: 324, y: 1060}
   - name: Ear2Color
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3819,18 +3909,21 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1325
-      y: 468
+      x: 814
+      y: 961
       width: 52
       height: 56
     spriteID: 12bf1a342ef872549a2b64c3dd0e56ca
-    internalID: 0
     spriteBone:
     - name: BG Ear
+      guid: 
       position: {x: 8.23999, y: -7.541992, z: -1}
       rotation: {x: 0, y: 0, z: -0.5631819, w: -0.8263329}
       length: 56.163017
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 18.324951, y: 0.480011}
@@ -4144,7 +4237,8 @@ ScriptedImporter:
     - {x: 0, y: 25}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 784, y: -889}
+    uvTransform: {x: 273, y: -396}
+    spritePosition: {x: 541, y: 1357}
   - name: NeckColor
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4157,23 +4251,34 @@ ScriptedImporter:
       width: 317
       height: 456
     spriteID: c497a21d2fab8bc4ba95e7081dbcf9b5
-    internalID: 0
     spriteBone:
     - name: Neck
+      guid: 
       position: {x: 374.894, y: 0.0005013394, z: 0}
       rotation: {x: 0, y: 0, z: -0.24480943, w: 0.96957123}
       length: 184.8347
       parentId: 2
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Head
+      guid: 
       position: {x: 184.8347, y: 0.000054252443, z: 0}
       rotation: {x: 0, y: 0, z: -0.015492794, w: 0.99988}
       length: 150.34236
       parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Body
+      guid: 
       position: {x: 661.5874, y: 287.90247, z: 0}
       rotation: {x: 0, y: 0, z: -0.9989932, w: 0.04486298}
       length: 374.8941
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 230.21997, y: 0.4750061}
@@ -4575,6 +4680,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 637, y: -897}
+    spritePosition: {x: 472, y: 901}
   - name: BodyColor
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4587,38 +4693,61 @@ ScriptedImporter:
       width: 1097
       height: 566
     spriteID: 8ae3177965dc1a34e9b371b08beca86f
-    internalID: 0
     spriteBone:
     - name: Back
+      guid: 
       position: {x: 861.5044, y: 355.83777, z: 0}
       rotation: {x: 0, y: 0, z: -0.99979204, w: 0.020394895}
       length: 366.22174
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Body
+      guid: 
       position: {x: 366.22162, y: 0.00031691784, z: 0}
       rotation: {x: 0, y: 0, z: 0.024479283, w: 0.9997003}
       length: 374.89413
       parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Head
+      guid: 
       position: {x: 184.83473, y: 0.00008998237, z: 0}
       rotation: {x: 0, y: 0, z: -0.015492751, w: 0.99988}
       length: 150.34239
       parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Neck
+      guid: 
       position: {x: 374.89407, y: 0.00050767645, z: 0}
       rotation: {x: 0, y: 0, z: -0.24480945, w: 0.9695713}
       length: 184.83473
       parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Foot
+      guid: 
       position: {x: 964.18567, y: -181.83643, z: 1}
       rotation: {x: 0, y: 0, z: -0.97563773, w: 0.21938783}
       length: 39.24997
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Leg
+      guid: 
       position: {x: 883.907, y: 1.1218262, z: -1}
       rotation: {x: 0, y: 0, z: -0.54893297, w: 0.83586645}
       length: 197.33757
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 858, y: 1}
@@ -5125,6 +5254,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -634, y: -844}
+    spritePosition: {x: 638, y: 848}
   - name: BackLeg3Color #1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5132,18 +5262,21 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1109
-      y: 468
+      x: 961
+      y: 831
       width: 116
       height: 76
     spriteID: 2d7343e441589db4fb8e94c99b870aba
-    internalID: 0
     spriteBone:
     - name: BG Foot
+      guid: 
       position: {x: 80.318115, y: 42.031128, z: -1}
       rotation: {x: 0, y: 0, z: -0.9673582, w: 0.25341293}
       length: 34.272438
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 51.796997, y: 0.13500977}
@@ -5517,7 +5650,8 @@ ScriptedImporter:
     - {x: 0, y: 25}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -411, y: -158}
+    uvTransform: {x: -559, y: 205}
+    spritePosition: {x: 1520, y: 626}
   - name: BackLeg2Color #1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -5525,28 +5659,39 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1780
-      y: 255
+      x: 612
+      y: 578
       width: 194
       height: 243
     spriteID: a7be0a0ff04b5a143b4e3492bda9f4a3
-    internalID: 0
     spriteBone:
     - name: BG Leg
+      guid: 
       position: {x: 234.26752, y: 0.0003372083, z: -1}
       rotation: {x: 0, y: 0, z: 0.24565876, w: 0.9693564}
       length: 197.33759
       parentId: 2
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Arm
+      guid: 
       position: {x: -651.2577, y: 235.39154, z: 1}
       rotation: {x: 0, y: 0, z: -0.6809095, w: 0.7323675}
       length: 179.70047
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Hip
+      guid: 
       position: {x: 82.4436, y: 444.48755, z: 0}
       rotation: {x: 0, y: 0, z: -0.7374495, w: 0.6754023}
       length: 234.26758
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 149.19495, y: 0.5549927}
@@ -6094,7 +6239,8 @@ ScriptedImporter:
     - {x: 50, y: 19}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 320, y: -383}
+    uvTransform: {x: -848, y: -60}
+    spritePosition: {x: 1460, y: 638}
   - name: BackLeg1Color #1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -6102,18 +6248,21 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 578
+      x: 1434
+      y: 416
       width: 338
       height: 404
     spriteID: 6f77aa2afd1321941b52f6846bb06ee2
-    internalID: 0
     spriteBone:
     - name: BG Hip
+      guid: 
       position: {x: 178.4436, y: 268.48755, z: 0}
       rotation: {x: 0, y: 0, z: -0.7374495, w: 0.6754023}
       length: 234.26758
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 162.236, y: 0.46099854}
@@ -6450,7 +6599,8 @@ ScriptedImporter:
     - {x: 0, y: 28}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1360, y: -236}
+    uvTransform: {x: 70, y: -398}
+    spritePosition: {x: 1364, y: 814}
   - name: FrontLeg2Color #1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -6458,28 +6608,39 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1379
+      x: 961
       y: 578
       width: 139
       height: 245
     spriteID: b2846d5214d62f2439c0b9331b3e6d25
-    internalID: 0
     spriteBone:
     - name: BG Arm
+      guid: 
       position: {x: 197.71873, y: -0.00008351349, z: -1}
       rotation: {x: 0, y: 0, z: 0.13139023, w: 0.9913308}
       length: 177.83762
       parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Shoulder
+      guid: 
       position: {x: 108.08081, y: 405.68518, z: 0}
       rotation: {x: 0, y: 0, z: -0.770989, w: 0.6368485}
       length: 197.7188
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Foot
+      guid: 
       position: {x: 864.18555, y: 6.163574, z: 1}
       rotation: {x: 0, y: 0, z: -0.97563773, w: 0.21938783}
       length: 39.24997
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 84.232056, y: 0.46496582}
@@ -6868,7 +7029,8 @@ ScriptedImporter:
     - {x: 0, y: 30}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 641, y: -82}
+    uvTransform: {x: 223, y: -82}
+    spritePosition: {x: 738, y: 660}
   - name: FrontLeg1Color #1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -6876,18 +7038,21 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 958
+      x: 338
       y: 578
       width: 266
       height: 338
     spriteID: d530949681c8eb94eb5b2d1d0fb18d6f
-    internalID: 0
     spriteBone:
     - name: BG Shoulder
+      guid: 
       position: {x: 151.08081, y: 225.68518, z: 0}
       rotation: {x: 0, y: 0, z: -0.770989, w: 0.6368485}
       length: 197.7188
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     spriteOutline: []
     vertices:
     - position: {x: 138.85999, y: 0.41497803}
@@ -7253,263 +7418,154 @@ ScriptedImporter:
     - {x: 0, y: 27}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 263, y: -262}
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  mosaicLayers: 1
-  documentPivot: {x: 0, y: 0}
-  documentAlignment: 0
-  importHiddenLayers: 0
-  importedTextureWidth: 2048
-  importedTextureHeight: 2048
-  documentSize: {x: 2048, y: 2048}
-  paperDollMode: 0
-  keepDupilcateSpriteName: 0
-  spriteCategoryList:
-    categories: []
-  textureActualWidth: 2048
-  textureActualHeight: 2048
-  spritePackingTag: 
-  resliceFromLayer: 0
-  characterMode: 1
-  mosaicPSDLayers: []
-  rigPSDLayers:
-  - name: EyesOpen
-    spriteName: EyesOpen
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 089c022ceb655734eab898d5b1c21924
-    layerID: 0
-    mosaicPosition: {x: 1379, y: 532}
-  - name: EyesSquint
-    spriteName: EyesSquint
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 14a6f3d266eefbf4fa14c253a4856b56
-    layerID: -934244548
-    mosaicPosition: {x: 1325, y: 532}
-  - name: FGLegs
-    spriteName: 
-    isGroup: 1
-    parentIndex: -1
-    spriteID: 00000000000000000000000000000000
-    layerID: 866858924
-    mosaicPosition: {x: 0, y: 0}
-  - name: BackLeg3Color
-    spriteName: BackLeg3Color
-    isGroup: 0
-    parentIndex: 2
-    spriteID: 671ff706acc311548b2c68487d3a4938
-    layerID: -1137945745
-    mosaicPosition: {x: 1232, y: 877}
-  - name: BackLeg2Color
-    spriteName: BackLeg2Color
-    isGroup: 0
-    parentIndex: 2
-    spriteID: fbaecaa88624d21429f33aff04a151eb
-    layerID: 1792967370
-    mosaicPosition: {x: 1780, y: 4}
-  - name: BackLeg1Color
-    spriteName: BackLeg1Color
-    isGroup: 0
-    parentIndex: 2
-    spriteID: da76c95cf8eab9e4aacbd035044780c7
-    layerID: 104632249
-    mosaicPosition: {x: 1434, y: 4}
-  - name: FrontLeg2Color
-    spriteName: FrontLeg2Color
-    isGroup: 0
-    parentIndex: 2
-    spriteID: 2aaa8894de7e273448ef13d525717c56
-    layerID: 1685319514
-    mosaicPosition: {x: 1232, y: 578}
-  - name: FrontLeg1Color
-    spriteName: FrontLeg1Color
-    isGroup: 0
-    parentIndex: 2
-    spriteID: dbd05ecfadf469341982b5cac444c670
-    layerID: 1685314199
-    mosaicPosition: {x: 684, y: 578}
-  - name: Ear1Color
-    spriteName: Ear1Color
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 543c4cd257cdefa4fa8c0ead6b156e40
-    layerID: 680650776
-    mosaicPosition: {x: 1233, y: 468}
-  - name: HeadColor
-    spriteName: HeadColor
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 303b73f8c2c91b74492529d120b46f2a
-    layerID: -1232210939
-    mosaicPosition: {x: 350, y: 578}
-  - name: Ear2Color
-    spriteName: Ear2Color
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 12bf1a342ef872549a2b64c3dd0e56ca
-    layerID: 559174589
-    mosaicPosition: {x: 1325, y: 468}
-  - name: NeckColor
-    spriteName: NeckColor
-    isGroup: 0
-    parentIndex: -1
-    spriteID: c497a21d2fab8bc4ba95e7081dbcf9b5
-    layerID: 1627895244
-    mosaicPosition: {x: 1109, y: 4}
-  - name: BodyColor
-    spriteName: BodyColor
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 8ae3177965dc1a34e9b371b08beca86f
-    layerID: 505024413
-    mosaicPosition: {x: 4, y: 4}
-  - name: BGLegs
-    spriteName: 
-    isGroup: 1
-    parentIndex: -1
-    spriteID: 00000000000000000000000000000000
-    layerID: 866863024
-    mosaicPosition: {x: 0, y: 0}
-  - name: BackLeg3Color #1
-    spriteName: BackLeg3Color #1
-    isGroup: 0
-    parentIndex: 13
-    spriteID: 2d7343e441589db4fb8e94c99b870aba
-    layerID: 692512857
-    mosaicPosition: {x: 1109, y: 468}
-  - name: BackLeg2Color #1
-    spriteName: BackLeg2Color #1
-    isGroup: 0
-    parentIndex: 13
-    spriteID: a7be0a0ff04b5a143b4e3492bda9f4a3
-    layerID: -311070722
-    mosaicPosition: {x: 1780, y: 255}
-  - name: BackLeg1Color #1
-    spriteName: BackLeg1Color #1
-    isGroup: 0
-    parentIndex: 13
-    spriteID: 6f77aa2afd1321941b52f6846bb06ee2
-    layerID: 945250083
-    mosaicPosition: {x: 4, y: 578}
-  - name: FrontLeg2Color #1
-    spriteName: FrontLeg2Color #1
-    isGroup: 0
-    parentIndex: 13
-    spriteID: b2846d5214d62f2439c0b9331b3e6d25
-    layerID: 1133930170
-    mosaicPosition: {x: 1379, y: 578}
-  - name: FrontLeg1Color #1
-    spriteName: FrontLeg1Color #1
-    isGroup: 0
-    parentIndex: 13
-    spriteID: d530949681c8eb94eb5b2d1d0fb18d6f
-    layerID: 1128144249
-    mosaicPosition: {x: 958, y: 578}
+    uvTransform: {x: -357, y: -262}
+    spritePosition: {x: 695, y: 840}
   characterData:
     bones:
     - name: Back
+      guid: 
       position: {x: 1499.5044, y: 1203.8378, z: 0}
       rotation: {x: 0, y: 0, z: -0.99979204, w: 0.020394895}
       length: 366.22174
       parentId: -1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Body
+      guid: 
       position: {x: 366.22162, y: 0.00028262907, z: 0}
       rotation: {x: 0, y: 0, z: 0.024479285, w: 0.99970037}
       length: 374.89413
       parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Neck
+      guid: 
       position: {x: 374.89413, y: 0.00048696532, z: 0}
       rotation: {x: 0, y: 0, z: -0.24480943, w: 0.96957123}
       length: 184.83473
       parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: Head
+      guid: 
       position: {x: 184.83475, y: 0.000029908711, z: 0}
       rotation: {x: 0, y: 0, z: -0.015492807, w: 0.99988}
       length: 150.34238
       parentId: 2
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Shoulder
+      guid: 
       position: {x: 297.22653, y: 95.091, z: 0}
       rotation: {x: 0, y: 0, z: 0.6016187, w: 0.7987835}
       length: 197.71815
       parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Arm
+      guid: 
       position: {x: 197.71822, y: 0.0000381922, z: 1}
       rotation: {x: 0, y: 0, z: 0.13101076, w: 0.991381}
       length: 179.70042
       parentId: 4
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Hip
+      guid: 
       position: {x: -39.896324, y: 121.21097, z: 0}
       rotation: {x: 0, y: 0, z: 0.6578026, w: 0.75319046}
       length: 238.15526
       parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Leg
+      guid: 
       position: {x: 238.15517, y: 0.000056815366, z: 1}
       rotation: {x: 0, y: 0, z: 0.25295982, w: 0.9674768}
       length: 198.08784
       parentId: 6
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Foot
+      guid: 
       position: {x: 198.08788, y: 0.000064173655, z: 1}
       rotation: {x: 0, y: 0, z: -0.6981751, w: 0.7159272}
       length: 39.249958
       parentId: 7
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Hip
+      guid: 
       position: {x: -37.95467, y: 123.00034, z: 0}
       rotation: {x: 0, y: 0, z: 0.66022164, w: 0.7510709}
       length: 234.26753
       parentId: 0
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Leg
+      guid: 
       position: {x: 234.26755, y: 0.000012639828, z: -1}
       rotation: {x: 0, y: 0, z: 0.24565873, w: 0.9693564}
       length: 197.33755
       parentId: 9
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Foot
+      guid: 
       position: {x: 197.33759, y: -0.000053562253, z: -1}
       rotation: {x: 0, y: 0, z: -0.66947556, w: 0.74283415}
       length: 34.272423
       parentId: 10
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Shoulder
+      guid: 
       position: {x: 297.39392, y: 96.950424, z: 0}
       rotation: {x: 0, y: 0, z: 0.6016184, w: 0.7987837}
       length: 197.71878
       parentId: 1
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Arm
+      guid: 
       position: {x: 197.71873, y: 0.00006505767, z: -1}
       rotation: {x: 0, y: 0, z: 0.13139032, w: 0.9913308}
       length: 177.83759
       parentId: 12
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: FG Ear
+      guid: 
       position: {x: 58.351974, y: -94.332184, z: 0}
       rotation: {x: 0, y: -0, z: -0.82589346, w: 0.5638262}
       length: 56.780224
       parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
     - name: BG Ear
+      guid: 
       position: {x: 88.46681, y: -92.663, z: -1}
       rotation: {x: 0, y: 0, z: -0.6850166, w: 0.7285275}
       length: 56.16301
       parentId: 3
+      color:
+        serializedVersion: 2
+        rgba: 0
     parts:
     - spritePosition:
         x: 484
@@ -7666,8 +7722,248 @@ ScriptedImporter:
       order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 0
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: EyesOpen
+    spriteName: EyesOpen
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 089c022ceb655734eab898d5b1c21924
+    layerID: 0
+    mosaicPosition: {x: 874, y: 995}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: EyesSquint
+    spriteName: EyesSquint
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 14a6f3d266eefbf4fa14c253a4856b56
+    layerID: -934244548
+    mosaicPosition: {x: 874, y: 961}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: FGLegs
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: b40ea8e0f4d36f64a9e6a90d5b7931ed
+    layerID: 866858924
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: BackLeg3Color
+    spriteName: BackLeg3Color
+    isGroup: 0
+    parentIndex: 2
+    spriteID: 671ff706acc311548b2c68487d3a4938
+    layerID: -1137945745
+    mosaicPosition: {x: 814, y: 877}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BackLeg2Color
+    spriteName: BackLeg2Color
+    isGroup: 0
+    parentIndex: 2
+    spriteID: fbaecaa88624d21429f33aff04a151eb
+    layerID: 1792967370
+    mosaicPosition: {x: 1780, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BackLeg1Color
+    spriteName: BackLeg1Color
+    isGroup: 0
+    parentIndex: 2
+    spriteID: da76c95cf8eab9e4aacbd035044780c7
+    layerID: 104632249
+    mosaicPosition: {x: 1434, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: FrontLeg2Color
+    spriteName: FrontLeg2Color
+    isGroup: 0
+    parentIndex: 2
+    spriteID: 2aaa8894de7e273448ef13d525717c56
+    layerID: 1685319514
+    mosaicPosition: {x: 814, y: 578}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: FrontLeg1Color
+    spriteName: FrontLeg1Color
+    isGroup: 0
+    parentIndex: 2
+    spriteID: dbd05ecfadf469341982b5cac444c670
+    layerID: 1685314199
+    mosaicPosition: {x: 1109, y: 468}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Ear1Color
+    spriteName: Ear1Color
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 543c4cd257cdefa4fa8c0ead6b156e40
+    layerID: 680650776
+    mosaicPosition: {x: 961, y: 915}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: HeadColor
+    spriteName: HeadColor
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 303b73f8c2c91b74492529d120b46f2a
+    layerID: -1232210939
+    mosaicPosition: {x: 4, y: 578}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Ear2Color
+    spriteName: Ear2Color
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 12bf1a342ef872549a2b64c3dd0e56ca
+    layerID: 559174589
+    mosaicPosition: {x: 814, y: 961}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: NeckColor
+    spriteName: NeckColor
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c497a21d2fab8bc4ba95e7081dbcf9b5
+    layerID: 1627895244
+    mosaicPosition: {x: 1109, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BodyColor
+    spriteName: BodyColor
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8ae3177965dc1a34e9b371b08beca86f
+    layerID: 505024413
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BGLegs
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 4918f50c90239cd4ea41e6bc6e46b575
+    layerID: 866863024
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: BackLeg3Color #1
+    spriteName: BackLeg3Color #1
+    isGroup: 0
+    parentIndex: 13
+    spriteID: 2d7343e441589db4fb8e94c99b870aba
+    layerID: 692512857
+    mosaicPosition: {x: 961, y: 831}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BackLeg2Color #1
+    spriteName: BackLeg2Color #1
+    isGroup: 0
+    parentIndex: 13
+    spriteID: a7be0a0ff04b5a143b4e3492bda9f4a3
+    layerID: -311070722
+    mosaicPosition: {x: 612, y: 578}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BackLeg1Color #1
+    spriteName: BackLeg1Color #1
+    isGroup: 0
+    parentIndex: 13
+    spriteID: 6f77aa2afd1321941b52f6846bb06ee2
+    layerID: 945250083
+    mosaicPosition: {x: 1434, y: 416}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: FrontLeg2Color #1
+    spriteName: FrontLeg2Color #1
+    isGroup: 0
+    parentIndex: 13
+    spriteID: b2846d5214d62f2439c0b9331b3e6d25
+    layerID: 1133930170
+    mosaicPosition: {x: 961, y: 578}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: FrontLeg1Color #1
+    spriteName: FrontLeg1Color #1
+    isGroup: 0
+    parentIndex: 13
+    spriteID: d530949681c8eb94eb5b2d1d0fb18d6f
+    layerID: 1128144249
+    mosaicPosition: {x: 338, y: 578}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
   generateGOHierarchy: 0
   textureAssetName: Capybara Texture
   prefabAssetName: Capybara Prefab
   spriteLibAssetName: Capybara Sprite Lib
+  skeletonAssetName: 
   secondarySpriteTextures: []

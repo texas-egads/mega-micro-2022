@@ -135,7 +135,7 @@ TextureImporter:
       213: -5649541420284221969
     second: Explosion_2_64x64_43
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -156,6 +156,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -194,6 +195,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -221,6 +223,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1168,6 +1194,51 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Explosion_2_64x64_14: 7891464015085194123
+      Explosion_2_64x64_13: 8560352500543957552
+      Explosion_2_64x64_23: 3724132364415187336
+      Explosion_2_64x64_36: 6933769073070740792
+      Explosion_2_64x64_32: 2005149768168463512
+      Explosion_2_64x64_4: 5692732753281730042
+      Explosion_2_64x64_41: 7672104148607291303
+      Explosion_2_64x64_29: 167212517017306862
+      Explosion_2_64x64_8: 1216541782213303079
+      Explosion_2_64x64_9: 3237679324908794173
+      Explosion_2_64x64_28: 9014173561159380224
+      Explosion_2_64x64_2: 7644687730061085486
+      Explosion_2_64x64_19: -1289187104747935051
+      Explosion_2_64x64_30: 4437928721121749977
+      Explosion_2_64x64_34: -7237132676677386177
+      Explosion_2_64x64_38: -4720824457788366321
+      Explosion_2_64x64_31: 8648797792737550570
+      Explosion_2_64x64_5: 6529481081792073235
+      Explosion_2_64x64_3: -8391037359334400413
+      Explosion_2_64x64_24: -5870176097101110280
+      Explosion_2_64x64_37: -7172103617290050492
+      Explosion_2_64x64_39: 2231507540036008769
+      Explosion_2_64x64_6: 809046592688753611
+      Explosion_2_64x64_21: -4805530389182296978
+      Explosion_2_64x64_1: -5625113830155058637
+      Explosion_2_64x64_0: -9106254087140563578
+      Explosion_2_64x64_25: 151730687398228790
+      Explosion_2_64x64_43: -5649541420284221969
+      Explosion_2_64x64_20: 7302368022549605159
+      Explosion_2_64x64_35: -908774686624284553
+      Explosion_2_64x64_22: 7128718543035736022
+      Explosion_2_64x64_7: 7466075100185156890
+      Explosion_2_64x64_26: -5283148900021419118
+      Explosion_2_64x64_15: 609454598844647389
+      Explosion_2_64x64_16: 3136714453487309816
+      Explosion_2_64x64_12: 1682381413894200743
+      Explosion_2_64x64_42: 8019504264559736540
+      Explosion_2_64x64_10: 6726944387284994797
+      Explosion_2_64x64_18: 4767055938471863620
+      Explosion_2_64x64_27: 2244608951167750577
+      Explosion_2_64x64_40: -784318606612684046
+      Explosion_2_64x64_33: -6143916287963897820
+      Explosion_2_64x64_17: 2590466283970233582
+      Explosion_2_64x64_11: 7273741963156353033
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

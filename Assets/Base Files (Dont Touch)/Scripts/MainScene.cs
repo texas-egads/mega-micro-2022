@@ -31,6 +31,7 @@ public class MainScene : MonoBehaviour
     //this will be on my default,
     //turn it off for the actual game implementation.
     public bool debugMode = true;
+    [SerializeField] private Text roundText;
 
     private void Awake() {
         if(background != null) {
@@ -87,8 +88,9 @@ public class MainScene : MonoBehaviour
                 $"Lives: {status.currentHealth}\n" +
                 $"Overall game status: {(status.gameResult == WinLose.WIN ? "Won" : status.gameResult == WinLose.LOSE ? "Lost" : "Playing")}";
         }
+        roundText.text = (status.nextRoundNumber + 1).ToString();
 
-        Debug.Log(status.gameResult);
+        // Debug.Log(status.gameResult);
 
         // flash a color if the game was won/lost
         if(debugMode) {
@@ -100,7 +102,6 @@ public class MainScene : MonoBehaviour
             }
         } else { //here, let's decide the animation that is going to play
             //play the animation win/lose/intro
-            Debug.Log("Playing animation");
             switch (status.previousMinigameResult) {
                 case WinLose.WIN:
                     bgAnimator.Play(winAnim);

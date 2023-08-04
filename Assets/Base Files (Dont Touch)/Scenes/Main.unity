@@ -368,13 +368,14 @@ MonoBehaviour:
   loseBG: {r: 0, g: 0, b: 0, a: 0}
   winBG: {r: 0, g: 0, b: 0, a: 0}
   bgAnimator: {fileID: 1689756763}
-  winDelay: 5.15
-  loseDelay: 5.63
-  introDelay: 4.4
+  winDelay: 5
+  loseDelay: 5.48
+  introDelay: 4.25
   winAnim: A_winmini
   loseAnim: A_losemini
   introAnim: A_intro
   debugMode: 0
+  roundText: {fileID: 1658042643}
 --- !u!95 &286624172
 Animator:
   serializedVersion: 5
@@ -6576,14 +6577,13 @@ GameObject:
   - component: {fileID: 998078755}
   - component: {fileID: 998078757}
   - component: {fileID: 998078756}
-  - component: {fileID: 998078758}
   m_Layer: 5
   m_Name: Round
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &998078755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6602,7 +6602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 41.7, y: -7.9001465}
+  m_AnchoredPosition: {x: 53.6, y: -7.9001465}
   m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &998078756
@@ -6626,7 +6626,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: bac3b2d0ba5e6194f99220138d417e60, type: 3}
     m_FontSize: 46
     m_FontStyle: 0
     m_BestFit: 0
@@ -6647,18 +6647,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998078754}
   m_CullTransparentMesh: 0
---- !u!114 &998078758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998078754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc42fa05aa5964419832889f2aa8a17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1000068472
 GameObject:
   m_ObjectHideFlags: 0
@@ -7070,8 +7058,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a743e31ae007e3c429c6646ba2e5dfad, type: 2}
-  m_sharedMaterial: {fileID: -4225209534364122888, guid: a743e31ae007e3c429c6646ba2e5dfad,
+  m_fontAsset: {fileID: 11400000, guid: 0bd994934efd1594a90586c78ddc6767, type: 2}
+  m_sharedMaterial: {fileID: 8085038687478080987, guid: 0bd994934efd1594a90586c78ddc6767,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8201,7 +8189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1545515545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8571,7 +8559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101, y: 0}
+  m_AnchoredPosition: {x: 82.99, y: 0}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1658042643
@@ -8595,7 +8583,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: bac3b2d0ba5e6194f99220138d417e60, type: 3}
     m_FontSize: 46
     m_FontStyle: 0
     m_BestFit: 0
@@ -8607,7 +8595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 1
 --- !u!222 &1658042644
 CanvasRenderer:
   m_ObjectHideFlags: 0

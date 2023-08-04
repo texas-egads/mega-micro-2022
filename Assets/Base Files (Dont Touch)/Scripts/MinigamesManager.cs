@@ -132,8 +132,22 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
             Debug.LogError("Attempt to call EndCurrentMinigame more than once!");
             return;
         }
-
+        //so it happens near end
+        if(delay < 0.33f) {
+            //ex: delay is 0.2, we need to add 0.13.
+            delay += 0.33f - delay;
+        }
+        float transitionDelay = Mathf.Max(0, delay - 0.33f);
+        StartCoroutine(DoTransitionOut(transitionDelay));
         minigameEndCoroutine = StartCoroutine(DoEndMinigame(delay));
+    }
+
+    IEnumerator DoTransitionOut(float delay) {
+        yield return new WaitForSeconds(delay);
+        Animator fadeAnimator = GameObject.Find("Transitioner").GetComponent<Animator>();
+        if (fadeAnimator.GetCurrentAnimatorStateInfo(0).IsName("mask-shrink") == false) {
+            fadeAnimator.Play("mask-shrink");
+        }
     }
 
     // used by the timer to end a minigame regardless of whether the minigame has been ended by itself

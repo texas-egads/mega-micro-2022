@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Arcane Counter
   m_EditorClassIdentifier: 
   cardName: Arcane Counter
-  cardDescription: a
+  cardDescription: Copies the last move the enemy did with +1 intensity. Costs 1
+    mana
   manaCost: 1
   upgradeScale: 1

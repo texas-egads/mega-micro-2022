@@ -24,9 +24,9 @@ public class MainScene : MonoBehaviour
     public Animator bgAnimator;
 
     //delay between each minigame
-    public float winDelay, loseDelay, introDelay;
+    public float winDelay, loseDelay, introDelay, winToBossDelay, loseToBossDelay;
 
-    public string winAnim, loseAnim, introAnim;
+    public string winAnim, loseAnim, introAnim, winToBossAnim, loseToBossAnim;
 
     //this will be on my default,
     //turn it off for the actual game implementation.
@@ -79,6 +79,12 @@ public class MainScene : MonoBehaviour
         promptText.text = "";
     }
 
+    IEnumerator LoadBossScene(float time) {
+        yield return new WaitForSeconds(time);
+        //load boss scene with name under the variable "bossScene"
+        Managers.__instance.scenesManager.LoadSceneImmediate(Managers.__instance.scenesManager.bossScene);
+    }
+
     private void OnBeginIntermission(MinigameStatus status, Action intermissionFinishedCallback) {
         if(debugMode) {
             // write all of the status to the screen
@@ -90,59 +96,73 @@ public class MainScene : MonoBehaviour
         }
         roundText.text = (status.nextRoundNumber + 1).ToString();
 
-        // Debug.Log(status.gameResult);
-
-        // flash a color if the game was won/lost
-        if(debugMode) {
-            if (status.previousMinigameResult == WinLose.WIN) {
-                background.color = winBG;
-            }
-            if (status.previousMinigameResult == WinLose.LOSE) {
-                background.color = loseBG;
-            }
-        } else { //here, let's decide the animation that is going to play
-            //play the animation win/lose/intro
-            switch (status.previousMinigameResult) {
-                case WinLose.WIN:
-                    bgAnimator.Play(winAnim);
-                    break;
-                case WinLose.LOSE:
-                    bgAnimator.Play(loseAnim);
-                    break;
-                default:
-                    bgAnimator.Play(introAnim);
-                    break;
-            }
+        if(status.gameResult == WinLose.WIN) { //move to boss
+            if(status.previousMinigameResult == WinLose.WIN) {
+                bgAnimator.Play(winToBossAnim);
+                StartCoroutine(LoadBossScene(winToBossDelay));
+            } else if(status.previousMinigameResult == WinLose.LOSE) {
+                bgAnimator.Play(loseToBossAnim);
+                StartCoroutine(LoadBossScene(loseToBossDelay));
+            }             
+            //set active false for parent of the gameobject associated with roundText
+            roundText.transform.parent.gameObject.SetActive(false);
+            
         }
 
-        if(debugMode) {
-            if (status.nextMinigame != null) {
-                // prepare for the next minigame
-                DOVirtual.DelayedCall(1f, () => {
-                    // return the background color to what it was before
-                    background.color = normalBG;
+        else {
 
-                    // await input
-                    promptText.text = "Press SPACE to start next minigame";
-                    spacePressedAction = () => OnProceed(status, intermissionFinishedCallback);
-                }, false);
+            // flash a color if the game was won/lost
+            if(debugMode) {
+                if (status.previousMinigameResult == WinLose.WIN) {
+                    background.color = winBG;
+                }
+                if (status.previousMinigameResult == WinLose.LOSE) {
+                    background.color = loseBG;
+                }
+            } else { //here, let's decide the animation that is going to play
+                //play the animation win/lose/intro
+                switch (status.previousMinigameResult) {
+                    case WinLose.WIN:
+                        bgAnimator.Play(winAnim);
+                        break;
+                    case WinLose.LOSE:
+                        bgAnimator.Play(loseAnim);
+                        break;
+                    default:
+                        bgAnimator.Play(introAnim);
+                        break;
+                }
             }
-        } else {
-            //do like the statement above, except do not use wait on space:
-            //just call the action after a delay of 3 seconds.
-          //  DOVirtual.DelayedCall(4.66f, () => OnProceed(status, intermissionFinishedCallback), false);
-          switch (status.previousMinigameResult) {
-            case WinLose.WIN:
-                DOVirtual.DelayedCall(winDelay, () => OnProceed(status, intermissionFinishedCallback), false);
-                break;
-            case WinLose.LOSE:
-                DOVirtual.DelayedCall(loseDelay, () => OnProceed(status, intermissionFinishedCallback), false);
-                break;
-            default:
-                DOVirtual.DelayedCall(introDelay, () => OnProceed(status, intermissionFinishedCallback), false);
-                break;
 
-          }
+            if(debugMode) {
+                if (status.nextMinigame != null) {
+                    // prepare for the next minigame
+                    DOVirtual.DelayedCall(1f, () => {
+                        // return the background color to what it was before
+                        background.color = normalBG;
+
+                        // await input
+                        promptText.text = "Press SPACE to start next minigame";
+                        spacePressedAction = () => OnProceed(status, intermissionFinishedCallback);
+                    }, false);
+                }
+            } else {
+                //do like the statement above, except do not use wait on space:
+                //just call the action after a delay of 3 seconds.
+            //  DOVirtual.DelayedCall(4.66f, () => OnProceed(status, intermissionFinishedCallback), false);
+            switch (status.previousMinigameResult) {
+                case WinLose.WIN:
+                    DOVirtual.DelayedCall(winDelay, () => OnProceed(status, intermissionFinishedCallback), false);
+                    break;
+                case WinLose.LOSE:
+                    DOVirtual.DelayedCall(loseDelay, () => OnProceed(status, intermissionFinishedCallback), false);
+                    break;
+                default:
+                    DOVirtual.DelayedCall(introDelay, () => OnProceed(status, intermissionFinishedCallback), false);
+                    break;
+
+            }
+            }
         }
     }
 

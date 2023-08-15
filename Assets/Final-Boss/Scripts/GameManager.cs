@@ -43,6 +43,12 @@ namespace Final_Boss
         [SerializeField] private int maxPlayerHealth = 30;
         [SerializeField] private int maxEnemyHealth = 30;
 
+        private bool playerUsedMana, enemyUsedMana;
+        private Card previousPlayerCard, previousEnemyCard;
+
+        //UI stuff
+        public TextMeshProUGUI playerHealthCounter, enemyHealthCounter;
+
         private int PlayerHealth
         {
             get => _playerHealth;
@@ -60,6 +66,7 @@ namespace Final_Boss
             {
                 _enemyHealth = value;
                 enemyHealthChanged.Invoke((float) _enemyHealth / maxEnemyHealth);
+                enemyHealthCounter.text = (_enemyHealth + " / " + maxEnemyHealth);
             }
         }
 
@@ -115,8 +122,14 @@ namespace Final_Boss
             }
 
             // 1 mana per round
-            PlayerMana += 1;
-            EnemyMana += 1;
+            if(!playerUsedMana) {
+                PlayerMana = Mathf.Min(PlayerMana + 1, 3);
+            }
+            if(!enemyUsedMana) {
+                EnemyMana = Mathf.Min(EnemyMana + 1, 3);
+            }
+            playerUsedMana = false;
+            enemyUsedMana = false;
 
             _roundTimer = StartCoroutine(RunRoundTimer());
             roundStarted.Invoke();
@@ -198,27 +211,32 @@ namespace Final_Boss
         {
             EnemyHealth -= card.damage;
             PlayerMana -= card.manaCost;
+            playerUsedMana = true;
         }
 
         private void HandleDefense(CardDescriptorDefense card)
         {
             PlayerMana -= card.manaCost;
+            playerUsedMana = true;
         }
 
         private void HandleHeal(CardDescriptorHeal card)
         {
             PlayerHealth += card.healAmount;
             PlayerMana -= card.manaCost;
+            playerUsedMana = true;
         }
 
         private void HandleStun(CardDescriptorStun card)
         {
             PlayerMana -= card.manaCost;
+            playerUsedMana = true;
         }
 
         private void HandleCopy(CardDescriptorCopy card)
         {
             PlayerMana -= card.manaCost;
+            playerUsedMana = true;
         }
 
         public void DrawCard()

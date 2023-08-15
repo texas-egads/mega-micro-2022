@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shadow Dodge
   m_EditorClassIdentifier: 
   cardName: Shadow Dodge
-  cardDescription: f
+  cardDescription: Evade getting hit the next turn completely
   manaCost: 2
   blockAmount: 0
   shouldEvade: 1

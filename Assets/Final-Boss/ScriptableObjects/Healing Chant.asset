@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Healing Chant
   m_EditorClassIdentifier: 
   cardName: Healing Chant
-  cardDescription: d
+  cardDescription: Heals 4 HP. Costs 1 mana
   manaCost: 1
   healAmount: 4

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Is this your card
   m_EditorClassIdentifier: 
   cardName: Is this your card?
-  cardDescription: e
+  cardDescription: "Stuns the player so they can\u2019t move next turn, and drains
+    all of their mana. 1 mana"
   manaCost: 1
   turnsApplied: 1

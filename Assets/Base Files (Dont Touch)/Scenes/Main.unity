@@ -371,9 +371,13 @@ MonoBehaviour:
   winDelay: 5
   loseDelay: 5.48
   introDelay: 4.25
+  winToBossDelay: 7.0333333
+  loseToBossDelay: 7.55
   winAnim: A_winmini
   loseAnim: A_losemini
   introAnim: A_intro
+  winToBossAnim: A_winbeforeboss
+  loseToBossAnim: A_losebeforeboss
   debugMode: 0
   roundText: {fileID: 1658042643}
 --- !u!95 &286624172
@@ -724,7 +728,7 @@ RectTransform:
   - {fileID: 1298500457}
   - {fileID: 286624170}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5644,6 +5648,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1914113568, guid: 299268e851095ea429ce927bf2bef866, type: 3}
+      propertyPath: bossScene
+      value: Final-Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914113568, guid: 299268e851095ea429ce927bf2bef866, type: 3}
       propertyPath: mainSceneName
       value: Main
       objectReference: {fileID: 0}
@@ -5652,6 +5660,16 @@ PrefabInstance:
       propertyPath: animEvents
       value: 
       objectReference: {fileID: 1689756764}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: numRoundsInEasyMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: numRoundsInNormalMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
       propertyPath: allMinigames.Array.size
@@ -6369,7 +6387,7 @@ RectTransform:
   - {fileID: 1024377327}
   - {fileID: 1092574710}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7058,8 +7076,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bd994934efd1594a90586c78ddc6767, type: 2}
-  m_sharedMaterial: {fileID: 8085038687478080987, guid: 0bd994934efd1594a90586c78ddc6767,
+  m_fontAsset: {fileID: 11400000, guid: fa996fe11ffcc2843a45e9ce74f9aaa7, type: 2}
+  m_sharedMaterial: {fileID: -3549187358940254976, guid: fa996fe11ffcc2843a45e9ce74f9aaa7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9028,5 +9046,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

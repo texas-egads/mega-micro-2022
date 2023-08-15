@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Warlock Shield
   m_EditorClassIdentifier: 
   cardName: Warlock Shield
-  cardDescription: h
+  cardDescription: Block next attack for up to 3 HP
   manaCost: 0
   blockAmount: 3
   shouldEvade: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Claw Slash
   m_EditorClassIdentifier: 
   cardName: Claw Slash
-  cardDescription: b
+  cardDescription: Deals 3 damage
   manaCost: 0
   damage: 3

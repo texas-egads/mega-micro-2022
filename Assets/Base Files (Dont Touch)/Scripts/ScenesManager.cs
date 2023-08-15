@@ -10,6 +10,7 @@ using UnityEditor;
 public class ScenesManager : MonoBehaviour
 {
     [SerializeField] private string mainSceneName;
+    public string bossScene;
 
     private AsyncOperation currentMinigameLoad;
     private Action minigameLoadedCallback;
@@ -72,6 +73,7 @@ public class ScenesManager : MonoBehaviour
     }
 
     private IEnumerator DoLoadMinigame(string sceneName) {
+        Debug.Log(sceneName);
         canActivateMinigame = false;
         currentMinigameLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         currentMinigameLoad.allowSceneActivation = false;

@@ -24,6 +24,12 @@ namespace Final_Boss
             cardDescriptor = Instantiate(cardDescriptor);
         }
 
+        //onenable that sets _hasBeenSelected to false
+        private void OnEnable()
+        {
+            _hasBeenSelected = false;
+        }
+
         public void DealCard(Vector3 position, int handIndex)
         {
             transform.position = position;

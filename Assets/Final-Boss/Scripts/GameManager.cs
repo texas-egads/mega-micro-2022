@@ -25,7 +25,16 @@ namespace Final_Boss
         public UnityEvent roundStarted;
         public UnityEvent cardSelected;
 
-        public List<Card> deck = new List<Card>();
+        //public List<Card> deck = new List<Card>();
+
+        //this is the prefab objects for each
+        public GameObject ClawSlash, FireBlast, ThunderStrike, WarlockShield, HealingChant, ShadowDodge, ArcaneCounter, ThisYourCard;
+        private List<Card> playerDeck = new List<Card>();
+        private List<Card> enemyDeck = new List<Card>();
+        public Transform playerDeckParent;
+        private int playerDeckIndex;
+
+
         public Transform[] cardSlots;
         public int roundLengthInSeconds = 30;
         
@@ -97,12 +106,14 @@ namespace Final_Boss
             Card.CardSelected += OnCardSelected;
             Card.CardUnselected += OnCardUnselected;
 
-            foreach (var card in deck)
-            {
-                card.gameObject.SetActive(false);
-            }
+            GenerateDecks();
+
+            // foreach (var card in deck)
+            // {
+            //     card.gameObject.SetActive(false);
+            // }
             
-            deckSizeChanged.Invoke(deck.Count);
+            deckSizeChanged.Invoke(playerDeck.Count);
 
             PlayerHealth = maxPlayerHealth;
             EnemyHealth = maxEnemyHealth;
@@ -110,15 +121,67 @@ namespace Final_Boss
             StartRound();
         }
 
+        private void GenerateDecks()
+        {
+            //the player deck and enemy deck are generated here. the player deck has 15 cards:
+            //2 of them must be claw slashes, 1 must be arcane counter. Additionally, 6 are randomly chosen between claw slash, fire blast, and thunder strike. and 6 are randomly chosen between warlock shield, healing chant, and shadow dodge.
+            //generate the player deck:
+            for(int i = 0; i < 2; i++) {
+                playerDeck.Add(Instantiate(ClawSlash, playerDeckParent).GetComponent<Card>());
+            }
+            //now a for loop that runs 6 times. in this loop, randomly choose between claw slash, fire blast, and thunder strike:
+            for(int i = 0; i < 6; i++) {
+                int randomNum = Random.Range(0, 3);
+                if(randomNum == 0) {
+                    AddCard(ClawSlash, true);
+                }
+                else if(randomNum == 1) {
+                    AddCard(FireBlast, true);
+                }
+                else if(randomNum == 2) {
+                    AddCard(ThunderStrike, true);
+                }
+            }
+            //now a loop that runs 6 time, randomly choose between warlock shield, healing chant, and shadow dodge:
+            for(int i = 0; i < 6; i++) {
+                int randomNum = Random.Range(0, 3);
+                if(randomNum == 0) {
+                    AddCard(WarlockShield, true);
+                }
+                else if(randomNum == 1) {
+                    AddCard(HealingChant, true);
+                }
+                else if(randomNum == 2) {
+                    AddCard(ShadowDodge, true);
+                }
+            }
+            //now add arcane counter:
+            AddCard(ArcaneCounter, true);
+        }
+
+        private void AddCard(GameObject card, bool isPlayer = true) {
+            if(isPlayer) {
+                playerDeck.Add(Instantiate(card, playerDeckParent).GetComponent<Card>());
+            }
+        }
+
         public void StartRound()
         {
             _selectedCardIndex = -1;
-            ClearHand();
+         //   ClearHand();
 
-            var dealAmount = Math.Min(_cardsInHand.Length, deck.Count);
+            int nullCount = 0;
+            
+            for(int i = 0; i < _cardsInHand.Length; i++) {
+                if(_cardsInHand[i] == null) {
+                    nullCount++;
+                }
+            }
+            Debug.Log(nullCount);
+            var dealAmount = nullCount;
             for (var i = 0; i < dealAmount; ++i)
             {
-                DrawCard();
+                DrawCard(true);
             }
 
             // 1 mana per round
@@ -141,11 +204,13 @@ namespace Final_Boss
 
             if (EnemyHealth <= 0)
             {
+                Debug.Log("WON!");
                 Managers.MinigamesManager.DeclareCurrentMinigameWon();
                 Managers.MinigamesManager.EndCurrentMinigame();
             }
             else if (PlayerHealth <= 0)
             {
+                Debug.Log("LOST!");
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
                 Managers.MinigamesManager.EndCurrentMinigame();
             }
@@ -157,6 +222,7 @@ namespace Final_Boss
 
         private void EvaluateRound()
         {
+            Debug.Log(playerDeck.ToString());   
             // Nothing selected
             if (_selectedCardIndex < 0 || !_cardsInHand[_selectedCardIndex]) return;
 
@@ -205,26 +271,33 @@ namespace Final_Boss
             }
             
             RemoveCardAt(_selectedCardIndex);
+            //RecycleCardAt(_selectedCardIndex);
         }
 
         private void HandleAttack(CardDescriptorAttack card)
         {
-            EnemyHealth -= card.damage;
+            EnemyHealth = Mathf.Max(0, EnemyHealth - card.damage);
             PlayerMana -= card.manaCost;
-            playerUsedMana = true;
+            if(card.manaCost > 0) {
+                playerUsedMana = true;
+            }
         }
 
         private void HandleDefense(CardDescriptorDefense card)
         {
             PlayerMana -= card.manaCost;
-            playerUsedMana = true;
+            if(card.manaCost > 0) {
+                playerUsedMana = true;
+            }
         }
 
         private void HandleHeal(CardDescriptorHeal card)
         {
             PlayerHealth += card.healAmount;
             PlayerMana -= card.manaCost;
-            playerUsedMana = true;
+            if(card.manaCost > 0) {
+                playerUsedMana = true;
+            }
         }
 
         private void HandleStun(CardDescriptorStun card)
@@ -236,28 +309,31 @@ namespace Final_Boss
         private void HandleCopy(CardDescriptorCopy card)
         {
             PlayerMana -= card.manaCost;
-            playerUsedMana = true;
+            if(card.manaCost > 0) {
+                playerUsedMana = true;
+            }
         }
 
-        public void DrawCard()
+        public void DrawCard(bool isPlayer)
         {
-            if (deck.Count < 1)
-            {
-                Debug.Log("Out of cards in deck");
-                return;
-            }
+            
 
-            var randomCard = deck[Random.Range(0, deck.Count)];
+            
+            while(playerDeck[playerDeckIndex].gameObject.activeSelf) { //this loop will terminate once it finds card not already drawn
+                playerDeckIndex = (playerDeckIndex + 1) % playerDeck.Count;
+            }
+            var cardToDraw = playerDeck[playerDeckIndex];
+            playerDeckIndex = (playerDeckIndex + 1) % playerDeck.Count;
 
             for (var i = 0; i < _cardsInHand.Length; ++i)
             {
                 if (_cardsInHand[i] != null) continue;
 
-                randomCard.gameObject.SetActive(true);
-                randomCard.DealCard(cardSlots[i].position, i);
-                _cardsInHand[i] = randomCard;
-                deck.Remove(randomCard);
-                deckSizeChanged.Invoke(deck.Count);
+                cardToDraw.gameObject.SetActive(true); //turns on card visibility
+                cardToDraw.DealCard(cardSlots[i].position, i); //just sets position
+                _cardsInHand[i] = cardToDraw; //add to card in hand
+                // playerDeck.Remove(cardToDraw); //removes from deck. lets change that back
+                deckSizeChanged.Invoke(playerDeck.Count); //deck size counter
                 return;
             }
 
@@ -309,6 +385,7 @@ namespace Final_Boss
 
         private void RemoveCardAt(int index)
         {
+            Debug.Log(index);
             if (index < 0) return;
 
             var card = _cardsInHand[index];
@@ -316,9 +393,13 @@ namespace Final_Boss
 
             if (card == null) return;
 
-            Destroy(card.gameObject);
+            card.gameObject.SetActive(false);
+
+          //  Destroy(card.gameObject);
         }
 
+
+        //returns the cards from the hand to deck. for new shiz each time.
         private void ReturnCardAt(int index)
         {
             if (index < 0) return;
@@ -330,8 +411,8 @@ namespace Final_Boss
             
             card.gameObject.SetActive(false);
             
-            deck.Add(card);
-            deckSizeChanged.Invoke(deck.Count);
+            playerDeck.Add(card);
+            deckSizeChanged.Invoke(playerDeck.Count);
         }
 
         private void ClearHand()

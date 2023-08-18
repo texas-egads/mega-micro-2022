@@ -27,6 +27,7 @@ public class MainScene : MonoBehaviour
     public float winDelay, loseDelay, introDelay, winToBossDelay, loseToBossDelay;
 
     public string winAnim, loseAnim, introAnim, winToBossAnim, loseToBossAnim;
+    public AudioSource introTheme, winTheme, loseTheme;
 
     //this will be on my default,
     //turn it off for the actual game implementation.
@@ -99,9 +100,11 @@ public class MainScene : MonoBehaviour
         if(status.gameResult == WinLose.WIN) { //move to boss
             if(status.previousMinigameResult == WinLose.WIN) {
                 bgAnimator.Play(winToBossAnim);
+                winTheme.Play();
                 StartCoroutine(LoadBossScene(winToBossDelay));
             } else if(status.previousMinigameResult == WinLose.LOSE) {
                 bgAnimator.Play(loseToBossAnim);
+                loseTheme.Play();
                 StartCoroutine(LoadBossScene(loseToBossDelay));
             }             
             //set active false for parent of the gameobject associated with roundText
@@ -124,12 +127,15 @@ public class MainScene : MonoBehaviour
                 switch (status.previousMinigameResult) {
                     case WinLose.WIN:
                         bgAnimator.Play(winAnim);
+                        winTheme.Play();
                         break;
                     case WinLose.LOSE:
                         bgAnimator.Play(loseAnim);
+                        loseTheme.Play();
                         break;
                     default:
                         bgAnimator.Play(introAnim);
+                        introTheme.Play();
                         break;
                 }
             }

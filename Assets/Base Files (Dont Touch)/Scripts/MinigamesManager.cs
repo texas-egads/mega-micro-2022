@@ -143,8 +143,8 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     }
 
     IEnumerator DoTransitionOut(float delay) {
-        yield return new WaitForSeconds(delay);
         Animator fadeAnimator = GameObject.Find("Transitioner").GetComponent<Animator>();
+        yield return new WaitForSeconds(delay);
         if (fadeAnimator.GetCurrentAnimatorStateInfo(0).IsName("mask-shrink") == false) {
             fadeAnimator.Play("mask-shrink");
         }

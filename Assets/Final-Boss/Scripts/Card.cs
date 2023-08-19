@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using DG.Tweening;
 using Final_Boss.ScriptableObjects;
 using UnityEngine;
@@ -30,11 +31,19 @@ namespace Final_Boss
             _hasBeenSelected = false;
         }
 
-        public void DealCard(Vector3 position, int handIndex)
+        public void DealCard(Vector3 fromPos, Vector3 toPosition, int handIndex)
         {
-            transform.position = position;
-            _deckY = position.y;
+            // transform.position = position;
+            _deckY = toPosition.y;
             _handIndex = handIndex;
+            StartCoroutine(MoveCard(fromPos, toPosition, 1f));
+        }
+
+        //create a coroutine that takes vector3 fromPos, vector3 toPos, float duration. move transform from fromPos to toPos over duration:
+        public IEnumerator MoveCard(Vector3 fromPos, Vector3 toPos, float duration)
+        {
+            transform.position = fromPos;
+            yield return transform.DOMove(toPos, duration).WaitForCompletion();
         }
 
         private void OnMouseDown()

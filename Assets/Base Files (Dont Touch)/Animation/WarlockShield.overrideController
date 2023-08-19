@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WarlockShield
+  m_Controller: {fileID: 9100000, guid: 2a7a12e9b3296734c8bcc6fb3cd69f2d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c04cccdd9bfd6f74c8edc99b54bbbd6e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f22909c5fc517824b91f80d47b484ed4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: aaf57425105bd154a968423a6b030d3e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 520624d4b6435264d860d1c04d0ad93e, type: 2}

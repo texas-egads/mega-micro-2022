@@ -5993,7 +5993,7 @@ PrefabInstance:
     - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
       propertyPath: numRoundsInNormalMode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 21403712310278605, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}

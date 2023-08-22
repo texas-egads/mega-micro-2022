@@ -20,6 +20,8 @@ namespace Final_Boss
         private int _handIndex;
         private float _deckY;
 
+        public AudioSource flipSound;
+
         private void Start()
         {
             cardDescriptor = Instantiate(cardDescriptor);
@@ -62,11 +64,22 @@ namespace Final_Boss
             }
         }
 
+        public void PlayFlipSound() {
+            flipSound.Play();
+        }
+
         public void SelectCard()
         {
             Debug.Log("Card Selected");
             _hasBeenSelected = true;
             transform.DOMoveY(_deckY + moveAmount, 0.5f);
+        }
+
+        public void SelectCardEnemy() //only difference, it moves down
+        {
+            Debug.Log("Card Selected");
+            _hasBeenSelected = true;
+            transform.DOMoveY(_deckY - moveAmount, 0.5f);
         }
 
         public void UnselectCard()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Final_Boss.ScriptableObjects;
 using TMPro;
 using UnityEngine;
@@ -52,6 +53,7 @@ namespace Final_Boss
         private Card[] _cardsInHand;
         private Card[] _enemyCardsInHand;
         private int _selectedCardIndex;
+        private int _enemySelectedCardIndex;
         private int _playerHealth;
         private int _playerMana;
         private int _enemyHealth;
@@ -63,8 +65,17 @@ namespace Final_Boss
         private bool playerUsedMana, enemyUsedMana;
         private Card previousPlayerCard, previousEnemyCard;
 
+        private bool evaluatingRound;
+
+
+
+        private int playerAtk, playerDef;
+        private int enemyAtk, enemyDef;
+        private int playerHeal, enemyHeal;
+
         //UI stuff
         public TextMeshProUGUI playerHealthCounter, enemyHealthCounter;
+        public TextMeshProUGUI playerDamageMarker, enemyDamageMarker;
 
         private int PlayerHealth
         {
@@ -73,6 +84,7 @@ namespace Final_Boss
             {
                 _playerHealth = value;
                 playerHealthChanged.Invoke((float) _playerHealth / maxPlayerHealth);
+                playerHealthCounter.text = (_playerHealth + " / " + maxPlayerHealth);
             }
         }
 
@@ -133,10 +145,10 @@ namespace Final_Boss
             StartRound();
         }
 
-        // private IEnumerator DelayBeforeRound(float seconds) {
-        //     yield return new WaitForSeconds(seconds);
-        //     StartRound();
-        // }
+        private IEnumerator DelayBeforeRound(float seconds) {
+            yield return new WaitForSeconds(seconds);
+            StartRound();
+        }
 
         private void GenerateDecks()
         {
@@ -174,6 +186,18 @@ namespace Final_Boss
             }
             //now add arcane counter:
             AddCard(ArcaneCounter, true);
+
+
+            //randomly shuffle playerdeck, shuffle from the third element to the second to last element:
+            for(int i = 2; i < 30; i++) {
+                int randomNum = Random.Range(2, playerDeck.Count);
+                int randomNum2 = Random.Range(2, playerDeck.Count);
+                Card temp = playerDeck[randomNum2];
+                playerDeck[randomNum2] = playerDeck[randomNum];
+                playerDeck[randomNum] = temp;
+            }
+
+
 
             //do the same thing for enemy deck, but instead of arcane counter, add this your card:
             for(int i = 0; i < 2; i++) {
@@ -230,7 +254,7 @@ namespace Final_Boss
                     nullCount++;
                 }
             }
-            //Debug.Log(nullCount);
+            Debug.Log("null count: " + nullCount);
             var dealAmount = nullCount;
             for (var i = 0; i < dealAmount; ++i)
             {
@@ -251,6 +275,13 @@ namespace Final_Boss
                 DrawCard(false);
             }
 
+            //turn all of the player card colliders on
+            for(int i = 0; i < _cardsInHand.Length; i++) {
+                if(_cardsInHand[i] != null) {
+                    _cardsInHand[i].GetComponent<Collider2D>().enabled = true;
+                }
+            }
+
 
 
             // 1 mana per round
@@ -263,13 +294,57 @@ namespace Final_Boss
             playerUsedMana = false;
             enemyUsedMana = false;
 
+            SelectEnemyCard();
+
             _roundTimer = StartCoroutine(RunRoundTimer());
             roundStarted.Invoke();
         }
 
+        private void SelectEnemyCard() {
+            //randomly select a card from enemy hand. if not enough mana, randomly select from the other two cards. if not enough again, select the last card. if that doesnt have enough, just set _enemySelectedCardIndex to -1
+            int randomNum = Random.Range(0, 3);
+            if(randomNum == 0) {
+                if(EnemyMana >= _enemyCardsInHand[0].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 0;
+                } else if(EnemyMana >= _enemyCardsInHand[1].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 1;
+                } else if(EnemyMana >= _enemyCardsInHand[2].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 2;
+                } else {
+                    _enemySelectedCardIndex = -1;
+                }
+            } else if(randomNum == 1) {
+                if(EnemyMana >= _enemyCardsInHand[1].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 1;
+                } else if(EnemyMana >= _enemyCardsInHand[2].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 2;
+                } else if(EnemyMana >= _enemyCardsInHand[0].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 0;
+                } else {
+                    _enemySelectedCardIndex = -1;
+                }
+            } else if(randomNum == 2) {
+                if(EnemyMana >= _enemyCardsInHand[2].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 2;
+                } else if(EnemyMana >= _enemyCardsInHand[0].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 0;
+                } else if(EnemyMana >= _enemyCardsInHand[1].cardDescriptor.manaCost) {
+                    _enemySelectedCardIndex = 1;
+                } else {
+                    _enemySelectedCardIndex = -1;
+                }
+            }
+        }
+
         public void EndRound()
         {
-            EvaluateRound();
+
+
+            EvaluateRound(); //this does all the fight logic
+            Debug.Log("YOOO");
+            // while(evaluatingRound) {
+            //     //stay here
+            // }
 
             if (EnemyHealth <= 0)
             {
@@ -285,102 +360,334 @@ namespace Final_Boss
             }
             else
             {
-                StartRound();
+                StartCoroutine(DelayBeforeRound(5f));
+            }
+        }
+
+        private IEnumerator SetDamageMarker(int amt, bool isPlayer, bool isHeal) {
+            //if its player, set playerDamageMarker to "-" + amt, then set gameObject true. if isHeal, set color to green. else, set color to red. same idea for enemy. wait 2 seconds, then set gameObject false
+            if(isPlayer) {
+                if(isHeal) {
+                    playerDamageMarker.text = "+" + amt;
+                    playerDamageMarker.color = Color.green;
+                } else {
+                    playerDamageMarker.text = "-" + amt;
+                    playerDamageMarker.color = Color.red;
+                }
+                playerDamageMarker.gameObject.SetActive(true);
+            } else {
+                if(isHeal) {
+                    playerDamageMarker.text = "+" + amt;
+                    enemyDamageMarker.color = Color.green;
+                } else {
+                    enemyDamageMarker.text = "-" + amt;
+                    enemyDamageMarker.color = Color.red;
+                }
+                enemyDamageMarker.gameObject.SetActive(true);
+            }
+            yield return new WaitForSeconds(2f);
+            if(isPlayer) {
+                playerDamageMarker.gameObject.SetActive(false);
+            } else {
+                enemyDamageMarker.gameObject.SetActive(false);
             }
         }
 
         private void EvaluateRound()
         {
+            evaluatingRound = true;
             Debug.Log(playerDeck.ToString());   
             // Nothing selected
-            if (_selectedCardIndex < 0 || !_cardsInHand[_selectedCardIndex]) return;
+            // if (_selectedCardIndex < 0 || !_cardsInHand[_selectedCardIndex]) return;
 
-            var selectedCard = _cardsInHand[_selectedCardIndex];
-            var cardDescriptor = selectedCard.cardDescriptor;
 
-            // Not enough mana
-            if (PlayerMana < cardDescriptor.manaCost)
-            {
-                selectedCard.UnselectCard();
-                return;
+            Card playerSelectedCard; 
+            CardDescriptor playerCardDescriptor;
+
+
+            //makes the other cards not pressable
+            if(_selectedCardIndex < 0) {
+                playerSelectedCard = null;
+                playerCardDescriptor = null;
+                
+            } else {
+                playerSelectedCard = _cardsInHand[_selectedCardIndex];
+                playerCardDescriptor = playerSelectedCard.cardDescriptor;
+
+                //make the 2 colliders that are not _selectedCardIndex not interactable. this array has 3 elements, so we can just do this:
+                
             }
 
-            switch (cardDescriptor)
-            {
-                case CardDescriptorAttack attackCard:
-                {
-                    HandleAttack(attackCard);
-                    break;
+            for(int i = 0; i < _cardsInHand.Length; i++) {
+                if(_cardsInHand[i] != null) {
+                    _cardsInHand[i].GetComponent<Collider2D>().enabled = false;
                 }
-                case CardDescriptorDefense defenseCard:
+            }
+
+            //do same with enemySelectedCard and enemyCardDescriptor
+            Card enemySelectedCard;
+            CardDescriptor enemyCardDescriptor;
+
+            if(_enemySelectedCardIndex < 0) {
+                enemySelectedCard = null;
+                enemyCardDescriptor = null;
+            } else {
+                enemySelectedCard = _enemyCardsInHand[_enemySelectedCardIndex];
+                enemyCardDescriptor = enemySelectedCard.cardDescriptor;
+            }
+
+
+
+
+
+            if(playerSelectedCard != null) {
+                // Not enough mana
+                if (PlayerMana < playerCardDescriptor.manaCost)
                 {
-                    HandleDefense(defenseCard);
-                    break;
-                }
-                case CardDescriptorHeal healCard:
-                {
-                    HandleHeal(healCard);
-                    break;
-                }
-                case CardDescriptorStun stunCard:
-                {
-                    HandleStun(stunCard);
-                    break;
-                }
-                case CardDescriptorCopy copyCard:
-                {
-                    HandleCopy(copyCard);
-                    break;
-                }
-                default:
-                {
-                    Debug.LogError("Could not cast card descriptor");
+                    playerSelectedCard.UnselectCard();
                     return;
                 }
+
+                switch (playerCardDescriptor)
+                {
+                    case CardDescriptorAttack attackCard:
+                    {
+                        HandleAttack(attackCard, true);
+                        break;
+                    }
+                    case CardDescriptorDefense defenseCard:
+                    {
+                        HandleDefense(defenseCard, true);
+                        break;
+                    }
+                    case CardDescriptorHeal healCard:
+                    {
+                        HandleHeal(healCard, true);
+                        break;
+                    }
+                    case CardDescriptorStun stunCard:
+                    {
+                        HandleStun(stunCard, true);
+                        break;
+                    }
+                    case CardDescriptorCopy copyCard:
+                    {
+                        HandleCopy(copyCard, true);
+                        break;
+                    }
+                    default:
+                    {
+                        Debug.LogError("Could not cast card descriptor");
+                        return;
+                    }
+                }
+                
+                // RemoveCardAt(_selectedCardIndex);
             }
-            
-            RemoveCardAt(_selectedCardIndex);
-            //RecycleCardAt(_selectedCardIndex);
+
+            if(enemySelectedCard != null) {
+                enemySelectedCard.GetComponent<Card>().SelectCardEnemy();
+                StartCoroutine(FlipCard(enemySelectedCard.GetComponent<Animator>(), 1.5f));
+
+                //now do the switch cases for enemySelectedCard
+                switch (enemyCardDescriptor)
+                {
+                    case CardDescriptorAttack attackCard:
+                    {
+                        HandleAttack(attackCard, false);
+                        break;
+                    }
+                    case CardDescriptorDefense defenseCard:
+                    {
+                        HandleDefense(defenseCard, false);
+                        break;
+                    }
+                    case CardDescriptorHeal healCard:
+                    {
+                        HandleHeal(healCard, false);
+                        break;
+                    }
+                    case CardDescriptorStun stunCard:
+                    {
+                        HandleStun(stunCard, false);
+                        break;
+                    }
+                    case CardDescriptorCopy copyCard:
+                    {
+                        HandleCopy(copyCard, false);
+                        break;
+                    }
+                    default:
+                    {
+                        Debug.LogError("Could not cast card descriptor");
+                        return;
+                    }
+                }
+            }
+
+            //cards done, now lets do fight logic
+            //so if defense is higher, 
+            int playerNetAttack;
+            int enemyNetAttack;
+
+            if(playerAtk > enemyDef) {
+                playerNetAttack = playerAtk - enemyDef;
+            } else {
+                playerNetAttack = 0;
+            }
+
+            if(enemyAtk > playerDef) {
+                enemyNetAttack = enemyAtk - playerDef;
+            } else {
+                enemyNetAttack = 0;
+            }
+
+
+            int prevPlayerHP = PlayerHealth;
+            int prevEnemyHP = EnemyHealth;
+            PlayerHealth = Mathf.Max(0, PlayerHealth - enemyNetAttack + playerHeal);
+            EnemyHealth = Mathf.Max(0, EnemyHealth - playerNetAttack + enemyHeal);
+
+            int playerChange = Mathf.Abs(PlayerHealth - prevPlayerHP);
+            int enemyChange = Mathf.Abs(EnemyHealth - prevEnemyHP);
+
+            if(PlayerHealth < prevPlayerHP) {
+                //set playerDamageMarker color to red, and set text to "-" + enemyNetAttack
+                //set
+                StartCoroutine(SetDamageMarker(playerChange, true, false));
+            }  else if(PlayerHealth > prevPlayerHP) {
+                //set playerDamageMarker color to green, and set text to "+" + playerHeal
+                StartCoroutine(SetDamageMarker(playerChange, true, true));
+            }
+
+            //now for enemy health
+            if(EnemyHealth < prevEnemyHP) {
+                //set enemyDamageMarker color to red, and set text to "-" + playerNetAttack
+                enemyDamageMarker.color = Color.red;
+                enemyDamageMarker.text = "-" + playerNetAttack;
+                StartCoroutine(SetDamageMarker(enemyChange, false, false));
+            } else if(EnemyHealth > prevEnemyHP) {
+                //set enemyDamageMarker color to green, and set text to "+" + enemyHeal
+                enemyDamageMarker.color = Color.green;
+                enemyDamageMarker.text = "+" + enemyHeal;
+                StartCoroutine(SetDamageMarker(enemyChange, false, true));
+            }
+
+
+
+            //set them back to 0
+            playerAtk = 0;
+            playerDef = 0;
+            enemyAtk = 0;
+            enemyDef = 0;
+            playerHeal = 0;
+            enemyHeal = 0;
+
+            //player and enemy fight logic done. now we clean up
+
+            StartCoroutine(CleanUpCards(_selectedCardIndex, _enemySelectedCardIndex));
         }
 
-        private void HandleAttack(CardDescriptorAttack card)
+        private IEnumerator CleanUpCards(int playerCardIndex, int enemyCardIndex) {
+            yield return new WaitForSeconds(4f);
+            RemoveCardAt(playerCardIndex);
+            RemoveCardAt(enemyCardIndex, false);
+            evaluatingRound = false;
+        }
+
+        private void HandleAttack(CardDescriptorAttack card, bool isPlayer)
         {
-            EnemyHealth = Mathf.Max(0, EnemyHealth - card.damage);
-            PlayerMana -= card.manaCost;
-            if(card.manaCost > 0) {
+            if(isPlayer) {
+                playerAtk = card.damage;
+                // EnemyHealth = Mathf.Max(0, EnemyHealth - card.damage);
+                PlayerMana -= card.manaCost;
+                if(card.manaCost > 0) {
+                    playerUsedMana = true;
+                }
+            } else {
+                enemyAtk = card.damage;
+                //PlayerHealth = Mathf.Max(0, PlayerHealth - card.damage);
+                EnemyMana -= card.manaCost;
+                if(card.manaCost > 0) {
+                    enemyUsedMana = true;
+                }
+            }
+        }
+
+        private void HandleDefense(CardDescriptorDefense card, bool isPlayer)
+        {
+            if(isPlayer) {
+                if(card.shouldEvade) { // this is shadow dodge
+                    playerDef = 99;
+                } else {
+                    playerDef = card.blockAmount;
+                }
+                PlayerMana -= card.manaCost;
+                if(card.manaCost > 0) {
+                    playerUsedMana = true;
+                }
+            } else {
+                if(card.shouldEvade) { // this is shadow dodge
+                    enemyDef = 99;
+                } else {
+                    enemyDef = card.blockAmount;
+                }
+                //enemyDef = card.blockAmount;
+                EnemyMana -= card.manaCost;
+                if(card.manaCost > 0) {
+                    enemyUsedMana = true;
+                }
+            }
+        }
+
+        private void HandleHeal(CardDescriptorHeal card, bool isPlayer)
+        {
+            if(isPlayer) {
+                PlayerHealth += card.healAmount;
+                playerHeal = card.healAmount;
+                //StartCoroutine(SetDamageMarker(card.healAmount, true, true));
+                PlayerMana -= card.manaCost;
+                if(card.manaCost > 0) {
+                    playerUsedMana = true;
+            }
+            } else {
+                EnemyHealth += card.healAmount;
+                enemyHeal = card.healAmount;
+                //StartCoroutine(SetDamageMarker(card.healAmount, false, true));
+                EnemyMana -= card.manaCost;
+                if(card.manaCost > 0) {
+                    enemyUsedMana = true;
+                }
+            }
+        }
+
+        private void HandleStun(CardDescriptorStun card, bool isPlayer)
+        {
+            if(isPlayer) {
+                PlayerMana -= card.manaCost;
                 playerUsedMana = true;
+            } else {
+                EnemyMana -= card.manaCost;
+                enemyUsedMana = true;
             }
         }
 
-        private void HandleDefense(CardDescriptorDefense card)
+        private void HandleCopy(CardDescriptorCopy card, bool isPlayer)
         {
-            PlayerMana -= card.manaCost;
-            if(card.manaCost > 0) {
-                playerUsedMana = true;
+            if(isPlayer) {
+                PlayerMana -= card.manaCost;
+                if(card.manaCost > 0) {
+                    playerUsedMana = true;
+                }
+                //check previous enemy card.
+            } else {
+                EnemyMana -= card.manaCost;
+                if(card.manaCost > 0) {
+                    enemyUsedMana = true;
+                }
             }
-        }
 
-        private void HandleHeal(CardDescriptorHeal card)
-        {
-            PlayerHealth += card.healAmount;
-            PlayerMana -= card.manaCost;
-            if(card.manaCost > 0) {
-                playerUsedMana = true;
-            }
-        }
 
-        private void HandleStun(CardDescriptorStun card)
-        {
-            PlayerMana -= card.manaCost;
-            playerUsedMana = true;
-        }
-
-        private void HandleCopy(CardDescriptorCopy card)
-        {
-            PlayerMana -= card.manaCost;
-            if(card.manaCost > 0) {
-                playerUsedMana = true;
-            }
         }
 
 
@@ -480,19 +787,46 @@ namespace Final_Boss
             EndRound();
         }
 
-        private void RemoveCardAt(int index)
+        public void OnSkipTurnPressed() {
+            //same as OnConfirmRoundPressed, but set _selectedCardIndex to -1
+            if (_roundTimer == null) return;
+
+            StopCoroutine(_roundTimer);
+            _roundTimer = null;
+
+            roundTimerText.gameObject.SetActive(false);
+
+            //if _selectedCardIndex is valid, unselect it
+            if(_selectedCardIndex >= 0) {
+                _cardsInHand[_selectedCardIndex].UnselectCard();
+            }
+            _selectedCardIndex = -1;
+            EndRound();
+        }
+
+        private void RemoveCardAt(int index, bool isPlayer = true)
         {
-            Debug.Log(index);
-            if (index < 0) return;
+            if(isPlayer) {
+                Debug.Log(index);
+                if (index < 0) return;
 
-            var card = _cardsInHand[index];
-            _cardsInHand[index] = null;
+                var card = _cardsInHand[index];
+                _cardsInHand[index] = null;
 
-            if (card == null) return;
+                if (card == null) return;
 
-            card.gameObject.SetActive(false);
+                card.gameObject.SetActive(false);
+            } else {
+                if (index < 0) return;
 
-          //  Destroy(card.gameObject);
+                var card = _enemyCardsInHand[index];
+                _enemyCardsInHand[index] = null;
+
+                if (card == null) return;
+
+                card.gameObject.SetActive(false);
+            }
+
         }
 
 

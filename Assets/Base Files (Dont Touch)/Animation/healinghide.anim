@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shadowcardflip
+  m_Name: healinghide
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -54,9 +54,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 40abc4fa1e0759640ae890dd4df823cd, type: 3}
+      value: {fileID: 21300000, guid: 4b2ca4fb145a61242bf91a3ff257a4c8, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 81ef1a6fbeddb964195d5496be41ea84, type: 3}
+      value: {fileID: 21300000, guid: 40abc4fa1e0759640ae890dd4df823cd, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -83,8 +83,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: 21300000, guid: 4b2ca4fb145a61242bf91a3ff257a4c8, type: 3}
     - {fileID: 21300000, guid: 40abc4fa1e0759640ae890dd4df823cd, type: 3}
-    - {fileID: 21300000, guid: 81ef1a6fbeddb964195d5496be41ea84, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -250,11 +250,4 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: PlayFlipSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

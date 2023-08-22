@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7630943389882489052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 223.7204, y: 81.72827, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardDescriptor: {fileID: 11400000, guid: 905a7cc39fa15455bbde3c74874246df, type: 2}
-  moveAmount: 1
+  moveAmount: 0.75
+  flipSound: {fileID: 0}
 --- !u!212 &7630943389882489040
 SpriteRenderer:
   m_ObjectHideFlags: 0

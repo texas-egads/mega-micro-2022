@@ -275,6 +275,8 @@ namespace Final_Boss
                 DrawCard(false);
             }
 
+            StartCoroutine(RevealEnemyCards(2));
+
             //turn all of the player card colliders on
             for(int i = 0; i < _cardsInHand.Length; i++) {
                 if(_cardsInHand[i] != null) {
@@ -525,6 +527,14 @@ namespace Final_Boss
                 }
             }
 
+            
+            StartCoroutine(DoCardFight());
+            //player and enemy fight logic done. now we clean up
+
+            StartCoroutine(CleanUpCards(_selectedCardIndex, _enemySelectedCardIndex));
+        }
+
+        private IEnumerator DoCardFight() {
             //cards done, now lets do fight logic
             //so if defense is higher, 
             int playerNetAttack;
@@ -545,12 +555,17 @@ namespace Final_Boss
 
             int prevPlayerHP = PlayerHealth;
             int prevEnemyHP = EnemyHealth;
+
+            yield return new WaitForSeconds(4);
             PlayerHealth = Mathf.Max(0, PlayerHealth - enemyNetAttack + playerHeal);
             EnemyHealth = Mathf.Max(0, EnemyHealth - playerNetAttack + enemyHeal);
 
             int playerChange = Mathf.Abs(PlayerHealth - prevPlayerHP);
             int enemyChange = Mathf.Abs(EnemyHealth - prevEnemyHP);
 
+           
+
+            
             if(PlayerHealth < prevPlayerHP) {
                 //set playerDamageMarker color to red, and set text to "-" + enemyNetAttack
                 //set
@@ -573,9 +588,7 @@ namespace Final_Boss
                 StartCoroutine(SetDamageMarker(enemyChange, false, true));
             }
 
-
-
-            //set them back to 0
+             //set them back to 0
             playerAtk = 0;
             playerDef = 0;
             enemyAtk = 0;
@@ -583,9 +596,9 @@ namespace Final_Boss
             playerHeal = 0;
             enemyHeal = 0;
 
-            //player and enemy fight logic done. now we clean up
 
-            StartCoroutine(CleanUpCards(_selectedCardIndex, _enemySelectedCardIndex));
+
+            
         }
 
         private IEnumerator CleanUpCards(int playerCardIndex, int enemyCardIndex) {
@@ -643,7 +656,7 @@ namespace Final_Boss
         private void HandleHeal(CardDescriptorHeal card, bool isPlayer)
         {
             if(isPlayer) {
-                PlayerHealth += card.healAmount;
+             //   PlayerHealth += card.healAmount;
                 playerHeal = card.healAmount;
                 //StartCoroutine(SetDamageMarker(card.healAmount, true, true));
                 PlayerMana -= card.manaCost;
@@ -651,7 +664,7 @@ namespace Final_Boss
                     playerUsedMana = true;
             }
             } else {
-                EnemyHealth += card.healAmount;
+            //    EnemyHealth += card.healAmount;
                 enemyHeal = card.healAmount;
                 //StartCoroutine(SetDamageMarker(card.healAmount, false, true));
                 EnemyMana -= card.manaCost;
@@ -729,7 +742,9 @@ namespace Final_Boss
                     cardToDraw.gameObject.GetComponent<Collider2D>().enabled = false; //bc dont want to interact w/ enemy cards
                     cardToDraw.gameObject.SetActive(true); //turns on card visibility
                     cardToDraw.DealCard(new Vector3(6.57f, 1.7f, 0), enemyCardSlots[i].position, i); //just sets position
-                   // cardToDraw.GetComponent<Animator>().Play("cardflip");
+                   //we want to reveal enemy cards, then flip them back over
+                    
+
                     _enemyCardsInHand[i] = cardToDraw; //add to card in hand
                     return;
                 }
@@ -737,6 +752,28 @@ namespace Final_Boss
 
 
             Debug.Log("No available card slots");
+        }
+
+        private IEnumerator RevealEnemyCards(int numCards) {
+            //it's going to randomly reveal 2 of the enemy cards.
+            //first, randomly select 2 cards to reveal in enemyCardsInHand array.
+            int randomNum = Random.Range(0, 3);
+            //another var. different from randomNum
+            int randomNum2 = Random.Range(0, 3);
+            if(randomNum == randomNum2) {
+                randomNum2 = (randomNum2 + 1) % 3;
+            }
+
+            yield return new WaitForSeconds(2);
+
+            //now, reveal the cards at those indices. access animator and play animation called "RevealCard"
+            _enemyCardsInHand[randomNum].GetComponent<Animator>().Play("cardflip");
+            _enemyCardsInHand[randomNum2].GetComponent<Animator>().Play("cardflip");
+            yield return new WaitForSeconds(2);
+            //now, flip them back over
+            _enemyCardsInHand[randomNum].GetComponent<Animator>().Play("CardHide");
+            _enemyCardsInHand[randomNum2].GetComponent<Animator>().Play("CardHide");
+
         }
 
         private IEnumerator FlipCard(Animator animator, float delay) {

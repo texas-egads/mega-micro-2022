@@ -6,6 +6,8 @@ using Final_Boss.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Final_Boss
@@ -46,6 +48,7 @@ namespace Final_Boss
         public Transform playerPile;
         public Transform enemyPile;
         
+        public GameObject timerIcon;
         public TMP_Text roundTimerText;
         public TMP_Text cardTitleText;
         public TMP_Text cardDescriptionText;
@@ -77,6 +80,13 @@ namespace Final_Boss
         public TextMeshProUGUI playerHealthCounter, enemyHealthCounter;
         public TextMeshProUGUI playerDamageMarker, enemyDamageMarker;
 
+        public GameObject playerAudioParent;
+        public GameObject enemyAudioParent;
+        
+        public Animator blackFade;
+
+        public AudioSource bgMusic, timerSound;
+
         private int PlayerHealth
         {
             get => _playerHealth;
@@ -84,7 +94,9 @@ namespace Final_Boss
             {
                 _playerHealth = value;
                 playerHealthChanged.Invoke((float) _playerHealth / maxPlayerHealth);
-                playerHealthCounter.text = (_playerHealth + " / " + maxPlayerHealth);
+
+                //string of _playerHealth
+                playerHealthCounter.text = (_playerHealth) + ""; 
             }
         }
 
@@ -95,7 +107,7 @@ namespace Final_Boss
             {
                 _enemyHealth = value;
                 enemyHealthChanged.Invoke((float) _enemyHealth / maxEnemyHealth);
-                enemyHealthCounter.text = (_enemyHealth + " / " + maxEnemyHealth);
+                enemyHealthCounter.text = (_enemyHealth) + ""; //  + " / " + maxEnemyHealth);
             }
         }
 
@@ -140,9 +152,9 @@ namespace Final_Boss
             EnemyHealth = maxEnemyHealth;
 
             //lets wait a bit before the very beginning
-            //StartCoroutine(DelayBeforeRound(2f));
+            StartCoroutine(DelayBeforeRound(2f));
 
-            StartRound();
+            //StartRound();
         }
 
         private IEnumerator DelayBeforeRound(float seconds) {
@@ -189,7 +201,7 @@ namespace Final_Boss
 
 
             //randomly shuffle playerdeck, shuffle from the third element to the second to last element:
-            for(int i = 2; i < 30; i++) {
+            for(int i = 2; i < 50; i++) {
                 int randomNum = Random.Range(2, playerDeck.Count);
                 int randomNum2 = Random.Range(2, playerDeck.Count);
                 Card temp = playerDeck[randomNum2];
@@ -205,27 +217,27 @@ namespace Final_Boss
             }
             //now a for loop that runs 6 times. in this loop, randomly choose between claw slash, fire blast, and thunder strike:
             for(int i = 0; i < 6; i++) {
-                int randomNum = Random.Range(0, 3);
-                if(randomNum == 0) {
+                int randomNum = Random.Range(0, 10);
+                if(randomNum <= 6) {
                     AddCard(ClawSlash, false);
                 }
-                else if(randomNum == 1) {
+                else if(randomNum <= 8) {
                     AddCard(FireBlast, false);
                 }
-                else if(randomNum == 2) {
+                else if(randomNum == 9) {
                     AddCard(ThunderStrike, false);
                 }
             }
             //now a loop that runs 6 time, randomly choose between warlock shield, healing chant, and shadow dodge:
             for(int i = 0; i < 6; i++) {
-                int randomNum = Random.Range(0, 3);
-                if(randomNum == 0) {
+                int randomNum = Random.Range(0, 4);
+                if(randomNum <= 1) {
                     AddCard(WarlockShield, false);
                 }
-                else if(randomNum == 1) {
+                else if(randomNum == 2) {
                     AddCard(HealingChant, false);
                 }
-                else if(randomNum == 2) {
+                else if(randomNum == 3) {
                     AddCard(ShadowDodge, false);
                 }
             }
@@ -338,6 +350,36 @@ namespace Final_Boss
             }
         }
 
+        IEnumerator EndBoss(bool won) {
+            //for black fade, play animation titled FadeOut
+            blackFade.gameObject.SetActive(true);
+            blackFade.Play("FadeOut");
+            //fade out bgMusic and timerSound over 2 seconds
+            StartCoroutine(FadeOut(bgMusic, 2f));
+            yield return new WaitForSeconds(2.5f);
+            if(won) {
+                //go to scene called WinScreen. LoadScene
+                ScenesManager.LoadSceneImmediateStatic("WinScreen");
+            } else {
+                ScenesManager.LoadSceneImmediateStatic("LoseScreen");
+            }
+
+
+            
+        }
+
+        IEnumerator FadeOut(AudioSource audioSource, float FadeTime) {
+            float startVolume = audioSource.volume;
+            while(audioSource.volume > 0) {
+                audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+                yield return null;
+            }
+            audioSource.Stop();
+            audioSource.volume = startVolume;
+        }
+
+    
+
         public void EndRound()
         {
 
@@ -353,12 +395,14 @@ namespace Final_Boss
                 Debug.Log("WON!");
                 Managers.MinigamesManager.DeclareCurrentMinigameWon();
                 Managers.MinigamesManager.EndCurrentMinigame();
+                StartCoroutine(EndBoss(true));
             }
             else if (PlayerHealth <= 0)
             {
                 Debug.Log("LOST!");
                 Managers.MinigamesManager.DeclareCurrentMinigameLost();
                 Managers.MinigamesManager.EndCurrentMinigame();
+                StartCoroutine(EndBoss(false));
             }
             else
             {
@@ -415,6 +459,7 @@ namespace Final_Boss
             } else {
                 playerSelectedCard = _cardsInHand[_selectedCardIndex];
                 playerCardDescriptor = playerSelectedCard.cardDescriptor;
+                previousPlayerCard = playerSelectedCard;
 
                 //make the 2 colliders that are not _selectedCardIndex not interactable. this array has 3 elements, so we can just do this:
                 
@@ -436,6 +481,7 @@ namespace Final_Boss
             } else {
                 enemySelectedCard = _enemyCardsInHand[_enemySelectedCardIndex];
                 enemyCardDescriptor = enemySelectedCard.cardDescriptor;
+                previousEnemyCard = enemySelectedCard;
             }
 
 
@@ -452,28 +498,35 @@ namespace Final_Boss
 
                 switch (playerCardDescriptor)
                 {
+                    
+
                     case CardDescriptorAttack attackCard:
                     {
                         HandleAttack(attackCard, true);
+                        //play from audio parent. get audio source, the first instance of it. because it has multiple audio source components
                         break;
                     }
                     case CardDescriptorDefense defenseCard:
                     {
+                        Debug.Log(playerCardDescriptor.cardName);
                         HandleDefense(defenseCard, true);
                         break;
                     }
                     case CardDescriptorHeal healCard:
                     {
+                        Debug.Log(playerCardDescriptor.cardName);
                         HandleHeal(healCard, true);
                         break;
                     }
                     case CardDescriptorStun stunCard:
                     {
+                        Debug.Log(playerCardDescriptor.cardName);
                         HandleStun(stunCard, true);
                         break;
                     }
                     case CardDescriptorCopy copyCard:
                     {
+                        Debug.Log(playerCardDescriptor.cardName);
                         HandleCopy(copyCard, true);
                         break;
                     }
@@ -483,6 +536,7 @@ namespace Final_Boss
                         return;
                     }
                 }
+                StartCoroutine(playCardSound(playerCardDescriptor.cardName, 2f, true));
                 
                 // RemoveCardAt(_selectedCardIndex);
             }
@@ -525,6 +579,7 @@ namespace Final_Boss
                         return;
                     }
                 }
+                StartCoroutine(playCardSound(enemyCardDescriptor.cardName, 3f, false));
             }
 
             
@@ -532,6 +587,62 @@ namespace Final_Boss
             //player and enemy fight logic done. now we clean up
 
             StartCoroutine(CleanUpCards(_selectedCardIndex, _enemySelectedCardIndex));
+        }
+
+        IEnumerator playCardSound(string cardName, float delay, bool player) {
+            yield return new WaitForSeconds(delay);
+            //switch case for cardname
+            switch(cardName) {
+                case "Claw Slash":
+                    if(player) {
+                        playerAudioParent.GetComponents<AudioSource>()[0].Play();
+                    } else {
+                        enemyAudioParent.GetComponents<AudioSource>()[0].Play();
+                    }
+                    break;
+                case "Fire Blast":
+                    if(player) {
+                        playerAudioParent.GetComponents<AudioSource>()[1].Play();
+                    } else {
+                        enemyAudioParent.GetComponents<AudioSource>()[1].Play();
+                    }
+                    break;
+                case "Thunder Strike":
+                    if(player) {
+                        playerAudioParent.GetComponents<AudioSource>()[2].Play();
+                    } else {
+                        enemyAudioParent.GetComponents<AudioSource>()[2].Play();
+                    }
+                    break;
+                case "Healing Chant":
+                    if(player) {
+                        playerAudioParent.GetComponents<AudioSource>()[3].Play();
+                    } else {
+                        enemyAudioParent.GetComponents<AudioSource>()[3].Play();
+                    }
+                    break;
+                case "Warlock Shield":
+                    if(player) {
+                        playerAudioParent.GetComponents<AudioSource>()[4].Play();
+                    } else {
+                        enemyAudioParent.GetComponents<AudioSource>()[4].Play();
+                    }
+                    break;
+                case "Shadow Dodge":
+                    if(player) {
+                        playerAudioParent.GetComponents<AudioSource>()[5].Play();
+                    } else {
+                        enemyAudioParent.GetComponents<AudioSource>()[5].Play();
+                    }
+                    break;
+                default: //play 6th
+                    if(player) {
+                        playerAudioParent.GetComponents<AudioSource>()[6].Play();
+                    } else {
+                        enemyAudioParent.GetComponents<AudioSource>()[6].Play();
+                    }
+                    break;
+            }
         }
 
         private IEnumerator DoCardFight() {
@@ -551,6 +662,10 @@ namespace Final_Boss
             } else {
                 enemyNetAttack = 0;
             }
+
+            //check player card name. play the corresponding audio source. this is from playerAudioParent. the 0th index is claw slash, then its fire, 
+            //then thunder, healing, shield, shadow dodge, and arcane counter
+
 
 
             int prevPlayerHP = PlayerHealth;
@@ -608,14 +723,20 @@ namespace Final_Boss
             evaluatingRound = false;
         }
 
-        private void HandleAttack(CardDescriptorAttack card, bool isPlayer)
+        private void HandleAttack(CardDescriptorAttack card, bool isPlayer, bool manaless = false)
         {
             if(isPlayer) {
                 playerAtk = card.damage;
+                if(manaless) { // i do this bnecause this is called from player arcane counter
+                    playerAtk += 1;
+                }
                 // EnemyHealth = Mathf.Max(0, EnemyHealth - card.damage);
-                PlayerMana -= card.manaCost;
-                if(card.manaCost > 0) {
-                    playerUsedMana = true;
+                if(!manaless) {
+                    PlayerMana -= card.manaCost;
+                
+                    if(card.manaCost > 0 ) {
+                        playerUsedMana = true;
+                    }
                 }
             } else {
                 enemyAtk = card.damage;
@@ -627,17 +748,22 @@ namespace Final_Boss
             }
         }
 
-        private void HandleDefense(CardDescriptorDefense card, bool isPlayer)
+        private void HandleDefense(CardDescriptorDefense card, bool isPlayer, bool manaless = false)
         {
             if(isPlayer) {
                 if(card.shouldEvade) { // this is shadow dodge
                     playerDef = 99;
                 } else {
                     playerDef = card.blockAmount;
+                    if(manaless) {
+                        playerDef += 1;
+                    }
                 }
-                PlayerMana -= card.manaCost;
-                if(card.manaCost > 0) {
-                    playerUsedMana = true;
+                if(!manaless) {
+                    PlayerMana -= card.manaCost;
+                    if(card.manaCost > 0) {
+                        playerUsedMana = true;
+                    }
                 }
             } else {
                 if(card.shouldEvade) { // this is shadow dodge
@@ -653,16 +779,21 @@ namespace Final_Boss
             }
         }
 
-        private void HandleHeal(CardDescriptorHeal card, bool isPlayer)
+        private void HandleHeal(CardDescriptorHeal card, bool isPlayer, bool manaless = false)
         {
             if(isPlayer) {
              //   PlayerHealth += card.healAmount;
                 playerHeal = card.healAmount;
+                if(manaless) {
+                    playerHeal += 1;
+                }
                 //StartCoroutine(SetDamageMarker(card.healAmount, true, true));
-                PlayerMana -= card.manaCost;
-                if(card.manaCost > 0) {
-                    playerUsedMana = true;
-            }
+                if(!manaless) {
+                    PlayerMana -= card.manaCost;
+                    if(card.manaCost > 0) {
+                        playerUsedMana = true;
+                    }
+                }
             } else {
             //    EnemyHealth += card.healAmount;
                 enemyHeal = card.healAmount;
@@ -674,29 +805,57 @@ namespace Final_Boss
             }
         }
 
-        private void HandleStun(CardDescriptorStun card, bool isPlayer)
+        private void HandleStun(CardDescriptorStun card, bool isPlayer, bool manaless = false )
         {
             if(isPlayer) {
-                PlayerMana -= card.manaCost;
-                playerUsedMana = true;
+                if(manaless) {
+                    PlayerMana -= card.manaCost;
+                    playerUsedMana = true;
+                }
             } else {
                 EnemyMana -= card.manaCost;
                 enemyUsedMana = true;
             }
         }
 
-        private void HandleCopy(CardDescriptorCopy card, bool isPlayer)
+        private void HandleCopy(CardDescriptorCopy card, bool isPlayer, bool manaless = false)
         {
             if(isPlayer) {
                 PlayerMana -= card.manaCost;
                 if(card.manaCost > 0) {
                     playerUsedMana = true;
                 }
-                //check previous enemy card.
-            } else {
-                EnemyMana -= card.manaCost;
-                if(card.manaCost > 0) {
-                    enemyUsedMana = true;
+                //basically do the action done by the previous enemy card, with greater intensity. in other words, if its attack with 3 damage, do it with 4 damage. dont just call the  handle functions:
+                Debug.Log(previousEnemyCard.name);
+                if(previousEnemyCard != null) {
+                    switch (previousEnemyCard.cardDescriptor)
+                    {
+                        case CardDescriptorAttack attackCard:
+                        {
+                            HandleAttack(attackCard, true, true);
+                            break;
+                        }
+                        case CardDescriptorDefense defenseCard:
+                        {
+                            HandleDefense(defenseCard, true, true);
+                            break;
+                        }
+                        case CardDescriptorHeal healCard:
+                        {
+                            HandleHeal(healCard, true, true);
+                            break;
+                        }
+                        case CardDescriptorStun stunCard:
+                        {
+                            HandleStun(stunCard, true, true);
+                            break;
+                        }
+                        default:
+                        {
+                            Debug.LogError("Could not cast card descriptor");
+                            return;
+                        }
+                    }
                 }
             }
 
@@ -819,6 +978,7 @@ namespace Final_Boss
             StopCoroutine(_roundTimer);
             _roundTimer = null;
 
+            timerIcon.gameObject.SetActive(false);
             roundTimerText.gameObject.SetActive(false);
 
             EndRound();
@@ -831,6 +991,7 @@ namespace Final_Boss
             StopCoroutine(_roundTimer);
             _roundTimer = null;
 
+            timerIcon.gameObject.SetActive(false);
             roundTimerText.gameObject.SetActive(false);
 
             //if _selectedCardIndex is valid, unselect it
@@ -895,6 +1056,7 @@ namespace Final_Boss
         {
             var timeLeft = roundLengthInSeconds;
             roundTimerText.gameObject.SetActive(true);
+            timerIcon.gameObject.SetActive(true);
 
             while (timeLeft > 0)
             {
@@ -904,6 +1066,7 @@ namespace Final_Boss
             }
 
             roundTimerText.text = "0";
+            timerIcon.gameObject.SetActive(false);
             roundTimerText.gameObject.SetActive(false);
 
             EndRound();

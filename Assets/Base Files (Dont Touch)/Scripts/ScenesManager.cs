@@ -104,4 +104,7 @@ public class ScenesManager : MonoBehaviour
     public void LoadSceneImmediate(string sceneName) {
         SceneManager.LoadScene(sceneName);
     }
+    public static void LoadSceneImmediateStatic(string sceneName) {
+        SceneManager.LoadScene(sceneName);
+    }
 }

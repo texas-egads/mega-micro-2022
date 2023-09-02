@@ -12,6 +12,8 @@ public class MainGameAnimEvents : MonoBehaviour
     [SerializeField] private Animator CamAnim; //animator on Background
     [SerializeField] private MinigamesManager minigamesManager;
 
+    [SerializeField] private AudioSource bossTheme;
+
     //public int currentHealthTest = 3;
     //public bool winTest;
     private void Awake()
@@ -41,6 +43,10 @@ public class MainGameAnimEvents : MonoBehaviour
         }
     
 
+    }
+
+    public void PlayBossTheme() {
+        bossTheme.Play();
     }
 
     //played at beginning of lost animation. to keep the last X (mega micro capybara)

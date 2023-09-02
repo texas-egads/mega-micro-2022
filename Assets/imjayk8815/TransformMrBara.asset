@@ -23,4 +23,4 @@ MonoBehaviour:
 
     Sound
     - Internet'
-  minigameScreenshot: {fileID: 0}
+  minigameScreenshot: {fileID: 21300000, guid: 18e7fa4a65b38fa49b123a1e80ffce51, type: 3}

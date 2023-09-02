@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b6289b71b71e942a2499ed4eb71c02, type: 3}
+  m_Name: basegame
+  m_EditorClassIdentifier: 
+  sceneName: 
+  minigameType: 0
+  gameTime: 0
+  instruction: 
+  title: Base Game
+  creditsText: 'Programming - Zayaan Rahman, Rodrigo Okamoto, Matthew Zhang
+
+    Art
+    - Karina Teruya, Julieta Cruz
+
+    Music - Rodrigo Okamoto, AI'
+  minigameScreenshot: {fileID: 21300000, guid: 83ada90450f89b14089a627c28a98973, type: 3}

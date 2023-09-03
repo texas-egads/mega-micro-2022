@@ -88,9 +88,23 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     }
 
     public void StartMinigames() {
+        //set status to new status
+        status = new MinigameStatus();
+        Debug.Log(PlayerPrefs.GetString("difficulty"));
         if (minigames.Count == 0) {
-            PopulateMinigameList(numRoundsInNormalMode);
+            if(PlayerPrefs.GetString("difficulty").Equals("Easy")) {
+                Debug.Log("Difficulty set to easy");
+                PopulateMinigameList(numRoundsInEasyMode);
+            } else if(PlayerPrefs.GetString("difficulty").Equals("Normal")) {
+                PopulateMinigameList(numRoundsInNormalMode);
+            } else {
+                Debug.Log("Difficulty not set, defaulting to normal");
+                PopulateMinigameList(numRoundsInNormalMode);
+            }
+            //PopulateMinigameList(numRoundsInNormalMode);
         }
+
+        Debug.Log("STARTING!");
 
         status.currentHealth = STARTING_LIVES;
         status.nextRoundNumber = 0;
@@ -145,7 +159,7 @@ public class MinigamesManager : MonoBehaviour, IMinigamesManager
     IEnumerator DoTransitionOut(float delay) {
         Animator fadeAnimator = GameObject.Find("Transitioner").GetComponent<Animator>();
         yield return new WaitForSeconds(delay);
-        if (fadeAnimator.GetCurrentAnimatorStateInfo(0).IsName("mask-shrink") == false) {
+        if (fadeAnimator != null && fadeAnimator.GetCurrentAnimatorStateInfo(0).IsName("mask-shrink") == false) {
             fadeAnimator.Play("mask-shrink");
         }
     }

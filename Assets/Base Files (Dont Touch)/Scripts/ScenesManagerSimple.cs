@@ -23,6 +23,11 @@ public class ScenesManagerSimple : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 
+    public static void LoadGameWithDifficulty(string difficulty) {
+        PlayerPrefs.SetString("difficulty", difficulty);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+    }
+
     //quit game
     public static void QuitGame() {
         Application.Quit();

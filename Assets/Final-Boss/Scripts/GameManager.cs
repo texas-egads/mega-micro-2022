@@ -70,6 +70,9 @@ namespace Final_Boss
 
         private bool evaluatingRound;
 
+        private bool playerStunned;
+
+        private bool resetMana;
 
 
         private int playerAtk, playerDef;
@@ -86,6 +89,10 @@ namespace Final_Boss
         public Animator blackFade;
 
         public AudioSource bgMusic, timerSound;
+
+        public Button playButton, skipButton;
+
+        public Image leftX, middleX, rightX;
 
         private int PlayerHealth
         {
@@ -133,6 +140,8 @@ namespace Final_Boss
 
         private void Start()
         {
+            timerIcon.SetActive(false);
+            roundTimerText.gameObject.SetActive(false);
             _cardsInHand = new Card[cardSlots.Length];
             _enemyCardsInHand = new Card[enemyCardSlots.Length];
 
@@ -255,8 +264,9 @@ namespace Final_Boss
 
         public void StartRound()
         {
+            cardTitleText.text = "Select a card!";
+            cardDescriptionText.text = "";
             _selectedCardIndex = -1;
-         //   ClearHand();
 
             int nullCount = 0;
             
@@ -271,6 +281,10 @@ namespace Final_Boss
             for (var i = 0; i < dealAmount; ++i)
             {
                 DrawCard(true);
+            }
+
+            if(playerStunned) {
+                StartCoroutine(HandlePlayerStunned());
             }
 
             //for enemy:
@@ -312,6 +326,19 @@ namespace Final_Boss
 
             _roundTimer = StartCoroutine(RunRoundTimer());
             roundStarted.Invoke();
+        }
+
+        private IEnumerator HandlePlayerStunned() {
+            yield return new WaitForSeconds(1);
+            leftX.gameObject.SetActive(true);
+            middleX.gameObject.SetActive(true);
+            rightX.gameObject.SetActive(true);
+
+            cardTitleText.text = "Stunned! Cannot play a card :(";
+            cardDescriptionText.text = "";
+            
+            playButton.interactable = false;
+
         }
 
         private void SelectEnemyCard() {
@@ -382,32 +409,45 @@ namespace Final_Boss
 
         public void EndRound()
         {
+            //set skip
+            skipButton.interactable = false;
+            playButton.interactable = false;
 
-
+            if(playerStunned) {
+                playerStunned = false;
+                leftX.gameObject.SetActive(false);
+                middleX.gameObject.SetActive(false);
+                rightX.gameObject.SetActive(false);
+            }
+                    
             EvaluateRound(); //this does all the fight logic
             Debug.Log("YOOO");
+
+        
             // while(evaluatingRound) {
             //     //stay here
             // }
 
-            if (EnemyHealth <= 0)
-            {
-                Debug.Log("WON!");
-                Managers.MinigamesManager.DeclareCurrentMinigameWon();
-                Managers.MinigamesManager.EndCurrentMinigame();
-                StartCoroutine(EndBoss(true));
-            }
-            else if (PlayerHealth <= 0)
-            {
-                Debug.Log("LOST!");
-                Managers.MinigamesManager.DeclareCurrentMinigameLost();
-                Managers.MinigamesManager.EndCurrentMinigame();
-                StartCoroutine(EndBoss(false));
-            }
-            else
-            {
-                StartCoroutine(DelayBeforeRound(5f));
-            }
+
+
+            // if (EnemyHealth <= 0)
+            // {
+            //     Debug.Log("WON!");
+            //     Managers.MinigamesManager.DeclareCurrentMinigameWon();
+            //     Managers.MinigamesManager.EndCurrentMinigame();
+            //     StartCoroutine(EndBoss(true));
+            // }
+            // else if (PlayerHealth <= 0)
+            // {
+            //     Debug.Log("LOST!");
+            //     Managers.MinigamesManager.DeclareCurrentMinigameLost();
+            //     Managers.MinigamesManager.EndCurrentMinigame();
+            //     StartCoroutine(EndBoss(false));
+            // }
+            // else
+            // {
+            //     StartCoroutine(DelayBeforeRound(5f));
+            // }
         }
 
         private IEnumerator SetDamageMarker(int amt, bool isPlayer, bool isHeal) {
@@ -666,7 +706,9 @@ namespace Final_Boss
             //check player card name. play the corresponding audio source. this is from playerAudioParent. the 0th index is claw slash, then its fire, 
             //then thunder, healing, shield, shadow dodge, and arcane counter
 
-
+            if(resetMana) {
+                PlayerMana -= PlayerMana;
+            }
 
             int prevPlayerHP = PlayerHealth;
             int prevEnemyHP = EnemyHealth;
@@ -710,6 +752,25 @@ namespace Final_Boss
             enemyDef = 0;
             playerHeal = 0;
             enemyHeal = 0;
+
+            if (EnemyHealth <= 0)
+            {
+                Debug.Log("WON!");
+                Managers.MinigamesManager.DeclareCurrentMinigameWon();
+                Managers.MinigamesManager.EndCurrentMinigame();
+                StartCoroutine(EndBoss(true));
+            }
+            else if (PlayerHealth <= 0)
+            {
+                Debug.Log("LOST!");
+                Managers.MinigamesManager.DeclareCurrentMinigameLost();
+                Managers.MinigamesManager.EndCurrentMinigame();
+                StartCoroutine(EndBoss(false));
+            }
+            else
+            {
+                StartCoroutine(DelayBeforeRound(1f));
+            }
 
 
 
@@ -812,9 +873,12 @@ namespace Final_Boss
                     PlayerMana -= card.manaCost;
                     playerUsedMana = true;
                 }
+
             } else {
                 EnemyMana -= card.manaCost;
                 enemyUsedMana = true;
+                playerStunned = true;
+                resetMana = true;
             }
         }
 
@@ -933,6 +997,11 @@ namespace Final_Boss
             _enemyCardsInHand[randomNum].GetComponent<Animator>().Play("CardHide");
             _enemyCardsInHand[randomNum2].GetComponent<Animator>().Play("CardHide");
 
+            skipButton.interactable = true;
+            if(!playerStunned) {
+                playButton.interactable = true;
+            } 
+
         }
 
         private IEnumerator FlipCard(Animator animator, float delay) {
@@ -942,20 +1011,22 @@ namespace Final_Boss
 
         private void OnCardSelected(int handIndex)
         {
-            Debug.Log($"Card {handIndex} was played");
+            if(!playerStunned) {
+                Debug.Log($"Card {handIndex} was played");
 
-            if (_selectedCardIndex >= 0 && _cardsInHand[_selectedCardIndex])
-            {
-                _cardsInHand[_selectedCardIndex].UnselectCard();
+                if (_selectedCardIndex >= 0 && _cardsInHand[_selectedCardIndex])
+                {
+                    _cardsInHand[_selectedCardIndex].UnselectCard();
+                }
+
+                _selectedCardIndex = handIndex;
+                _cardsInHand[handIndex].SelectCard();
+
+                cardTitleText.text = _cardsInHand[handIndex].cardDescriptor.cardName;
+                cardDescriptionText.text = _cardsInHand[handIndex].cardDescriptor.cardDescription;
+
+                cardSelected.Invoke();
             }
-
-            _selectedCardIndex = handIndex;
-            _cardsInHand[handIndex].SelectCard();
-
-            cardTitleText.text = _cardsInHand[handIndex].cardDescriptor.cardName;
-            cardDescriptionText.text = _cardsInHand[handIndex].cardDescriptor.cardDescription;
-
-            cardSelected.Invoke();
         }
 
         private void OnCardUnselected(int handIndex)
@@ -963,8 +1034,13 @@ namespace Final_Boss
             // Already unselected
             if (handIndex != _selectedCardIndex) return;
 
-            cardTitleText.text = "Select a card!";
-            cardDescriptionText.text = "";
+            if(playerStunned) {
+                cardTitleText.text = "Stunned! Cannot play a card :(";
+                cardDescriptionText.text = "";
+            } else {
+                cardTitleText.text = "Select a card!";
+                cardDescriptionText.text = "";
+            }
 
             _selectedCardIndex = -1;
             _cardsInHand[handIndex].UnselectCard();

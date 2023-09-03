@@ -528,14 +528,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1897476072}
         m_TargetAssemblyTypeName: ScenesManagerSimple, Assembly-CSharp
-        m_MethodName: LoadScene
+        m_MethodName: LoadGameWithDifficulty
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Main
+          m_StringArgument: Easy
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &79148528
@@ -3388,14 +3388,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1897476072}
         m_TargetAssemblyTypeName: ScenesManagerSimple, Assembly-CSharp
-        m_MethodName: LoadScene
+        m_MethodName: LoadGameWithDifficulty
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Main
+          m_StringArgument: Normal
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1103626022

@@ -14,11 +14,15 @@ public class MainGameAnimEvents : MonoBehaviour
 
     [SerializeField] private AudioSource bossTheme;
 
+    public AudioSource loseSound;
+
     //public int currentHealthTest = 3;
     //public bool winTest;
     private void Awake()
     {
         UIAnim.Play("A_LifeHold_" + (3));
+        //set minigamesManager to GameObject find called MinigamesManager
+        minigamesManager = GameObject.Find("MinigamesManager").GetComponent<MinigamesManager>();
     }
 
     public void UpdateUI()
@@ -37,12 +41,29 @@ public class MainGameAnimEvents : MonoBehaviour
             UIAnim.Play("A_Life_" + (minigamesManager.status.currentHealth));
             if (minigamesManager.status.currentHealth <= 0)
             {
+                Debug.Log("HEYY");
                 AnimManager.Play("A_lose_gameover");
+                StartCoroutine(SetUpGameOver());
+                
             }
             
         }
     
 
+    }
+
+    IEnumerator SetUpGameOver() {
+        loseSound.Play();
+        minigamesManager.status.currentHealth = 3;
+        minigamesManager.Initialize();
+        Managers.__instance.audioManager.Initialize();
+        Managers.__instance.scenesManager.Initialize();
+        
+        yield return new WaitForSeconds(2f);
+        //the load the scene called LoseScreen
+        //reset the necessary variables so that the game can be played again
+        Managers.__instance.scenesManager.LoadSceneImmediate("LoseScreen");
+        
     }
 
     public void PlayBossTheme() {

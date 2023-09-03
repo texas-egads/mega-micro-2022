@@ -43,7 +43,7 @@ namespace Babybaras
             }
 
             if (Bugvars.lassoing == true){
-                transform.Translate(Bugvars.throwing * throwVector, Space.Self);
+                transform.Translate(Bugvars.throwing * throwVector * 6, Space.Self);
                 //Debug.Log(throwing * throwVector);
 
             }

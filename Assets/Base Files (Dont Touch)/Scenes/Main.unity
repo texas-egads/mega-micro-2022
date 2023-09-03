@@ -6587,7 +6587,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9417,10 +9417,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_WinMini
       objectReference: {fileID: 0}
+    - target: {fileID: 188592831386411016, guid: 2faf84c0aebb7644e9514172b9f92890,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 188592831386411018, guid: 2faf84c0aebb7644e9514172b9f92890,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 188592831386411018, guid: 2faf84c0aebb7644e9514172b9f92890,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 188592831386411018, guid: 2faf84c0aebb7644e9514172b9f92890,
         type: 3}

@@ -6208,6 +6208,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3494345104809831076, guid: 299268e851095ea429ce927bf2bef866,
+        type: 3}
+      propertyPath: _minigamesManager
+      value: 
+      objectReference: {fileID: 1011538755}
     - target: {fileID: 4637096852649538272, guid: 299268e851095ea429ce927bf2bef866,
         type: 3}
       propertyPath: m_RootOrder

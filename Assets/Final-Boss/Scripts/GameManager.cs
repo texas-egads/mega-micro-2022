@@ -708,6 +708,7 @@ namespace Final_Boss
 
             if(resetMana) {
                 PlayerMana -= PlayerMana;
+                resetMana = false;
             }
 
             int prevPlayerHP = PlayerHealth;

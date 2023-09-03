@@ -9,6 +9,7 @@ TagManager:
   - Object 3
   - Object 4
   - Ground
+  - Bee
   layers:
   - Default
   - TransparentFX

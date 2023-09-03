@@ -38,7 +38,9 @@ namespace Wombies {
             winningPos = UnityEngine.Random.Range(0, 5);
 
             // start text
-            uiText.text = startText;
+            if(uiText != null) {
+                uiText.text = startText;
+            }
 
         }
 

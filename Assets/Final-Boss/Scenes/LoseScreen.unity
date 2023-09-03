@@ -283,7 +283,6 @@ GameObject:
   m_Component:
   - component: {fileID: 530081931}
   - component: {fileID: 530081930}
-  - component: {fileID: 530081929}
   m_Layer: 0
   m_Name: LOSER
   m_TagString: Untagged
@@ -291,26 +290,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &530081929
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530081928}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0a13acfde2c72cf4e8303c06eeffeb87, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &530081930
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -352,7 +331,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7db9fee307971c243baefe408be3ca67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3df49904c531d4341b9868364f656759, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -405,11 +384,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 056b7992792f8bf47a3e951b2f4fbc0d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: dbf50ba23204e644a9b11efed5495735, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -823,6 +802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a811dbf604ff0f46bddea8d63bb4377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainPage: {fileID: 0}
+  creditsPage: {fileID: 0}
 --- !u!4 &1729233152
 Transform:
   m_ObjectHideFlags: 0

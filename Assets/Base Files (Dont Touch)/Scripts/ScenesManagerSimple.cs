@@ -8,6 +8,7 @@ public class ScenesManagerSimple : MonoBehaviour
 {
     public GameObject mainPage;
     public GameObject creditsPage;
+    public GameObject difficultyPage;
 
     public void Update() {
         //if user presses escape and is on credits page, go back to main page
@@ -30,10 +31,24 @@ public class ScenesManagerSimple : MonoBehaviour
     public void LoadCredits() {
         creditsPage.SetActive(true);
         mainPage.SetActive(false);
+        if(difficultyPage != null) {
+            difficultyPage.SetActive(false);
+        }
     }
 
     public void LoadMain() {
         creditsPage.SetActive(false);
         mainPage.SetActive(true);
+        if(difficultyPage != null) {
+            difficultyPage.SetActive(false);
+        }
+    }
+
+    public void LoadDifficulty() {
+        if(difficultyPage != null) {
+            difficultyPage.SetActive(true);
+        }
+        mainPage.SetActive(false);
+        creditsPage.SetActive(false);
     }
 }

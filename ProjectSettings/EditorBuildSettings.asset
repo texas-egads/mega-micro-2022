@@ -80,4 +80,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Final-Boss/Scenes/Final-Boss.unity
     guid: f61b53a44272bd146bda05e290969f1e
+  - enabled: 1
+    path: Assets/mizichi_3833/mizichiScene.unity
+    guid: adf722a698b063d46ba136351c1fb6a3
+  - enabled: 1
+    path: Assets/Final-Boss/Scenes/WinScreen.unity
+    guid: fd177df0f1d9b024b91082b907f676c1
+  - enabled: 1
+    path: Assets/Final-Boss/Scenes/LoseScreen.unity
+    guid: 17cdee8d58ce91d41a04d17e052fead9
   m_configObjects: {}

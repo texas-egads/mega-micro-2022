@@ -27,7 +27,7 @@ public class Credits : MonoBehaviour
 
     IEnumerator BeginScroll()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         isScrolling = true;   
     }
 
@@ -41,9 +41,9 @@ public class Credits : MonoBehaviour
             
                 //check if user holding space. if so scroll faster
                 if(Input.GetKey(KeyCode.Space)) {
-                    transform.position += Vector3.up * Time.deltaTime * 180f;
+                    transform.position += Vector3.up * Time.deltaTime * 300f;
                 } else {
-                    transform.position += Vector3.up * Time.deltaTime * 70f;
+                    transform.position += Vector3.up * Time.deltaTime * 40f;
                 }
             }
         }

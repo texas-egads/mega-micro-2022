@@ -1026,7 +1026,10 @@ namespace Final_Boss
                 cardTitleText.text = _cardsInHand[handIndex].cardDescriptor.cardName;
                 cardDescriptionText.text = _cardsInHand[handIndex].cardDescriptor.cardDescription;
 
-                cardSelected.Invoke();
+                //check if player mana is greater than or equal to card mana cost. if not, unselect card
+                if(PlayerMana >= _cardsInHand[handIndex].cardDescriptor.manaCost) {
+                    cardSelected.Invoke();
+                }
             }
         }
 
@@ -1057,6 +1060,14 @@ namespace Final_Boss
 
             timerIcon.gameObject.SetActive(false);
             roundTimerText.gameObject.SetActive(false);
+
+            //check if the card at selected card has mana that is greater than player mana. if so, unselect
+            if(_selectedCardIndex >= 0) {
+                if(_cardsInHand[_selectedCardIndex].cardDescriptor.manaCost > PlayerMana) {
+                    _cardsInHand[_selectedCardIndex].UnselectCard();
+                    _selectedCardIndex = -1;
+                }
+            }
 
             EndRound();
         }
